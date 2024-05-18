@@ -122,21 +122,21 @@ const Landing = () => {
                   </div>
                 </div>
               </div>
-            </div>
 
-            <div className="landDiv5">
-              <div className="landDiv51">
-                <h1>24/7 Cybersecurity Operation Center</h1>
-                <h3>
-                  Don't wait, start investing today for a stable financial
-                  tomorrow
-                </h3>
-                <Link to="/register" className="landDiv1Btn">
-                  Contact us
-                </Link>
+              <div className="landDiv5">
+                <div className="landDiv51">
+                  <h1>24/7 Cybersecurity Operation Center</h1>
+                  <h3>
+                    Don't wait, start investing today for a stable financial
+                    tomorrow
+                  </h3>
+                  <Link to="/register" className="landDiv1Btn">
+                    Contact us
+                  </Link>
+                </div>
+
+                <img src={img2} />
               </div>
-
-              <img src={img2} />
             </div>
           </div>
         )}
