@@ -3,8 +3,8 @@
   --black: #454646;
   --white: #e8eaeb;
   --red: #dc2649;
-  --indigo: #004664;
-  --violet: #0077a9;
+  --indigo: #003580;
+  --violet: #005376;
 }
 
 h3 {
@@ -64,7 +64,7 @@ h3 {
 
 .landDiv11b h4 {
   color: var(--white);
-  font-family: "Poppins", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 500;
   font-style: normal;
   margin-bottom: 30px;
@@ -72,7 +72,7 @@ h3 {
 
 .landDiv11b h2 {
   color: var(--white);
-  font-family: "Poppins", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 500;
   font-style: normal;
   margin-bottom: 30px;
@@ -80,16 +80,16 @@ h3 {
 
 .landDiv11 h1 {
   color: var(--white);
-  font-family: "Poppins", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   font-style: normal;
-  font-size: 34px;
+  font-size: 35px;
 }
 
 .landDiv11 h3 {
   color: var(--white);
-  font-family: "Poppins", sans-serif;
-  font-weight: 500;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
   font-style: normal;
   margin-bottom: 30px;
   font-size: 18px;
@@ -107,7 +107,7 @@ h3 {
   border-radius: 5px;
   text-decoration: none;
   color: var(--white);
-  font-family: "Poppins", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 500;
   font-style: normal;
 }
@@ -156,7 +156,7 @@ h3 {
 .landDiv21321 .date,
 .landDiv21321b .date {
   color: var(--white);
-  font-family: "Poppins", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   font-style: normal;
   text-align: right;
@@ -166,7 +166,7 @@ h3 {
 .landDiv21321 h4,
 .landDiv21321b h4 {
   color: var(--white);
-  font-family: "Poppins", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 500;
   font-style: normal;
   text-align: right;
@@ -175,7 +175,7 @@ h3 {
 
 .landDiv21321c .date {
   color: var(--white);
-  font-family: "Poppins", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   font-style: normal;
   text-align: left;
@@ -185,7 +185,7 @@ h3 {
 
 .landDiv21321c h4 {
   color: var(--white);
-  font-family: "Poppins", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 500;
   font-style: normal;
   text-align: left;
@@ -210,7 +210,7 @@ h3 {
 
 .landDiv41 h4 {
   color: var(--white);
-  font-family: "Poppins", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 500;
   font-style: normal;
   margin-bottom: 30px;
@@ -271,7 +271,7 @@ h3 {
 
 .landDiv51 h1 {
   color: var(--white);
-  font-family: "Poppins", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   font-style: normal;
   font-size: 34px;
@@ -279,7 +279,7 @@ h3 {
 
 .landDiv51 h3 {
   color: var(--white);
-  font-family: "Poppins", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 500;
   font-style: normal;
   margin-bottom: 30px;
@@ -298,7 +298,7 @@ h3 {
 
 .landDiv6 h2 {
   color: var(--white);
-  font-family: "Poppins", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 500;
   font-style: normal;
   font-size: 18px;
@@ -307,7 +307,7 @@ h3 {
 
 .landDiv6 h4 {
   color: var(--white);
-  font-family: "Poppins", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 500;
   font-style: normal;
   margin-bottom: 30px;
@@ -338,7 +338,7 @@ h3 {
 
 .landDiv621 h3 {
   color: var(--white);
-  font-family: "Poppins", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 500;
   font-style: normal;
   font-size: 14px;
@@ -347,7 +347,7 @@ h3 {
 
 .landDiv621 h4 {
   color: var(--white);
-  font-family: "Poppins", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 500;
   font-style: normal;
   font-size: 10px;
@@ -372,14 +372,14 @@ h3 {
 
 .landDiv71 h1 {
   color: var(--white);
-  font-family: "Poppins", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-style: normal;
   font-size: 25px;
 }
 
 .landDiv71 h3 {
   color: var(--white);
-  font-family: "Poppins", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-style: normal;
   font-size: 16px;
 }
@@ -409,14 +409,14 @@ h3 {
 
 .landDiv721 h3 {
   color: var(--white);
-  font-family: "Poppins", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-style: normal;
   font-size: 16px;
 }
 
 .landDiv721 h4 {
   color: var(--white);
-  font-family: "Poppins", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-style: normal;
   font-size: 14px;
 }
