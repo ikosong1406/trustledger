@@ -5,7 +5,7 @@ const Colors = {
   white: "#e8eaeb",
   red: "#dc2649",
   indigo: "#510560",
-  violet: "#b12dd6",
+  violet: "#003580",
 };
 
 export default Colors;
