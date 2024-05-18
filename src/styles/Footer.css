@@ -1,20 +1,11 @@
-:root {
-  --blue: #0038a8;
-  --black: #454646;
-  --white: #e8eaeb;
-  --red: #dc2649;
-  --indigo: #510560;
-  --violet: #b12dd6;
-}
-
 .footerrDiv1 {
   height: 60px;
-  background-color: #b12dd6;
+  background-color: var(--violet);
 }
 
 .footerDiv2 {
   justify-content: space-around;
-  background-color: #b12dd6;
+  background-color: var(--violet);
   display: flex;
   padding: 30px;
 }
