@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "../styles/Header1.css";
 import { NavLink } from "react-router-dom";
-import { GiHamburgerMenu } from "react-icons/gi";
-import MobileMenuModal from "./MobileMenuModal";
+// import { GiHamburgerMenu } from "react-icons/gi";
+// import MobileMenuModal from "./MobileMenuModal";
 import logo from "../images/logo.png";
 
 const Header1 = ({ clicked, setClicked }) => {
@@ -20,40 +20,28 @@ const Header1 = ({ clicked, setClicked }) => {
   return (
     <div className="head1Div1">
       <div className="logoDiv">
-        <img src={logo} className="logoImage" />
         <NavLink to="/" style={{ textDecoration: "none" }}>
-          <h2 className="logo">TRUST LEDGER</h2>
+          <img src={logo} className="logoImage" />
         </NavLink>
       </div>
 
       <div className="navList">
-        <NavLink to="/about" className="navItems">
-          About Us
+        <NavLink to="/about" style={{ textDecoration: "none" }}>
+          <h3 className="navItems"> About</h3>
         </NavLink>
-        <NavLink to="/termsofuse" className="navItems">
-          Terms of Use
+        <NavLink to="/termsofuse" style={{ textDecoration: "none" }}>
+          <h3 className="navItems"> Terms </h3>
         </NavLink>
-        <NavLink to="/riskwarning" className="navItems">
-          Risk Warnings
-        </NavLink>
-        <NavLink to="/support" className="navItems">
-          Support
+        <NavLink to="/riskwarning" style={{ textDecoration: "none" }}>
+          <h3 className="navItems"> Market</h3>
         </NavLink>
       </div>
 
       <div className="authLinks">
-        <NavLink to="/login" className="loginBtn">
+        <NavLink to="/register" className="signBtn">
           Login
         </NavLink>
-        <NavLink to="/register" className="signBtn">
-          Register
-        </NavLink>
       </div>
-
-      <div>
-        <GiHamburgerMenu onClick={toggleModal} className="Icon" />
-      </div>
-      <MobileMenuModal isOpen={isModalOpen} onClose={toggleModal} />
     </div>
   );
 };

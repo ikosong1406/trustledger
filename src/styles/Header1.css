@@ -25,22 +25,13 @@
 }
 
 .logoImage {
-  width: 30px;
-  height: 35px;
-}
-
-.logo {
-  color: var(--white);
-  font-size: 16px;
-  font-family: "Poppins", sans-serif;
-  font-weight: 700;
-  font-style: normal;
-  align-self: center;
-  margin-left: 10px;
+  width: 130px;
+  height: 50px;
 }
 
 .navList {
   align-self: center;
+  display: flex;
 }
 
 .navItems {
@@ -54,19 +45,8 @@
 }
 
 .authLinks {
-  padding-right: 200px;
+  padding-right: 500px;
   align-self: center;
-}
-
-.loginBtn {
-  padding: 10px;
-  font-size: 16px;
-  border-radius: 5px;
-  text-decoration: none;
-  color: var(--white);
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
-  font-style: normal;
 }
 
 .signBtn {
@@ -80,18 +60,6 @@
   font-family: "Poppins", sans-serif;
   font-weight: 600;
   font-style: normal;
-}
-
-.Icon {
-  display: none;
-  font-size: 25px;
-  cursor: pointer;
-  color: var(--white);
-  margin-top: 5px;
-}
-
-#user {
-  font-size: 35px;
 }
 
 @media screen and (max-width: 925px) {
@@ -108,32 +76,39 @@
     z-index: 99;
     display: flex;
     padding: 20px;
+    justify-content: space-between;
   }
 
   .logoDiv {
     margin-top: 7px;
+    width: 25%;
   }
 
   .logoImage {
-    width: 20px;
+    width: 80px;
     height: 30px;
+    margin-top: 10px;
   }
 
-  .logo {
-    font-size: 15px;
+  .navList {
+    display: flex;
+    margin-right: 20px;
+    /* width: 25%; */
   }
 
   .navItems {
-    display: none;
-    color: var(--white);
+    font-size: 5px;
+    width: 25%;
   }
 
   .authLinks {
-    display: none;
+    padding-right: 40px;
+    align-self: center;
+    width: 25%;
   }
 
-  #user {
-    font-size: 30px;
-    margin-top: 5px;
+  .signBtn {
+    padding: 8px;
+    font-size: 10px;
   }
 }

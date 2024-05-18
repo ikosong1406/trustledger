@@ -10,9 +10,8 @@ const Footer = () => {
       <div className="footerDiv1">
         <div className="footerDiv2">
           <div className="logoDiv">
-            <img src={logo} className="logoImage" />
             <NavLink to="/" style={{ textDecoration: "none" }}>
-              <h2 className="logo">TRUST LEDGER</h2>
+              <img src={logo} className="logoImage" />
             </NavLink>
           </div>
 

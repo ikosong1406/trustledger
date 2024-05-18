@@ -10,6 +10,10 @@ import { FaLock } from "react-icons/fa";
 import img from "../images/img.png";
 import img1 from "../images/world.png";
 import img2 from "../images/security.png";
+import chart from "../images/barchart.png";
+import set from "../images/set.png";
+import magnification from "../images/magnification.png";
+import data from "../images/data.png";
 
 const Landing = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -136,6 +140,74 @@ const Landing = () => {
                 </div>
 
                 <img src={img2} />
+              </div>
+            </div>
+
+            <div className="landDiv6">
+              <div className="landDiv61">
+                <h2>How it Works</h2>
+                <h4>Its Quite Easy to Start Using Our Platform</h4>
+              </div>
+              <div className="landDiv62">
+                <div className="landDiv621">
+                  <img src={chart} alt="" />
+                  <h3>Register New Account</h3>
+                  <h4>
+                    Registration is a very easy process. Follow step by step and
+                    sign in
+                  </h4>
+                </div>
+                <div className="landDiv621">
+                  <img src={set} alt="" />
+                  <h3>Setup Account info</h3>
+                  <h4>
+                    Our system prioritizes security, featuring a secure
+                    development life cycle
+                  </h4>
+                </div>
+                <div className="landDiv621">
+                  <img src={magnification} alt="" />
+                  <h3>Start Buying and Selling</h3>
+                  <h4>Earn money on our platform safely and legally</h4>
+                </div>
+              </div>
+            </div>
+
+            <div className="landDiv7">
+              <div className="landDiv71">
+                <h1>The World's 1st Security Platforms That Offers Rewards</h1>
+                <h3>
+                  The platform that helps investors to make easy purchase and
+                  sell their token
+                </h3>
+                <img src={data} alt="" />
+              </div>
+              <div className="landDiv72">
+                <div className="landDiv721">
+                  <h3>Pre-sale is Live Now</h3>
+                  <h4>End In :</h4>
+                  <div className="landDiv7211">
+                    <div className="x">
+                      <h2 className="landDiv72111">30</h2>
+                      <h4>Days</h4>
+                    </div>
+                    <div className="x">
+                      <h2 className="landDiv72111">23</h2>
+                      <h4>Hours</h4>
+                    </div>
+                    <div className="x">
+                      <h2 className="landDiv72111">45</h2>
+                      <h4>Minutes</h4>
+                    </div>
+                    <div className="x">
+                      <h2 className="landDiv72111">09</h2>
+                      <h4>Seconds</h4>
+                    </div>
+                  </div>
+                  <Link to="/register" className="landDiv1Btn">
+                    Purchase Token
+                  </Link>
+                </div>
               </div>
             </div>
           </div>

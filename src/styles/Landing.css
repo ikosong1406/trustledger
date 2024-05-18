@@ -3,8 +3,8 @@
   --black: #454646;
   --white: #e8eaeb;
   --red: #dc2649;
-  --indigo: #1e0133;
-  --violet: #350862;
+  --indigo: #510560;
+  --violet: #b12dd6;
 }
 
 h3 {
@@ -23,7 +23,7 @@ h3 {
   padding-left: 110px;
   padding-right: 110px;
   padding-bottom: 30px;
-  position: relative; /* Ensure the pseudo-element is positioned relative to .landDiv1 */
+  position: relative;
 }
 
 .landDiv1::before {
@@ -36,7 +36,7 @@ h3 {
   background-image: url(../images/background.jpg);
   background-size: cover;
   background-repeat: no-repeat;
-  /* opacity: 0.7; */
+  background-color: rgb(0, 0, 0);
   z-index: -1;
 }
 
@@ -220,10 +220,17 @@ h3 {
   display: flex;
   justify-content: space-between;
   margin-top: 50px;
+  background-color: rgba(128, 128, 128, 0.411);
+  padding: 20px;
+  border-radius: 20px;
 }
 
 .ic {
   font-size: 40px;
+  margin-left: 25%;
+  background-color: #8080809a;
+  padding: 10px;
+  border-radius: 20px;
 }
 
 .landDiv4111 {
@@ -277,6 +284,160 @@ h3 {
   font-style: normal;
   margin-bottom: 30px;
   font-size: 18px;
+}
+
+.landDiv6 {
+  display: block;
+  justify-content: space-around;
+  padding-left: 120px;
+  background-color: var(--indigo);
+  padding-right: 120px;
+  padding-bottom: 50px;
+  padding-top: 20px;
+}
+
+.landDiv6 h2 {
+  color: var(--white);
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 18px;
+  text-align: center;
+}
+
+.landDiv6 h4 {
+  color: var(--white);
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  margin-bottom: 30px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.landDiv62 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.landDiv621 {
+  margin-top: 30px;
+  background-color: #80808069;
+  padding: 20px;
+  border-radius: 20px;
+  width: 25%;
+}
+
+.landDiv621 img {
+  width: 50px;
+  margin-left: 35%;
+  background-color: #8080809a;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.landDiv621 h3 {
+  color: var(--white);
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 14px;
+  text-align: center;
+}
+
+.landDiv621 h4 {
+  color: var(--white);
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 10px;
+  text-align: center;
+}
+
+.landDiv7 {
+  padding-left: 120px;
+  background-image: url(../images/background.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding-right: 120px;
+  padding-bottom: 30px;
+  padding-top: 50px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.landDiv71 {
+  width: 60%;
+}
+
+.landDiv71 h1 {
+  color: var(--white);
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-size: 25px;
+}
+
+.landDiv71 h3 {
+  color: var(--white);
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-size: 16px;
+}
+
+.landDiv71 img {
+  width: 450px;
+  align-self: center;
+  margin-top: 30px;
+}
+
+.landDiv72 {
+  width: 40%;
+  padding: 30px;
+}
+
+.landDiv721 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--indigo);
+  padding: 20px;
+  padding-bottom: 30px;
+  margin-top: 50px;
+  border-radius: 20px;
+}
+
+.landDiv721 h3 {
+  color: var(--white);
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-size: 16px;
+}
+
+.landDiv721 h4 {
+  color: var(--white);
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-size: 14px;
+}
+
+.landDiv7211 {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 20px;
+  width: 100%;
+}
+
+.landDiv72111 {
+  background-color: #80808069;
+  border-radius: 10px;
+  padding: 10px;
+  color: var(--white);
+  text-align: center;
+}
+
+.x {
+  width: 20%;
 }
 
 @media screen and (max-width: 925px) {
@@ -456,5 +617,110 @@ h3 {
 
   .landDiv51 h3 {
     font-size: 14px;
+  }
+
+  .landDiv6 {
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 50px;
+    padding-top: 20px;
+  }
+
+  .landDiv6 h2 {
+    font-size: 14px;
+  }
+
+  .landDiv6 h4 {
+    font-size: 10px;
+    text-align: center;
+  }
+
+  .landDiv62 {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .landDiv621 {
+    padding: 10px;
+    width: 25%;
+  }
+
+  .landDiv621 img {
+    width: 40px;
+    margin-left: 15%;
+  }
+
+  .landDiv621 h3 {
+    color: var(--white);
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 12px;
+    text-align: center;
+  }
+
+  .landDiv621 h4 {
+    color: var(--white);
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 8px;
+    text-align: center;
+  }
+
+  .landDiv7 {
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 30px;
+    padding-top: 50px;
+  }
+
+  .landDiv71 {
+    width: 50%;
+  }
+
+  .landDiv71 h1 {
+    font-size: 18px;
+  }
+
+  .landDiv71 h3 {
+    font-size: 12px;
+  }
+
+  .landDiv71 img {
+    width: 170px;
+    height: 170px;
+    margin-top: 30px;
+  }
+
+  .landDiv72 {
+    width: 50%;
+    padding: 10px;
+  }
+
+  .landDiv721 {
+    margin-top: 0px;
+    width: 80%;
+  }
+
+  .landDiv721 h3 {
+    font-size: 13px;
+  }
+
+  .landDiv721 h4 {
+    font-size: 10px;
+  }
+
+  .landDiv7211 {
+    padding-bottom: 20px;
+  }
+
+  .landDiv72111 {
+    font-size: 12px;
+  }
+
+  .x h4 {
+    font-size: 6px;
   }
 }
