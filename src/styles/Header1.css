@@ -1,0 +1,139 @@
+/* :root {
+  --blue: #0038a8;
+  --black: #454646;
+  --white: #e8eaeb;
+  --red: #dc2649;
+  --indigo: #4b0082;
+  --violet: #32174d;
+} */
+
+.head1Div1 {
+  background-color: var(--violet);
+  width: 100%;
+  position: fixed;
+  z-index: 99;
+  display: flex;
+  padding: 10px;
+  padding-left: 150px;
+  justify-content: space-between;
+}
+
+.logoDiv {
+  align-self: center;
+  display: flex;
+  height: 50px;
+}
+
+.logoImage {
+  width: 30px;
+  height: 35px;
+}
+
+.logo {
+  color: var(--white);
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  align-self: center;
+  margin-left: 10px;
+}
+
+.navList {
+  align-self: center;
+}
+
+.navItems {
+  text-decoration: none;
+  color: var(--white);
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  margin-left: 20px;
+}
+
+.authLinks {
+  padding-right: 200px;
+  align-self: center;
+}
+
+.loginBtn {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: var(--white);
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.signBtn {
+  background-color: var(--white);
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: var(--black);
+  margin-left: 30px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.Icon {
+  display: none;
+  font-size: 25px;
+  cursor: pointer;
+  color: var(--white);
+  margin-top: 5px;
+}
+
+#user {
+  font-size: 35px;
+}
+
+@media screen and (max-width: 925px) {
+  .Icon {
+    display: inline;
+    position: relative;
+    padding-right: 70px;
+  }
+
+  .head1Div1 {
+    width: 100%;
+    height: 32px;
+    position: fixed;
+    z-index: 99;
+    display: flex;
+    padding: 20px;
+  }
+
+  .logoDiv {
+    margin-top: 7px;
+  }
+
+  .logoImage {
+    width: 20px;
+    height: 30px;
+  }
+
+  .logo {
+    font-size: 15px;
+  }
+
+  .navItems {
+    display: none;
+    color: var(--white);
+  }
+
+  .authLinks {
+    display: none;
+  }
+
+  #user {
+    font-size: 30px;
+    margin-top: 5px;
+  }
+}

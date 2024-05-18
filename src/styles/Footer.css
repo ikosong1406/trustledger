@@ -1,0 +1,107 @@
+/* :root {
+  --blue: #0038a8;
+  --black: #454646;
+  --white: #e8eaeb;
+  --red: #dc2649;
+  --indigo: #2c014a;
+  --violet: #170529;
+} */
+
+.footerrDiv1 {
+  height: 60px;
+  background-color: var(--indigo);
+}
+
+.footerDiv2 {
+  justify-content: space-around;
+  background-color: var(--violet);
+  display: flex;
+  padding: 30px;
+}
+
+.logoDiv1 {
+  display: flex;
+  align-self: center;
+}
+
+.logoImage1 {
+  width: 70px;
+  margin-left: 5px;
+}
+
+.logoName1 {
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  margin-top: 23px;
+  color: var(--green);
+}
+
+.footerDiv3 {
+  display: grid;
+}
+
+.footerDiv4 {
+  display: flex;
+  justify-content: space-between;
+  width: 25%;
+}
+
+.legal {
+  color: var(--white);
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.legal1 {
+  color: var(--white);
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  text-decoration: none;
+  margin-top: 10px;
+}
+
+@media screen and (max-width: 925px) {
+  .footerrDiv1 {
+    height: 40px;
+  }
+
+  .footerDiv2 {
+    justify-content: left;
+    display: grid;
+  }
+
+  .logoImage1 {
+    width: 30px;
+    margin-left: 0px;
+  }
+
+  .logoName1 {
+    margin-top: 19px;
+    font-size: 16px;
+  }
+
+  .footerDiv3 {
+    margin-top: 10px;
+  }
+
+  .footerDiv4 {
+    display: flex;
+    justify-content: space-between;
+    width: 30vh;
+  }
+
+  .legal {
+    font-size: 15px;
+  }
+
+  .legal1 {
+    font-size: 12px;
+  }
+
+  .copy {
+    font-size: 5px;
+  }
+}
