@@ -14,6 +14,9 @@ import chart from "../images/barchart.png";
 import set from "../images/set.png";
 import magnification from "../images/magnification.png";
 import data from "../images/data.png";
+import phone from "../images/phone.png";
+import wallet from "../images/wallet.png";
+import shield from "../images/shield.png";
 
 const Landing = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -105,24 +108,19 @@ const Landing = () => {
                 <h4>WHY CHOOSE OUR TOKEN</h4>
                 <div className="landDiv411">
                   <div className="landDiv4111">
-                    <FaMobileAlt className="ic" style={{ color: "blue" }} />
+                    <img src={phone} alt="" className="ic" />
                     <h3>Mobile Payment make easy</h3>
                     <p>you can use a mobile device to pay with simple steps</p>
                   </div>
                   <div className="landDiv4111">
-                    <FaWallet className="ic" style={{ color: "pink" }} />
+                    <img src={wallet} alt="" className="ic" />
                     <h3>Lifetime free transaction</h3>
                     <p>you can buy token without using transaction fee</p>
                   </div>
                   <div className="landDiv4111">
-                    <FaShieldAlt className="ic" style={{ color: "green" }} />
+                    <img src={shield} alt="" className="ic" />
                     <h3>Protect the identity</h3>
                     <p>Use a mobile device to pay with simple steps</p>
-                  </div>
-                  <div className="landDiv4111">
-                    <FaLock className="ic" style={{ color: "yellow" }} />
-                    <h3>Secure and control over money</h3>
-                    <p>We provide high level of security to all users</p>
                   </div>
                 </div>
               </div>
