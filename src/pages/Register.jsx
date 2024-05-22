@@ -34,7 +34,7 @@ const Register = () => {
             Already have an account ?{" "}
             <span>
               <Link
-                style={{ textDecoration: "none", color: Colors.blue }}
+                style={{ textDecoration: "none", color: "goldenrod" }}
                 to="/login"
               >
                 Login
@@ -43,7 +43,6 @@ const Register = () => {
           </h3>
         </div>
       </div>
-      <div className="registerDiv3"></div>
     </div>
   );
 };

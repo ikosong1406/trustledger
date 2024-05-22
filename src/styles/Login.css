@@ -1,14 +1,20 @@
 .loginDiv1 {
   display: flex;
-  background-color: var(--indigo);
-  padding-top: 71px;
+  background-image: url(../images/pics.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding-top: 100px;
+  padding-bottom: 30px;
+  justify-content: center;
 }
 
 .loginDiv2 {
   padding: 60px;
   padding-bottom: 30px;
   width: 50%;
-  background-color: var(--indigo);
+  background-color: #8080809d;
+  border-radius: 20px;
 }
 
 .loginDiv21 {
@@ -103,26 +109,17 @@
   color: var(--white);
 }
 
-.loginDiv3 {
-  background-image: url(../images/pics.jpg);
-  background-position: center;
-  background-repeat: no-repeat;
-  width: 50%;
-}
-
 @media screen and (max-width: 925px) {
   .loginDiv1 {
     display: flex;
-    background-color: var(--indigo);
-    padding-top: 50px;
+    padding-top: 90px;
   }
 
   .loginDiv2 {
     padding: 20px;
-    padding-top: 100px;
-    padding-bottom: 100px;
-    width: 65%;
-    background-color: var(--indigo);
+    padding-top: 60px;
+    padding-bottom: 60px;
+    width: 70%;
   }
 
   .loginDiv21 {
@@ -176,9 +173,5 @@
 
   .loginDiv24 h3 {
     font-size: 13px;
-  }
-
-  .loginDiv3 {
-    width: 35%;
   }
 }

@@ -1,14 +1,20 @@
 .registerDiv1 {
   display: flex;
-  background-color: var(--indigo);
-  padding-top: 70px;
+  background-image: url(../images/pics.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding-top: 100px;
+  padding-bottom: 30px;
+  justify-content: center;
 }
 
 .registerDiv2 {
   padding: 60px;
   padding-bottom: 30px;
   width: 50%;
-  background-color: var(--indigo);
+  background-color: #808080b6;
+  border-radius: 20px;
 }
 
 .registerDiv21 {
@@ -113,16 +119,14 @@
 @media screen and (max-width: 925px) {
   .registerDiv1 {
     display: flex;
-    background-color: var(--indigo);
-    padding-top: 0px;
+    padding-top: 90px;
   }
 
   .registerDiv2 {
     padding: 20px;
-    padding-top: 100px;
-    padding-bottom: 100px;
-    width: 65%;
-    background-color: var(--indigo);
+    padding-top: 60px;
+    padding-bottom: 60px;
+    width: 70%;
   }
 
   .registerDiv21 {

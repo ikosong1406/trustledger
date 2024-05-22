@@ -31,7 +31,7 @@ const Login = () => {
             Don't have an account ?{" "}
             <span>
               <Link
-                style={{ textDecoration: "none", color: Colors.blue }}
+                style={{ textDecoration: "none", color: "goldenrod" }}
                 to="/register"
               >
                 Sign up
@@ -40,7 +40,6 @@ const Login = () => {
           </h3>
         </div>
       </div>
-      <div className="loginDiv3"></div>
     </div>
   );
 };
