@@ -38,7 +38,7 @@ const Header1 = ({ clicked, setClicked }) => {
       </div>
 
       <div className="authLinks">
-        <NavLink to="/register" className="signBtn">
+        <NavLink to="/login" className="signBtn">
           Login
         </NavLink>
       </div>
