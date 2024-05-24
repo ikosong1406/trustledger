@@ -151,8 +151,7 @@ const Main = () => {
           breakpoint: 480,
           options: {
             chart: {
-              width: 200,
-              height: 200,
+              width: 300,
             },
             legend: {
               position: "bottom",
