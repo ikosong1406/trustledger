@@ -8,6 +8,12 @@ import Header1 from "./components/Header1";
 import Footer from "./components/Footer";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import Layout from "./components/Layout";
+import Main from "./pages/Main";
+import Deposit from "./pages/Deposit";
+import Withdrawal from "./pages/Withdrawal";
+import Settings from "./pages/Settings";
+import Accounts from "./pages/Accounts";
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -77,6 +83,14 @@ const App = () => {
                     </Layout1>
                   }
                 />
+                <Route path="/dashboard" element={<Layout />}>
+                  <Route index element={<Main />} />
+                  <Route path="main" element={<Main />} />
+                  <Route path="deposit" element={<Deposit />} />
+                  <Route path="withdrawal" element={<Withdrawal />} />
+                  <Route path="settings" element={<Settings />} />
+                  <Route path="accounts" element={<Accounts />} />
+                </Route>
               </Routes>
             </Router>
           </>

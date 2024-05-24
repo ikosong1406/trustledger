@@ -1,9 +1,16 @@
 import React from "react";
 import "../styles/Login.css";
-import { NavLink, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Colors from "../components/Colors";
 
 const Login = () => {
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+    navigate("/dashboard");
+  };
+
   return (
     <div className="loginDiv1">
       <div className="loginDiv2">
@@ -13,13 +20,13 @@ const Login = () => {
         </div>
         <div className="loginDiv22">
           <h3>Email</h3>
-          <input type="email" name="" id="" />
+          <input type="email" name="email" id="email" />
           <h3>Password</h3>
-          <input type="text" />
+          <input type="password" name="password" id="password" />
           <h4>Forgot Password ?</h4>
-          <NavLink to="/login" className="loginBtn">
+          <button className="loginBtn" onClick={handleLogin}>
             <h3>LOGIN</h3>
-          </NavLink>
+          </button>
         </div>
         <div className="loginDiv23">
           <hr />

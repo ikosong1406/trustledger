@@ -4,21 +4,19 @@
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  padding-top: 100px;
-  padding-bottom: 30px;
+  padding-top: 70px;
   justify-content: center;
 }
 
 .registerDiv2 {
   padding: 60px;
   padding-bottom: 30px;
-  width: 50%;
+  width: 100%;
   background-color: #253745bc;
-  border-radius: 20px;
 }
 
 .registerDiv21 {
-  margin-left: 60px;
+  margin-left: 25%;
 }
 
 .registerDiv21 h1 {
@@ -39,7 +37,7 @@
   margin-top: 30px;
   width: 70%;
   display: block;
-  margin-left: 60px;
+  margin-left: 25%;
 }
 
 .registerDiv22 h3 {
@@ -50,7 +48,7 @@
 
 .registerDiv22 input {
   padding: 12px;
-  width: 100%;
+  width: 60%;
   border-radius: 5px;
   background-color: var(--white);
 }
@@ -66,7 +64,7 @@
   padding: 8px;
   border-radius: 5px;
   text-decoration: none;
-  width: 100%;
+  width: 60%;
   display: flex;
   justify-content: center;
   padding-top: 20px;
@@ -84,7 +82,8 @@
   display: flex;
   justify-content: space-between;
   margin-top: 30px;
-  width: 90%;
+  width: 60%;
+  margin-left: 17%;
 }
 
 .registerDiv23 hr {
@@ -119,18 +118,16 @@
 @media screen and (max-width: 925px) {
   .registerDiv1 {
     display: flex;
-    padding-top: 90px;
   }
 
   .registerDiv2 {
     padding: 20px;
     padding-top: 60px;
     padding-bottom: 60px;
-    width: 70%;
   }
 
   .registerDiv21 {
-    margin-left: 0px;
+    margin-left: 10%;
     padding: 5px;
   }
 
@@ -146,8 +143,8 @@
 
   .registerDiv22 {
     margin-top: 20px;
-    width: 90%;
-    margin-left: 0px;
+    width: 70%;
+    margin-left: 10%;
   }
 
   .registerDiv22 h3 {
@@ -156,6 +153,7 @@
 
   .registerDiv22 input {
     padding: 8px;
+    width: 100%;
   }
 
   .registerDiv22 h4 {
@@ -167,6 +165,7 @@
     padding-top: 12px;
     padding-bottom: 0px;
     margin-top: 20px;
+    width: 100%;
   }
 
   .registerBtn h3 {
@@ -176,13 +175,11 @@
 
   .registerDiv23 {
     margin-top: 20px;
+    margin-left: 10%;
+    width: 70%;
   }
 
   .registerDiv24 h3 {
     font-size: 13px;
-  }
-
-  .registerDiv3 {
-    width: 35%;
   }
 }
