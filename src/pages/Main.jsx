@@ -63,7 +63,7 @@ const Main = () => {
         ))}
       </div>
       <div className="candlestick-chart">
-        <h2>Market Data: {selectedAsset}</h2>
+        <h2 style={{ color: "white" }}>Market Data: {selectedAsset}</h2>
         <CandlestickChart symbol={"IBM"} />
       </div>
     </div>
