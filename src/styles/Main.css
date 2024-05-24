@@ -2,7 +2,7 @@
   padding: 40px;
   background-color: var(--white);
   display: block;
-  height: 100vh;
+  /* height: 100vh; */
   background-image: url(../images/background.jpg);
   background-size: cover;
   background-repeat: no-repeat;
@@ -115,83 +115,80 @@
 
 @media screen and (max-width: 925px) {
   .mainDiv1 {
-    padding: 20px;
-    height: 140vh;
-    width: 100%;
-    padding-right: 75px;
-    padding-left: 45px;
+    padding: 30px;
+    padding-bottom: 100px;
   }
 
   .mainDiv2 {
-    display: block;
-    justify-content: none;
+    display: flex;
     padding: 0px;
   }
 
-  .balance-section {
-    width: 100%;
-    padding: 15px;
+  .mainDiv2 .icon {
+    color: var(--white);
+    font-size: 30px;
+    align-self: center;
   }
 
-  .mainDiv4 {
-    /* margin-top: 15px; */
-  }
-
-  .balance-section img {
-    width: 80px;
-  }
-
-  .balance-section h1 {
-    font-size: 18px;
-  }
-
-  .chart-section {
-    margin-top: 20px;
-    width: 100%;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    padding: 15px;
-  }
-
-  .chart-section h1 {
-    font-size: 18px;
-  }
-
-  .doughnut-chart {
-    padding-left: 15%;
-    display: flex;
-    width: 100%;
-  }
-
-  .asset-selection {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-    width: 100%;
-    padding: 15px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-  }
-
-  .asset-button {
-    margin: 0 10px;
-    padding: 10px;
-    border: none;
-    background: none;
-    cursor: pointer;
-    font-size: 16px;
-    color: var(--black);
-    font-family: "Poppins", sans-serif;
-  }
-
-  .asset-button.active {
+  .mainDiv2 h2 {
     color: var(--white);
   }
 
-  .candlestick-chart {
+  .mainDiv3 {
     width: 100%;
-    height: 350px;
-    padding: 15px;
-    /* padding-top: 10px;
-    padding-bottom: 10px; */
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+
+  .mainDiv3 h3 {
+    color: #008000;
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+  }
+
+  .mainDiv31 h3 {
+    color: gray;
+    font-family: "Poppins", sans-serif;
+  }
+
+  .mainDiv31 h1 {
+    color: var(--white);
+    font-family: "Poppins", sans-serif;
+    font-size: 30px;
+  }
+
+  .mainDiv4 {
+    margin-top: 20px;
+  }
+
+  .mainDiv5 h2 {
+    color: var(--white);
+    font-family: "Poppins", sans-serif;
+  }
+
+  .mainDiv6 {
+    margin-top: 20px;
+  }
+
+  .mainDiv6 h2 {
+    color: var(--white);
+    font-family: "Poppins", sans-serif;
+  }
+
+  .mainDiv61 {
+    display: flex;
+    justify-content: space-between;
+    color: var(--white);
+    font-family: "Poppins", sans-serif;
+  }
+  .mainDiv62 {
+    display: flex;
+    width: 30%;
+    justify-content: space-between;
+  }
+  .mainDiv62 .icon {
+    font-size: 30px;
+    align-self: center;
   }
 }
