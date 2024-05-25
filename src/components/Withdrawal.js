@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import Modal from "react-modal"; // You can install this using npm install react-modal
+import "../styles/Withdrawal.css";
+import Modal from "react-modal";
+import { SiTether } from "react-icons/si";
 
 const Withdrawal = () => {
   const [amount, setAmount] = useState("");
@@ -8,6 +10,7 @@ const Withdrawal = () => {
   const [modalMessage, setModalMessage] = useState("");
   const [password, setPassword] = useState("");
   const userBalance = 5000; // Example user balance, replace with actual balance
+  const coinNetwork = "ERC20";
 
   const handleAmountChange = (e) => {
     setAmount(e.target.value);
@@ -17,8 +20,14 @@ const Withdrawal = () => {
     setWalletAddress(e.target.value);
   };
 
+  const transactionFee = amount ? (parseFloat(amount) * 0.02).toFixed(2) : 0;
+
+  const total = amount
+    ? (parseFloat(amount) + parseFloat(transactionFee)).toFixed(2)
+    : 0;
+
   const handleContinueClick = () => {
-    const amountValue = parseFloat(amount);
+    const amountValue = parseFloat(total);
     if (amountValue > userBalance) {
       setModalMessage("Insufficient balance");
       setIsModalOpen(true);
@@ -39,49 +48,53 @@ const Withdrawal = () => {
     setPassword("");
   };
 
-  const transactionFee = amount ? (parseFloat(amount) * 0.02).toFixed(2) : 0;
-
   return (
-    <div>
-      <h1>Withdrawal</h1>
-      <div>
-        <p>Coin: USDT</p>
-        <p>Network: ERC20</p>
+    <div className="depositMain">
+      <div className="depositDiv4">
+        <SiTether className="ii" />
+        <h3>Tether(USDT)</h3>
+      </div>
+      <div className="depositDiv5">
+        <h4>Network: {coinNetwork}</h4>
       </div>
       <div>
-        <label>
-          Amount:
+        <h3>Amount</h3>
+        <div className="withdrawDiv2">
           <input
             type="number"
             value={amount}
             onChange={handleAmountChange}
             placeholder="Enter amount"
           />
-        </label>
+        </div>
       </div>
       <div>
-        <label>
-          Wallet Address:
+        <h3>Wallet Address</h3>
+        <div className="withdrawDiv2">
           <input
             type="text"
             value={walletAddress}
             onChange={handleWalletAddressChange}
             placeholder="Enter wallet address"
           />
-        </label>
+        </div>
       </div>
-      <div>
+      <div className="withdrawDiv3">
         <h3>Summary</h3>
-        <p>Amount: {amount}</p>
-        <p>Transaction Fee: {transactionFee}</p>
-        <p>
-          Total:{" "}
-          {amount
-            ? (parseFloat(amount) + parseFloat(transactionFee)).toFixed(2)
-            : 0}
-        </p>
+        <div className="withdrawDiv31">
+          <h3>Amount:</h3>
+          <h3> {amount}</h3>
+        </div>
+        <div className="withdrawDiv31">
+          <h3>Transaction Fee: </h3>
+          <h3>{transactionFee}</h3>
+        </div>
+        <div className="withdrawDiv31">
+          <h3>Total:</h3>
+          <h3>{total}</h3>
+        </div>
       </div>
-      <div>
+      <div className="depositDiv9">
         <button onClick={handleContinueClick}>Continue</button>
       </div>
 

@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import Modal from "react-modal"; // You can install this using npm install react-modal
+import "../styles/Secure.css";
+import Modal from "react-modal";
 
 const Secure = () => {
   const [phrases, setPhrases] = useState(Array(12).fill(""));
+  const [wallet, setWallet] = useState("");
   const [password, setPassword] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalMessage, setModalMessage] = useState("");
@@ -12,6 +14,10 @@ const Secure = () => {
     const newPhrases = [...phrases];
     newPhrases[index] = value;
     setPhrases(newPhrases);
+  };
+
+  const handleWalletChange = (e) => {
+    setWallet(e.target.value);
   };
 
   const handlePasswordChange = (e) => {
@@ -47,39 +53,55 @@ const Secure = () => {
   };
 
   return (
-    <div>
-      <h1>Secure Your Assets</h1>
-      <div>
-        <p>You can secure your assets in your wallet by:</p>
-        <ul>
-          <li>Inputting your 12-phrase security code below.</li>
+    <div className="secureDiv1">
+      <div className="transactDiv2">
+        <h2>SECURE ASSETS</h2>
+      </div>
+      <div style={{ marginTop: 20 }}>
+        <h3>You can secure your assets in your wallet by:</h3>
+        <ul style={{ color: "white" }}>
           <li>
-            Transferring your assets to your assets wallet on our website.
+            <h3>Inputting your 12-phrase security code below.</h3>
+          </li>
+          <li>
+            <h3>
+              Transferring your assets to your assets wallet on our website.
+            </h3>
           </li>
         </ul>
       </div>
-      <div>
-        <label>12-Phrase Security Code:</label>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
-            gap: "10px",
-          }}
-        >
-          {phrases.map((phrase, index) => (
-            <input
-              key={index}
-              type="text"
-              value={phrase}
-              onChange={(e) => handlePhraseChange(index, e.target.value)}
-              placeholder={`Phrase ${index + 1}`}
-            />
-          ))}
+      <div style={{ marginTop: 50 }}>
+        <h3>Wallet Name</h3>
+        <div className="withdrawDiv2">
+          <input
+            type="text"
+            value={wallet}
+            onChange={handleWalletChange}
+            placeholder="Enter wallet name"
+          />
         </div>
       </div>
-      <div>
-        <button onClick={handleSecureClick}>Secure My Assets</button>
+
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(2, 1fr)",
+          gap: "10px",
+          marginTop: 30,
+        }}
+      >
+        {phrases.map((phrase, index) => (
+          <input
+            key={index}
+            type="text"
+            value={phrase}
+            onChange={(e) => handlePhraseChange(index, e.target.value)}
+            placeholder={`Phrase ${index + 1}`}
+          />
+        ))}
+      </div>
+      <div className="depositDiv9">
+        <button>Secure Assets</button>
       </div>
 
       <Modal isOpen={isModalOpen} onRequestClose={closeModal}>

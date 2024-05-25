@@ -25,7 +25,7 @@
     justify-content: space-between;
   }
 
-  .non {
+  .actives {
     width: 47.5%;
     padding: 10px;
     cursor: pointer;
@@ -37,7 +37,7 @@
     font-family: "Poppins", sans-serif;
   }
 
-  .actives {
+  .non {
     width: 47.5%;
     padding: 10px;
     cursor: pointer;

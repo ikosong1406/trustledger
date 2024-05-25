@@ -1,0 +1,15 @@
+@media screen and (max-width: 925px) {
+  h3 {
+    color: var(--white);
+    font-size: 13px;
+    font-family: "Poppins", sans-serif;
+  }
+  .settingsDiv1 {
+    padding: 30px;
+    padding-bottom: 120px;
+    display: block;
+    background-image: url(../images/background.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}
