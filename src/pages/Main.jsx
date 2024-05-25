@@ -2,11 +2,9 @@
 import React, { useState } from "react";
 import "../styles/Main.css";
 import ReactApexChart from "react-apexcharts";
-import { AiOutlineArrowUp } from "react-icons/ai";
-import { FaBitcoin, FaEthereum, FaChartBar } from "react-icons/fa";
+import { FaBitcoin, FaEthereum } from "react-icons/fa";
 import { SiStellar, SiRipple, SiSolana } from "react-icons/si";
 import { BiMenuAltLeft } from "react-icons/bi";
-import { BiSearchAlt } from "react-icons/bi";
 import wallet from "../images/wallet.png";
 
 const Main = () => {
@@ -123,7 +121,7 @@ const Main = () => {
         text: "XRP Market Chart",
         align: "left",
         style: {
-          fontSize: "16px",
+          fontSize: "14px",
           color: "gray",
           fontFamily: "Poppins, sans-serif",
         },
@@ -145,7 +143,7 @@ const Main = () => {
       chart: {
         type: "donut",
       },
-      labels: ["Bitcoin", "Ethereum", "XRP", "USD", "Solana"],
+      labels: ["Bitcoin", "Ethereum", "XRP", "XLM", "Solana"],
       responsive: [
         {
           breakpoint: 480,
@@ -206,8 +204,11 @@ const Main = () => {
     <div className="mainDiv1">
       <div className="mainDiv2">
         <BiMenuAltLeft className="icon" />
-        <h2>DASHBOARD</h2>
-        <BiSearchAlt className="icon" />
+        <h2>WALLET</h2>
+        <h3>IL</h3>
+      </div>
+      <div className="mainDiv7">
+        <h1> Hello Ivan Lancy</h1>
       </div>
       <div className="mainDiv3">
         <div className="mainDiv31">

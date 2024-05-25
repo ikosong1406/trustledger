@@ -1,8 +1,6 @@
 .mainDiv1 {
   padding: 40px;
-  background-color: var(--white);
   display: block;
-  /* height: 100vh; */
   background-image: url(../images/background.jpg);
   background-size: cover;
   background-repeat: no-repeat;
@@ -132,30 +130,44 @@
 
   .mainDiv2 h2 {
     color: var(--white);
+    font-size: 16px;
+    align-self: center;
+  }
+
+  .mainDiv2 h3 {
+    color: var(--white);
+    font-size: 16px;
+    border: 2px solid var(--white);
+    padding: 10px;
+    align-self: center;
+    border-radius: 100px;
   }
 
   .mainDiv3 {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     margin-top: 20px;
+    box-shadow: 0px 0px 10px rgb(0, 0, 0);
+    padding: 5px;
   }
 
   .mainDiv3 h3 {
     color: #008000;
-    font-size: 16px;
+    font-size: 14px;
     font-family: "Poppins", sans-serif;
   }
 
   .mainDiv31 h3 {
     color: gray;
     font-family: "Poppins", sans-serif;
+    font-size: 14px;
   }
 
   .mainDiv31 h1 {
     color: var(--white);
     font-family: "Poppins", sans-serif;
-    font-size: 30px;
+    font-size: 26px;
   }
 
   .mainDiv4 {
@@ -165,6 +177,7 @@
   .mainDiv5 h2 {
     color: var(--white);
     font-family: "Poppins", sans-serif;
+    font-size: 15px;
   }
 
   .mainDiv6 {
@@ -174,6 +187,7 @@
   .mainDiv6 h2 {
     color: var(--white);
     font-family: "Poppins", sans-serif;
+    font-size: 15px;
   }
 
   .mainDiv61 {
@@ -182,6 +196,15 @@
     color: var(--white);
     font-family: "Poppins", sans-serif;
   }
+
+  .mainDiv61 h3 {
+    font-size: 13px;
+  }
+
+  .mainDiv61 h4 {
+    font-size: 12px;
+  }
+
   .mainDiv62 {
     display: flex;
     width: 30%;
@@ -190,5 +213,15 @@
   .mainDiv62 .icon {
     font-size: 30px;
     align-self: center;
+  }
+
+  .mainDiv7 {
+    margin-top: 40px;
+  }
+
+  .mainDiv7 h1 {
+    color: var(--white);
+    font-family: "Poppins", sans-serif;
+    font-size: 20px;
   }
 }

@@ -3,7 +3,8 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import "../styles/BottomTabNavigator.css";
 import { AiFillPieChart } from "react-icons/ai";
-import { PiHandDepositFill, PiHandWithdrawFill } from "react-icons/pi";
+import { GrTransaction } from "react-icons/gr";
+import { MdSecurity } from "react-icons/md";
 import { IoSettings } from "react-icons/io5";
 import { FaUser } from "react-icons/fa";
 
@@ -21,18 +22,18 @@ const BottomTabNavigator = () => {
         <AiFillPieChart className="icon" />
       </NavLink>
       <NavLink
-        to="/dashboard/deposit"
+        to="/dashboard/transaction"
         className={({ isActive }) => (isActive ? "active" : "")}
         onClick={() => setShowNav(false)}
       >
-        <PiHandDepositFill className="icon" />
+        <GrTransaction className="icon" />
       </NavLink>
       <NavLink
-        to="/dashboard/withdrawal"
+        to="/dashboard/secure"
         className={({ isActive }) => (isActive ? "active" : "")}
         onClick={() => setShowNav(false)}
       >
-        <PiHandWithdrawFill className="icon" />
+        <MdSecurity className="icon" />
       </NavLink>
       <NavLink
         to="/dashboard/settings"

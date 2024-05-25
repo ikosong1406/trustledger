@@ -10,8 +10,8 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Layout from "./components/Layout";
 import Main from "./pages/Main";
-import Deposit from "./pages/Deposit";
-import Withdrawal from "./pages/Withdrawal";
+import Transaction from "./pages/Transaction";
+import Secure from "./pages/Secure";
 import Settings from "./pages/Settings";
 import Accounts from "./pages/Accounts";
 
@@ -86,8 +86,8 @@ const App = () => {
                 <Route path="/dashboard" element={<Layout />}>
                   <Route index element={<Main />} />
                   <Route path="main" element={<Main />} />
-                  <Route path="deposit" element={<Deposit />} />
-                  <Route path="withdrawal" element={<Withdrawal />} />
+                  <Route path="transaction" element={<Transaction />} />
+                  <Route path="secure" element={<Secure />} />
                   <Route path="settings" element={<Settings />} />
                   <Route path="accounts" element={<Accounts />} />
                 </Route>
