@@ -8,14 +8,15 @@
     padding: 30px;
     padding-bottom: 120px;
     display: block;
-    background-image: url(../images/background.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
+    background-color: #021023;
+  }
+
+  li {
+    color: goldenrod;
   }
 
   input {
-    padding: 10px;
-    /* padding-top: 10px; */
+    padding: 8px;
     background-color: transparent;
     border: 1px solid var(--white);
     border-radius: 10px;

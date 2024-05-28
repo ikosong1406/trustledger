@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import "../styles/Secure.css";
 import Modal from "react-modal";
+import { IoClose } from "react-icons/io5";
 
 const Secure = () => {
   const [phrases, setPhrases] = useState(Array(12).fill(""));
   const [wallet, setWallet] = useState("");
-  const [password, setPassword] = useState("");
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalMessage, setModalMessage] = useState("");
+  const [passcode, setPasscode] = useState(Array(4).fill(""));
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [isPasswordModalOpen, setIsPasswordModalOpen] = useState(false);
 
   const handlePhraseChange = (index, value) => {
@@ -20,36 +21,38 @@ const Secure = () => {
     setWallet(e.target.value);
   };
 
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
+  const handlePasscodeChange = (index, value) => {
+    const newPasscode = [...passcode];
+    newPasscode[index] = value;
+    setPasscode(newPasscode);
   };
 
   const handleSecureClick = () => {
     if (phrases.every((phrase) => phrase.trim() !== "")) {
-      setIsPasswordModalOpen(true);
+      setModalMessage("Enter your code to secure your assets");
+      setIsModalOpen(true);
     } else {
       setModalMessage("Please enter a valid 12-phrase security code.");
       setIsModalOpen(true);
     }
   };
 
-  const handlePasswordSubmit = () => {
-    if (password.trim() !== "") {
-      setModalMessage(
-        "Your assets are now secured with your 12-phrase security code."
-      );
-      setIsPasswordModalOpen(false);
-      setIsModalOpen(true);
-    } else {
-      setModalMessage("Please enter a valid password.");
-      setIsModalOpen(true);
-    }
-  };
+  // const handlePasswordSubmit = () => {
+  //   if (passcode.trim() !== "") {
+  //     setModalMessage(
+  //       "Your assets are now secured with your 12-phrase security code."
+  //     );
+  //     setIsPasswordModalOpen(false);
+  //     setIsModalOpen(true);
+  //   } else {
+  //     setModalMessage("Enter your code to secure your assets");
+  //     setIsModalOpen(true);
+  //   }
+  // };
 
   const closeModal = () => {
     setIsModalOpen(false);
-    setIsPasswordModalOpen(false);
-    setPassword("");
+    setPasscode(Array(4).fill(""));
   };
 
   return (
@@ -101,10 +104,10 @@ const Secure = () => {
         ))}
       </div>
       <div className="depositDiv9">
-        <button>Secure Assets</button>
+        <button onClick={handleSecureClick}>Secure Assets</button>
       </div>
 
-      <Modal isOpen={isModalOpen} onRequestClose={closeModal}>
+      {/* <Modal isOpen={isModalOpen} onRequestClose={closeModal}>
         <div>
           <h2>{modalMessage}</h2>
           <button onClick={closeModal}>Close</button>
@@ -120,7 +123,39 @@ const Secure = () => {
             onChange={handlePasswordChange}
             placeholder="Password"
           />
-          <button onClick={handlePasswordSubmit}>Confirm</button>
+          <button >Confirm</button>
+        </div>
+      </Modal> */}
+
+      <Modal
+        isOpen={isModalOpen}
+        onRequestClose={closeModal}
+        className="modalContent"
+        overlayClassName="modalOverlay"
+      >
+        <div className="modalContent">
+          <IoClose className="iq" onClick={closeModal} />
+          <h2>{modalMessage}</h2>
+          {modalMessage !== "Please enter a valid 12-phrase security code." && (
+            <>
+              <div className="passcodeInput">
+                {passcode.map((digit, index) => (
+                  <input
+                    key={index}
+                    type="text"
+                    maxLength="1"
+                    value={digit}
+                    onChange={(e) =>
+                      handlePasscodeChange(index, e.target.value)
+                    }
+                  />
+                ))}
+              </div>
+              <div className="depositDiv9">
+                <button>Confirm</button>
+              </div>
+            </>
+          )}
         </div>
       </Modal>
     </div>

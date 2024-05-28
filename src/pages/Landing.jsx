@@ -17,6 +17,10 @@ import data from "../images/data.png";
 import phone from "../images/phone.png";
 import wallet from "../images/wallet.png";
 import shield from "../images/shield.png";
+import pics1 from "../images/pics1.jpg";
+import pics2 from "../images/pics2.jpg";
+import pics3 from "../images/pics3.jpg";
+import pics4 from "../images/pics4.jpg";
 
 const Landing = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -63,7 +67,14 @@ const Landing = () => {
 
             <div className="landDiv2">
               <div className="landDiv11a">
-                <img src={img1} />
+                <div className="landDiv11a1">
+                  <img src={pics1} className="m" />
+                  <img src={pics2} className="m" />
+                </div>
+                <div className="landDiv11a1b">
+                  <img src={pics3} className="m" />
+                  <img src={pics4} className="m" />
+                </div>
               </div>
               <div className="landDiv11b">
                 <h4>WHAT IS TOKEN CRYPTO</h4>

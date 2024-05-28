@@ -1,0 +1,51 @@
+.stakeDiv1 {
+  margin-top: 50px;
+}
+
+.stakeDiv2 {
+  margin-top: 30px;
+}
+
+.stakeDiv21 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.stakeDiv21 button {
+  background-color: #021023;
+  border: none;
+  color: var(--white);
+  font-size: 20px;
+}
+
+.stakeDiv3 {
+  margin-top: 35px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.stakeDiv4 {
+  margin-top: 35px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.stakeBtn {
+  background-color: var(--white);
+  padding: 5px;
+  border-radius: 5px;
+  text-decoration: none;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+  padding-bottom: 5px;
+  margin-top: 60px;
+  border: none;
+}
+
+.stakeBtn h3 {
+  color: var(--black);
+  margin-top: 0px;
+  font-size: 16px;
+}

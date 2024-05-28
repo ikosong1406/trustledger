@@ -7,15 +7,18 @@ import { BiClipboard } from "react-icons/bi";
 
 const Deposit = () => {
   const [amount, setAmount] = useState(0);
+  const [activeButton, setActiveButton] = useState(null);
   const walletAddress = "0xYourWalletAddressHere";
   const coinNetwork = "ERC20";
 
   const handleAmountChange = (e) => {
     setAmount(e.target.value);
+    setActiveButton(null);
   };
 
   const handleDepositClick = (amount) => {
     setAmount(amount);
+    // setActiveButton(amount);
   };
 
   const handleConfirmClick = () => {
@@ -28,14 +31,44 @@ const Deposit = () => {
     <div className="depositMain">
       <div className="depositDiv1">
         <div className="depositDiv11">
-          <button onClick={() => handleDepositClick(500)}>$500</button>
-          <button onClick={() => handleDepositClick(1000)}>$1000</button>
-          <button onClick={() => handleDepositClick(2000)}>$2000</button>
+          <button
+            onClick={() => handleDepositClick(500)}
+            className={`button ${amount === 500 ? "active" : ""}`}
+          >
+            $500
+          </button>
+          <button
+            onClick={() => handleDepositClick(1000)}
+            className={`button ${amount === 1000 ? "active" : ""}`}
+          >
+            $1000
+          </button>
+          <button
+            onClick={() => handleDepositClick(2000)}
+            className={`button ${amount === 2000 ? "active" : ""}`}
+          >
+            $2000
+          </button>
         </div>
         <div className="depositDiv11">
-          <button onClick={() => handleDepositClick(5000)}>$5000</button>
-          <button onClick={() => handleDepositClick(10000)}>$10000</button>
-          <button onClick={() => handleDepositClick(20000)}>$20000</button>
+          <button
+            onClick={() => handleDepositClick(5000)}
+            className={`button ${amount === 5000 ? "active" : ""}`}
+          >
+            $5000
+          </button>
+          <button
+            onClick={() => handleDepositClick(10000)}
+            className={`button ${amount === 10000 ? "active" : ""}`}
+          >
+            $10000
+          </button>
+          <button
+            onClick={() => handleDepositClick(20000)}
+            className={`button ${amount === 20000 ? "active" : ""}`}
+          >
+            $20000
+          </button>
         </div>
       </div>
       <div className="depositDiv2">

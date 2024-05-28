@@ -1,9 +1,7 @@
 .mainDiv1 {
   padding: 40px;
   display: block;
-  background-image: url(../images/background.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-color: #021023;
 }
 
 .mainDiv2 {
@@ -150,24 +148,47 @@
     margin-top: 20px;
     box-shadow: 0px 0px 10px rgb(0, 0, 0);
     padding: 5px;
+    padding-bottom: 20px;
+    margin-bottom: 50px;
+    border-radius: 20px;
   }
 
-  .mainDiv3 h3 {
-    color: #008000;
-    font-size: 14px;
-    font-family: "Poppins", sans-serif;
+  .mainDiv3 .walicon {
+    color: var(--white);
+    font-size: 45px;
+    margin-top: 55px;
+    margin-left: 20px;
+    rotate: 330deg;
+  }
+
+  .mainDiv31 {
+    width: 45%;
+    margin-top: 20px;
   }
 
   .mainDiv31 h3 {
     color: gray;
     font-family: "Poppins", sans-serif;
-    font-size: 14px;
+    font-size: 13px;
   }
 
   .mainDiv31 h1 {
     color: var(--white);
     font-family: "Poppins", sans-serif;
-    font-size: 26px;
+    font-size: 27px;
+  }
+
+  .circle {
+    background-color: goldenrod;
+    padding: 10px;
+    border-radius: 100px;
+    position: absolute;
+    margin-left: -10px;
+  }
+
+  .circle .zi {
+    font-size: 20px;
+    color: var(--indigo);
   }
 
   .mainDiv4 {

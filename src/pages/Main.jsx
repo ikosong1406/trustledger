@@ -5,7 +5,8 @@ import ReactApexChart from "react-apexcharts";
 import { FaBitcoin, FaEthereum } from "react-icons/fa";
 import { SiStellar, SiRipple, SiSolana } from "react-icons/si";
 import { BiMenuAltLeft } from "react-icons/bi";
-import wallet from "../images/wallet.png";
+import { TfiWallet } from "react-icons/tfi";
+import { GiAirZigzag } from "react-icons/gi";
 
 const Main = () => {
   const [selectedAsset, setSelectedAsset] = useState("XLM");
@@ -149,7 +150,7 @@ const Main = () => {
           breakpoint: 480,
           options: {
             chart: {
-              width: 350,
+              width: 30,
             },
             legend: {
               position: "bottom",
@@ -157,24 +158,28 @@ const Main = () => {
           },
         },
       ],
-      plotOptions: {
-        pie: {
-          donut: {
-            labels: {
-              show: true,
-              total: {
-                show: true,
-                label: "Total",
-                fontSize: "14px",
-                fontWeight: 600,
-                color: "#373d3f",
-                formatter: function (w) {
-                  return w.globals.seriesTotals.reduce((a, b) => a + b, 0);
-                },
-              },
-            },
-          },
-        },
+      // plotOptions: {
+      //   pie: {
+      //     donut: {
+      //       size: "65%", // You can adjust the size as needed
+      //       labels: {
+      //         show: true,
+      //         total: {
+      //           show: true,
+      //           label: "Total",
+      //           fontSize: "14px",
+      //           fontWeight: 600,
+      //           color: "#373d3f",
+      //           formatter: function (w) {
+      //             return w.globals.seriesTotals.reduce((a, b) => a + b, 0);
+      //           },
+      //         },
+      //       },
+      //     },
+      //   },
+      // },
+      stroke: {
+        width: 0, // Set the border width to 0 to remove it
       },
       legend: {
         position: "bottom",
@@ -191,15 +196,6 @@ const Main = () => {
   const profit = 1200; // Example profit
   const profitPercentage = 12; // Example profit percentage
 
-  const assets = ["XLM", "Bitcoin", "XRL", "Solana", "Ethereum"];
-  const assetIcons = {
-    XLM: <SiStellar />,
-    Bitcoin: <FaBitcoin />,
-    XRL: <SiRipple />,
-    Solana: <SiSolana />,
-    Ethereum: <FaEthereum />,
-  };
-
   return (
     <div className="mainDiv1">
       <div className="mainDiv2">
@@ -211,13 +207,17 @@ const Main = () => {
         <h1> Hello Ivan Lancy</h1>
       </div>
       <div className="mainDiv3">
+        <TfiWallet className="walicon" />
         <div className="mainDiv31">
-          <h3>Your total balance</h3>
+          <h3>Total balance</h3>
           <h1> $ {balance}</h1>
+          <h3 style={{ color: "#008000", marginTop: -7 }}>
+            +${profit} ({profitPercentage}%)
+          </h3>
+          <div className="circle">
+            <GiAirZigzag className="zi" />
+          </div>
         </div>
-        <h3>
-          +${profit} ({profitPercentage}%)
-        </h3>
       </div>
       <div className="mainDiv4">
         <ReactApexChart

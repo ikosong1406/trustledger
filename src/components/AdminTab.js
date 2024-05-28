@@ -3,54 +3,39 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import "../styles/BottomTabNavigator.css";
 import { AiFillPieChart } from "react-icons/ai";
+import { FaHome } from "react-icons/fa";
 import { GrTransaction } from "react-icons/gr";
-import { MdSecurity } from "react-icons/md";
-import { PiBankFill } from "react-icons/pi";
-import { FaUser } from "react-icons/fa";
+import { MdOutlinePendingActions } from "react-icons/md";
 
-const BottomTabNavigator = () => {
+const AdminTab = () => {
   const [showNav, setShowNav] = useState(false);
 
   return (
     <div className="bottom-tab-navigator">
       <NavLink
-        to="/dashboard"
+        to="/admin"
         className={({ isActive }) => (isActive ? "active" : "")}
         onClick={() => setShowNav(false)}
         end
       >
-        <AiFillPieChart className="icon" />
+        <FaHome className="icon" />
       </NavLink>
       <NavLink
-        to="/dashboard/transaction"
+        to="/admin/transact"
         className={({ isActive }) => (isActive ? "active" : "")}
         onClick={() => setShowNav(false)}
       >
         <GrTransaction className="icon" />
       </NavLink>
       <NavLink
-        to="/dashboard/secure"
+        to="/admin/pending"
         className={({ isActive }) => (isActive ? "active" : "")}
         onClick={() => setShowNav(false)}
       >
-        <MdSecurity className="icon" />
-      </NavLink>
-      <NavLink
-        to="/dashboard/stake"
-        className={({ isActive }) => (isActive ? "active" : "")}
-        onClick={() => setShowNav(false)}
-      >
-        <PiBankFill className="icon" />
-      </NavLink>
-      <NavLink
-        to="/dashboard/accounts"
-        className={({ isActive }) => (isActive ? "active" : "")}
-        onClick={() => setShowNav(false)}
-      >
-        <FaUser className="icon" />
+        <MdOutlinePendingActions className="icon" />
       </NavLink>
     </div>
   );
 };
 
-export default BottomTabNavigator;
+export default AdminTab;
