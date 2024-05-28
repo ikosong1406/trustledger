@@ -23,6 +23,12 @@
 
 .mainDiv3 {
   width: 30%;
+  background: rgb(84, 131, 179);
+  background: linear-gradient(
+    153deg,
+    rgba(84, 131, 179, 1) 0%,
+    rgba(125, 160, 202, 1) 100%
+  );
 }
 
 .balance-section img {
