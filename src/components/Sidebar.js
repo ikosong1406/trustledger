@@ -2,9 +2,9 @@ import { useState } from "react";
 import "../styles/Sidebar.css";
 import { NavLink } from "react-router-dom";
 import { AiFillPieChart } from "react-icons/ai";
-import { PiHandDepositFill } from "react-icons/pi";
-import { PiHandWithdrawFill } from "react-icons/pi";
-import { IoSettings } from "react-icons/io5";
+import { GrTransaction } from "react-icons/gr";
+import { MdSecurity } from "react-icons/md";
+import { PiBankFill } from "react-icons/pi";
 import { FaUser } from "react-icons/fa";
 
 const Sidebar = () => {
@@ -25,25 +25,25 @@ const Sidebar = () => {
           <AiFillPieChart className="icon" />
         </NavLink>
         <NavLink
-          to="/dashboard/deposit"
+          to="/dashboard/transaction"
           className={({ isActive }) => (isActive ? "active" : "")}
           onClick={() => setShowNav(false)}
         >
-          <PiHandDepositFill className="icon" />
+          <GrTransaction className="icon" />
         </NavLink>
         <NavLink
-          to="/dashboard/withdrawal"
+          to="/dashboard/secure"
           className={({ isActive }) => (isActive ? "active" : "")}
           onClick={() => setShowNav(false)}
         >
-          <PiHandWithdrawFill className="icon" />
+          <MdSecurity className="icon" />
         </NavLink>
         <NavLink
-          to="/dashboard/settings"
+          to="/dashboard/stake"
           className={({ isActive }) => (isActive ? "active" : "")}
           onClick={() => setShowNav(false)}
         >
-          <IoSettings className="icon" />
+          <PiBankFill className="icon" />
         </NavLink>
         <NavLink
           to="/dashboard/accounts"

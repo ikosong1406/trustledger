@@ -1,15 +1,59 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import QRCode from "react-qr-code";
 import "../styles/Deposit.css";
 import { FiAlertOctagon } from "react-icons/fi";
 import { SiTether } from "react-icons/si";
 import { BiClipboard } from "react-icons/bi";
+import axios from "axios";
+import BackendApi from "../Api/BackendApi";
+import { getUserToken } from "../Api/storage";
 
 const Deposit = () => {
   const [amount, setAmount] = useState(0);
   const [activeButton, setActiveButton] = useState(null);
   const walletAddress = "0xYourWalletAddressHere";
   const coinNetwork = "ERC20";
+  const [userData, setUserData] = useState([]);
+  const [refreshing, setRefreshing] = useState(false);
+  const [token, setToken] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const userToken = await getUserToken();
+        setToken(userToken);
+        // console.log(token);
+      } catch (error) {
+        console.error("Error retrieving token:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const getData = async () => {
+    const data = {
+      token,
+    };
+    try {
+      // console.log(token);
+      const response = await axios.post(`${BackendApi}/userdata`, data);
+      setUserData(response.data.data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  useEffect(() => {
+    if (token) {
+      const interval = setInterval(() => {
+        setRefreshing(true);
+        getData();
+      }, 30000);
+
+      return () => clearInterval(interval);
+    }
+  }, [token]);
 
   const handleAmountChange = (e) => {
     setAmount(e.target.value);
@@ -21,10 +65,21 @@ const Deposit = () => {
     // setActiveButton(amount);
   };
 
-  const handleConfirmClick = () => {
-    alert(
-      "You have converted your USD to gold valuable coin and your deposit will be confirmed in a short time."
-    );
+  const handleConfirmClick = async () => {
+    const data = {
+      userId: userData._id,
+      amount,
+      type: "deposit",
+    };
+
+    try {
+      const response = await axios.post(`${BackendApi}/transaction`, data);
+      alert(
+        "You have converted your USD to gold valuable coin and your deposit will be confirmed in a short time."
+      );
+    } catch (error) {
+      alert("Deposit error", error);
+    }
   };
 
   return (

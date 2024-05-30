@@ -1,14 +1,46 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/Login.css";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import Colors from "../components/Colors";
+import axios from "axios";
+import BackendApi from "../Api/BackendApi";
+import { storeUserToken } from "../Api/storage";
 
 const Login = () => {
   const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const handleLogin = () => {
+  const handleLogin = async (e) => {
     navigate("/dashboard");
+
+    // e.preventDefault();
+
+    // const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    // if (!emailPattern.test(email)) {
+    //   alert("Please enter a valid email address");
+    //   return;
+    // }
+
+    // const userData = {
+    //   email,
+    //   password,
+    // };
+
+    // try {
+    //   const response = await axios.post(`${BackendApi}/login`, userData);
+    //   const { token, role } = response.data;
+    //   storeUserToken(token);
+    //   if (role === "admin") {
+    //     navigate("/admin");
+    //   } else if (role === "user") {
+    //     navigate("/dashboard");
+    //   } else {
+    //     navigate("/");
+    //   }
+    // } catch (error) {
+    //   alert("Login error", error);
+    // }
   };
 
   return (
@@ -20,9 +52,19 @@ const Login = () => {
         </div>
         <div className="loginDiv22">
           <h3>Email</h3>
-          <input type="email" name="email" id="email" />
+          <input
+            type="text"
+            placeholder="Username"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
           <h3>Password</h3>
-          <input type="password" name="password" id="password" />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
           <h4>Forgot Password ?</h4>
           <button className="loginBtn" onClick={handleLogin}>
             <h3>LOGIN</h3>

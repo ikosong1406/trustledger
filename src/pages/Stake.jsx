@@ -113,7 +113,7 @@ const Stake = () => {
         <h3>${projectedEarnings.toFixed(2)}</h3>
       </div>
       <button className="stakeBtn" onClick={handleContinueClick}>
-        <h3>STAKE</h3>
+        <h3>CONTINUE</h3>
       </button>
 
       <Modal

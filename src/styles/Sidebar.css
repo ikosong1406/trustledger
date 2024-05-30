@@ -1,11 +1,10 @@
 .sideDiv1 {
   background: var(--indigo);
   width: 10%;
-  height: 100%;
+  height: 100vh;
   position: absolute;
   top: 0;
   z-index: 3;
-  min-height: 500px;
   display: flex;
   flex-direction: column;
 }

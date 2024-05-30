@@ -154,6 +154,7 @@
   .registerDiv22 input {
     padding: 8px;
     width: 100%;
+    color: var(--indigo);
   }
 
   .registerDiv22 h4 {

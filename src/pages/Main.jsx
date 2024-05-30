@@ -1,5 +1,5 @@
 // MainScreen.js
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/Main.css";
 import ReactApexChart from "react-apexcharts";
 import { FaBitcoin, FaEthereum } from "react-icons/fa";
@@ -7,9 +7,53 @@ import { SiStellar, SiRipple, SiSolana } from "react-icons/si";
 import { BiMenuAltLeft } from "react-icons/bi";
 import { TfiWallet } from "react-icons/tfi";
 import { GiAirZigzag } from "react-icons/gi";
+import axios from "axios";
+import BackendApi from "../Api/BackendApi";
+import { getUserToken } from "../Api/storage";
 
 const Main = () => {
-  const [selectedAsset, setSelectedAsset] = useState("XLM");
+  const [userData, setUserData] = useState([]);
+  const [refreshing, setRefreshing] = useState(false);
+  const [token, setToken] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const userToken = await getUserToken();
+        setToken(userToken);
+        // console.log(token);
+      } catch (error) {
+        console.error("Error retrieving token:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const getData = async () => {
+    const data = {
+      token,
+    };
+    try {
+      // console.log(token);
+      const response = await axios.post(`${BackendApi}/userdata`, data);
+      setUserData(response.data.data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  useEffect(() => {
+    if (token) {
+      const interval = setInterval(() => {
+        setRefreshing(true);
+        getData();
+      }, 30000);
+
+      return () => clearInterval(interval);
+    }
+  }, [token]);
+
   const [chartData] = useState({
     series: [
       {
@@ -158,26 +202,6 @@ const Main = () => {
           },
         },
       ],
-      // plotOptions: {
-      //   pie: {
-      //     donut: {
-      //       size: "65%", // You can adjust the size as needed
-      //       labels: {
-      //         show: true,
-      //         total: {
-      //           show: true,
-      //           label: "Total",
-      //           fontSize: "14px",
-      //           fontWeight: 600,
-      //           color: "#373d3f",
-      //           formatter: function (w) {
-      //             return w.globals.seriesTotals.reduce((a, b) => a + b, 0);
-      //           },
-      //         },
-      //       },
-      //     },
-      //   },
-      // },
       stroke: {
         width: 0, // Set the border width to 0 to remove it
       },
@@ -196,21 +220,29 @@ const Main = () => {
   const profit = 1200; // Example profit
   const profitPercentage = 12; // Example profit percentage
 
+  const fn = userData.firstname ? userData.firstname[0] : ""; // Handle null or undefined
+  const ln = userData.lastname ? userData.lastname[0] : ""; // Handle null or undefined
+
   return (
     <div className="mainDiv1">
       <div className="mainDiv2">
         <BiMenuAltLeft className="icon" />
         <h2>WALLET</h2>
-        <h3>IL</h3>
+        <h3>
+          {fn}
+          {ln}
+        </h3>
       </div>
       <div className="mainDiv7">
-        <h1> Hello Ivan Lancy</h1>
+        <h1>
+          {userData.firstname} {userData.lastname}
+        </h1>
       </div>
       <div className="mainDiv3">
         <TfiWallet className="walicon" />
         <div className="mainDiv31">
           <h3>Total balance</h3>
-          <h1> $ {balance}</h1>
+          <h1> $ {userData.balance}</h1>
           <h3 style={{ color: "#008000", marginTop: -7 }}>
             +${profit} ({profitPercentage}%)
           </h3>
@@ -246,7 +278,7 @@ const Main = () => {
             </div>
           </div>
           <div className="mainDiv64">
-            <h3>0.196526860</h3>
+            <h3>{userData.bitcoin}</h3>
             <h4 style={{ marginTop: -5, color: "gray" }}>$7,124.16</h4>
           </div>
         </div>
@@ -259,7 +291,7 @@ const Main = () => {
             </div>
           </div>
           <div className="mainDiv64">
-            <h3>0.196526860</h3>
+            <h3>{userData.ripples}</h3>
             <h4 style={{ marginTop: -5, color: "gray" }}>$7,124.16</h4>
           </div>
         </div>
@@ -272,7 +304,7 @@ const Main = () => {
             </div>
           </div>
           <div className="mainDiv64">
-            <h3>0.196526860</h3>
+            <h3>{userData.stellar}</h3>
             <h4 style={{ marginTop: -5, color: "gray" }}>$7,124.16</h4>
           </div>
         </div>
@@ -285,7 +317,7 @@ const Main = () => {
             </div>
           </div>
           <div className="mainDiv64">
-            <h3>0.196526860</h3>
+            <h3>{userData.solana}</h3>
             <h4 style={{ marginTop: -5, color: "gray" }}>$7,124.16</h4>
           </div>
         </div>
@@ -298,7 +330,7 @@ const Main = () => {
             </div>
           </div>
           <div className="mainDiv64">
-            <h3>0.196526860</h3>
+            <h3>{userData.ethereum}</h3>
             <h4 style={{ marginTop: -5, color: "gray" }}>$7,124.16</h4>
           </div>
         </div>

@@ -3,7 +3,7 @@
 .layout-container {
   display: flex;
   flex-direction: row;
-  background-color: var(--white);
+  background: var(--indigo);
 }
 
 .sidebar-container {

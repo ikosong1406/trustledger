@@ -9,7 +9,6 @@ const Secure = () => {
   const [modalMessage, setModalMessage] = useState("");
   const [passcode, setPasscode] = useState(Array(4).fill(""));
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isPasswordModalOpen, setIsPasswordModalOpen] = useState(false);
 
   const handlePhraseChange = (index, value) => {
     const newPhrases = [...phrases];
@@ -106,26 +105,6 @@ const Secure = () => {
       <div className="depositDiv9">
         <button onClick={handleSecureClick}>Secure Assets</button>
       </div>
-
-      {/* <Modal isOpen={isModalOpen} onRequestClose={closeModal}>
-        <div>
-          <h2>{modalMessage}</h2>
-          <button onClick={closeModal}>Close</button>
-        </div>
-      </Modal>
-
-      <Modal isOpen={isPasswordModalOpen} onRequestClose={closeModal}>
-        <div>
-          <h2>Enter your password to secure your assets</h2>
-          <input
-            type="password"
-            value={password}
-            onChange={handlePasswordChange}
-            placeholder="Password"
-          />
-          <button >Confirm</button>
-        </div>
-      </Modal> */}
 
       <Modal
         isOpen={isModalOpen}

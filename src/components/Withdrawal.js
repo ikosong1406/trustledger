@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/Withdrawal.css";
 import Modal from "react-modal";
 import { SiTether, SiBitcoin } from "react-icons/si";
 import { FaPaypal, FaCaretDown } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
+import axios from "axios";
+import BackendApi from "../Api/BackendApi";
+import { getUserToken } from "../Api/storage";
 
 const Withdrawal = () => {
   const [amount, setAmount] = useState("");
@@ -11,9 +14,49 @@ const Withdrawal = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalMessage, setModalMessage] = useState("");
   const [passcode, setPasscode] = useState(Array(4).fill(""));
-  const [selectedOption, setSelectedOption] = useState("Tether");
+  const [selectedOption, setSelectedOption] = useState("tether");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const userBalance = 5000; // Example user balance, replace with actual balance
+  const [userData, setUserData] = useState([]);
+  const [refreshing, setRefreshing] = useState(false);
+  const [token, setToken] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const userToken = await getUserToken();
+        setToken(userToken);
+        // console.log(token);
+      } catch (error) {
+        console.error("Error retrieving token:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const getData = async () => {
+    const data = {
+      token,
+    };
+    try {
+      // console.log(token);
+      const response = await axios.post(`${BackendApi}/userdata`, data);
+      setUserData(response.data.data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  useEffect(() => {
+    if (token) {
+      const interval = setInterval(() => {
+        setRefreshing(true);
+        getData();
+      }, 30000);
+
+      return () => clearInterval(interval);
+    }
+  }, [token]);
 
   const handleAmountChange = (e) => {
     setAmount(e.target.value);
@@ -42,14 +85,20 @@ const Withdrawal = () => {
     ? (parseFloat(amount) + parseFloat(transactionFee)).toFixed(2)
     : 0;
 
-  const handleContinueClick = () => {
-    const amountValue = parseFloat(total);
-    if (amountValue > userBalance) {
-      setModalMessage("Insufficient balance");
-      setIsModalOpen(true);
-    } else {
-      setModalMessage("Enter your code to confirm withdrawal");
-      setIsModalOpen(true);
+  const handleContinueClick = async () => {
+    const data = {
+      userId: userData._id,
+      amount,
+      type: "withdrawal",
+      walletAddress,
+      method: selectedOption,
+    };
+
+    try {
+      const response = await axios.post(`${BackendApi}/transaction`, data);
+      alert("Your withdrawal will be confirmed shortly");
+    } catch (error) {
+      alert("Withdrawal error", error);
     }
   };
 
@@ -67,9 +116,9 @@ const Withdrawal = () => {
   return (
     <div className="depositMain">
       <div className="withdrawDiv4">
-        {selectedOption === "Tether" && <SiTether className="ii" />}
-        {selectedOption === "Bitcoin" && <SiBitcoin className="ii" />}
-        {selectedOption === "PayPal" && <FaPaypal className="ii" />}
+        {selectedOption === "tether" && <SiTether className="ii" />}
+        {selectedOption === "bitcoin" && <SiBitcoin className="ii" />}
+        {selectedOption === "paypal" && <FaPaypal className="ii" />}
         <h3>{selectedOption}</h3>
         <FaCaretDown
           className="dropdownIcon"
@@ -80,28 +129,28 @@ const Withdrawal = () => {
         <div className="dropdownMenu">
           <div
             className="dropdownItem"
-            onClick={() => handleOptionChange("Tether")}
+            onClick={() => handleOptionChange("tether")}
           >
             <SiTether className="ii" />
             <span>Tether (USDT)</span>
           </div>
           <div
             className="dropdownItem"
-            onClick={() => handleOptionChange("Bitcoin")}
+            onClick={() => handleOptionChange("bitcoin")}
           >
             <SiBitcoin className="ii" />
             <span>Bitcoin (BTC)</span>
           </div>
           <div
             className="dropdownItem"
-            onClick={() => handleOptionChange("PayPal")}
+            onClick={() => handleOptionChange("paypal")}
           >
             <FaPaypal className="ii" />
             <span>PayPal</span>
           </div>
         </div>
       )}
-      {selectedOption !== "PayPal" && (
+      {selectedOption !== "paypal" && (
         <div className="depositDiv5">
           <h4>Network: {selectedOption === "Tether" ? "ERC20" : "Bitcoin"}</h4>
         </div>
