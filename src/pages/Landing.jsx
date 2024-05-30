@@ -78,7 +78,7 @@ const Landing = () => {
             <div className="landDiv11a">
               <div className="landDiv11a1">
                 <img src={pics1} className="m" alt="Pic 1" />
-                <img src={pics2} className="m" alt="Pic 2" />
+                <img src={pics2} className="mm" alt="Pic 2" />
               </div>
               <div className="landDiv11a1b">
                 <img src={pics3} className="m" alt="Pic 3" />
