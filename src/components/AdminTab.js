@@ -2,7 +2,6 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import "../styles/BottomTabNavigator.css";
-import { AiFillPieChart } from "react-icons/ai";
 import { FaHome } from "react-icons/fa";
 import { GrTransaction } from "react-icons/gr";
 import { MdOutlinePendingActions } from "react-icons/md";

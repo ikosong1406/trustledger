@@ -1,6 +1,6 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import Sidebar from "./Sidebar";
+import AdminSide from "./AdminSide";
 import AdminTab from "./AdminTab";
 import "../styles/Layout.css";
 import { useWindowDimensions } from "./useWindowDimensions";
@@ -12,7 +12,7 @@ const AdminLayout = () => {
     <div className="layout-container">
       {width > 925 ? (
         <div className="sidebar-container">
-          <Sidebar />
+          <AdminSide />
         </div>
       ) : null}
       <div className="page-container">
