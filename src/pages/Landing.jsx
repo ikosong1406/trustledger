@@ -58,8 +58,11 @@ const Landing = () => {
                 Secure Value With Crypto Coins Tied To Real-world Gold Assets.
               </h1>
               <h3>
-                Don't wait, start investing today for a stable financial
-                tomorrow
+                TrustLedger is a cutting-edge decentralized digital banking
+                system designed to revolutionize the way you secure your
+                finances. In partnership with Nesara/Gesara, we bring you a
+                robust solution that combines the innovation of cryptocurrency
+                with the enduring stability of gold-backed assets.
               </h3>
               <Link to="/register" className="landDiv1Btn">
                 Get Started
@@ -85,7 +88,7 @@ const Landing = () => {
               </div>
             </div>
             <div className="landDiv11b">
-              <h4>WHAT IS TOKEN CRYPTO</h4>
+              <h4>WHY TRUSTLEDGER?</h4>
               <h2>
                 We've built a platform that secures valuable assets and Gold
                 tokenized crypto coin
@@ -94,25 +97,31 @@ const Landing = () => {
                 <div className="landDiv2131">
                   <div className="landDiv2132">
                     <div className="landDiv21321">
-                      <h3 className="date">Decentralized Platform</h3>
+                      <h3 className="date">Decentralized Banking</h3>
                       <h4>
-                        The platform helps investors to easily secure their
-                        crypto and fiat assets
+                        Experience the freedom of a decentralized network that
+                        ensures faster, more efficient, and cost-effective
+                        transactions.
                       </h4>
                     </div>
                     <div className="landDiv21321b">
-                      <h3 className="date">Crowd Wisdom</h3>
+                      <h3 className="date">Gold-Backed Security</h3>
                       <h4>
-                        The process of taking into account the collective
-                        opinion of a group
+                        Enjoy the peace of mind that comes with digital assets
+                        secured by the intrinsic value of gold, protecting you
+                        from market volatility.
                       </h4>
                     </div>
                   </div>
                   <div className="landDiv2133"></div>
                   <div className="landDiv2132">
                     <div className="landDiv21321c">
-                      <h3 className="date">Reward Mechanism</h3>
-                      <h4>The system pays a bonus for excellent individuals</h4>
+                      <h3 className="date">Enhanced Protection</h3>
+                      <h4>
+                        TrustLedger uses state-of-the-art blockchain technology
+                        to provide unparalleled security, ensuring your assets
+                        are safe from fraud and unauthorized access.
+                      </h4>
                     </div>
                   </div>
                 </div>
@@ -132,27 +141,44 @@ const Landing = () => {
               <div className="landDiv411">
                 <div className="landDiv4111">
                   <img src={phone} alt="" className="ic" />
-                  <h3>Mobile Payment make easy</h3>
-                  <p>You can use a mobile device to pay with simple steps</p>
+                  <h3>Money Transfer</h3>
+                  <p>
+                    We offer you secure and easy transfer. Transfer money
+                    between users within a minute.
+                  </p>
                 </div>
                 <div className="landDiv4111">
                   <img src={wallet} alt="" className="ic" />
-                  <h3>Lifetime free transaction</h3>
-                  <p>You can buy tokens without using a transaction fee</p>
+                  <h3>Multi Currency</h3>
+                  <p>
+                    We support multi currency. Bank conveniently with currencies
+                    of your choice.
+                  </p>
                 </div>
                 <div className="landDiv4111">
                   <img src={shield} alt="" className="ic" />
-                  <h3>Protect the identity</h3>
-                  <p>Use a mobile device to pay with simple steps</p>
+                  <h3>Staking</h3>
+                  <p>
+                    We offer a long term investment and good interest rate after
+                    maturity.
+                  </p>
                 </div>
               </div>
             </div>
             <div className="landDiv5">
               <div className="landDiv51">
-                <h1>24/7 Cybersecurity Operation Center</h1>
+                <h1>ABOUT US</h1>
                 <h3>
-                  Don't wait, start investing today for a stable financial
-                  tomorrow
+                  TrustLedger is an advanced financial system launched to
+                  eradicate monopoly on monetary system and for that purpose, a
+                  system comprises of artificial Intelligence and complex
+                  computer programs fully backed by banks is needed. Trust
+                  Financial Service would be a break through in the world of
+                  banking which will lead to a new era of banking. TrustLedger
+                  will not be influenced by Government policies, rather it will
+                  be entirely backed by tangible assets like Gold, Platinum, Oil
+                  and will not be based upon mere piece of papers which have no
+                  evidentiary value.
                 </h3>
                 <Link to="/register" className="landDiv1Btn">
                   Contact us
@@ -206,10 +232,16 @@ const Landing = () => {
             transition={{ duration: 0.5 }}
           >
             <div className="landDiv71">
-              <h1>The World's 1st Security Platforms That Offers Rewards</h1>
+              <h1>
+                TrustLedger Financial System is the next stage of banking.
+              </h1>
               <h3>
-                The platform that helps investors to make easy purchases and
-                sell their tokens
+                It's taking the financial power out of the grip of the elite and
+                back into the hands of the people - ensuring financial
+                protection from the government's poor decisions and
+                legislations. TrustLedger has no competitors, and it's going to
+                change the face of banking and finances. So be secure your
+                assests before the prices hit the unimaginable.
               </h3>
               <img src={data} alt="Data" />
             </div>
