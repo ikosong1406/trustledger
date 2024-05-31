@@ -68,7 +68,9 @@ const Landing = () => {
                 Get Started
               </Link>
             </div>
-            <img src={img} alt="Crypto" />
+            <div>
+              <img src={img} alt="Crypto" />
+            </div>
           </motion.div>
 
           <motion.div

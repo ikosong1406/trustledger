@@ -473,10 +473,12 @@ h3 {
     padding-left: 40px;
     padding-right: 40px;
     padding-bottom: 30px;
+    padding-top: 30px;
+    display: block;
   }
 
   .landDiv11 {
-    width: 50%;
+    width: 100%;
     margin-top: 50px;
     display: block;
   }
@@ -540,9 +542,10 @@ h3 {
   }
 
   .landDiv1 img {
-    width: 200px;
-    height: 200px;
-    margin-top: 50px;
+    width: 250px;
+    height: 250px;
+    margin-top: 40px;
+    margin-left: 10%;
   }
 
   .landDiv1Btn {
@@ -564,21 +567,18 @@ h3 {
   }
 
   .landDiv2131 {
-    display: flex;
+    display: block;
     justify-content: space-between;
   }
 
   .landDiv2133 {
-    background-color: var(--blue);
-    width: 3px;
-    margin-left: 5%;
-    margin-right: 5%;
+    display: none;
   }
 
   .landDiv2132 {
     display: block;
     margin-top: 15px;
-    width: 25%;
+    width: 100%;
   }
 
   .landDiv21321 {
@@ -587,7 +587,7 @@ h3 {
   }
 
   .landDiv21321b {
-    margin-top: 100px;
+    margin-top: 50px;
     width: 100%;
   }
 
@@ -595,17 +595,19 @@ h3 {
   .landDiv21321b .date {
     font-size: 12px;
     width: 100%;
+    text-align: left;
   }
 
   .landDiv21321 h4,
   .landDiv21321b h4 {
     font-size: 8px;
     width: 100%;
+    text-align: left;
   }
 
   .landDiv21321c .date {
     font-size: 12px;
-    margin-top: 150px;
+    margin-top: 50px;
   }
 
   .landDiv21321c h4 {
@@ -651,16 +653,18 @@ h3 {
   .landDiv5 {
     margin-top: 30px;
     margin-top: 0px;
+    display: block;
   }
 
   .landDiv5 img {
-    width: 200px;
-    height: 200px;
-    margin-top: 70px;
+    width: 220px;
+    height: 220px;
+    margin-top: 40px;
+    margin-left: 10%;
   }
 
   .landDiv51 {
-    width: 50%;
+    width: 100%;
     margin-top: 100px;
     display: block;
   }
@@ -728,10 +732,11 @@ h3 {
     padding-right: 40px;
     padding-bottom: 30px;
     padding-top: 50px;
+    display: block;
   }
 
   .landDiv71 {
-    width: 50%;
+    width: 100%;
   }
 
   .landDiv71 h1 {
@@ -746,11 +751,13 @@ h3 {
     width: 180px;
     height: 180px;
     margin-top: 0px;
+    margin-left: 20%;
   }
 
   .landDiv72 {
-    width: 50%;
+    width: 100%;
     padding: 10px;
+    margin-top: 20px;
   }
 
   .landDiv721 {
