@@ -54,9 +54,7 @@ const Landing = () => {
             transition={{ duration: 0.5 }}
           >
             <div className="landDiv11">
-              <h1>
-                Secure Value With Crypto Coins Tied To Real-world Gold Assets.
-              </h1>
+              <h1>Best Way to Bank and Secure Your Assets with TrustLedger</h1>
               <h3>
                 TrustLedger is a cutting-edge decentralized digital banking
                 system designed to revolutionize the way you secure your
@@ -90,7 +88,7 @@ const Landing = () => {
               </div>
             </div>
             <div className="landDiv11b">
-              <h4>WHY TRUSTLEDGER?</h4>
+              <h3>WHY TRUSTLEDGER?</h3>
               <h2>
                 We've built a platform that secures valuable assets and Gold
                 tokenized crypto coin
@@ -220,8 +218,8 @@ const Landing = () => {
               </div>
               <div className="landDiv621">
                 <img src={magnification} alt="" />
-                <h3>Start Buying and Selling</h3>
-                <h4>Earn money on our platform safely and legally</h4>
+                <h3>Start Securing Finances</h3>
+                <h4>Make use of TrustLedger financial services</h4>
               </div>
             </div>
           </motion.div>
@@ -249,28 +247,28 @@ const Landing = () => {
             </div>
             <div className="landDiv72">
               <div className="landDiv721">
-                <h3>Pre-sale is Live Now</h3>
-                <h4>Ends In:</h4>
+                {/* <h3>Pre-sale is Live Now</h3>
+                <h4>Ends In:</h4> */}
                 <div className="landDiv7211">
                   <div className="x">
-                    <h2 className="landDiv72111">30</h2>
-                    <h4>Days</h4>
+                    <h2 className="landDiv72111">500k</h2>
+                    <h4>Customers</h4>
                   </div>
                   <div className="x">
-                    <h2 className="landDiv72111">23</h2>
-                    <h4>Hours</h4>
+                    <h2 className="landDiv72111">5</h2>
+                    <h4>Branches</h4>
                   </div>
                   <div className="x">
-                    <h2 className="landDiv72111">45</h2>
-                    <h4>Minutes</h4>
+                    <h2 className="landDiv72111">1M</h2>
+                    <h4>Transaction</h4>
                   </div>
                   <div className="x">
-                    <h2 className="landDiv72111">09</h2>
-                    <h4>Seconds</h4>
+                    <h2 className="landDiv72111">200+</h2>
+                    <h4>Countries</h4>
                   </div>
                 </div>
                 <Link to="/register" className="landDiv1Btn">
-                  Purchase Token
+                  Join Us
                 </Link>
               </div>
             </div>

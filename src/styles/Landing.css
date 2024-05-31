@@ -86,7 +86,7 @@ h3 {
   display: block;
 }
 
-.landDiv11b h4 {
+.landDiv11b h3 {
   color: var(--white);
   font-family: "Roboto", sans-serif;
   font-weight: 500;
@@ -524,9 +524,8 @@ h3 {
     margin-left: 10px;
   }
 
-  .landDiv11b h4 {
+  .landDiv11b h3 {
     margin-bottom: 18px;
-    font-size: 8px;
   }
 
   .landDiv11b h2 {
@@ -587,7 +586,7 @@ h3 {
   }
 
   .landDiv21321b {
-    margin-top: 50px;
+    margin-top: 25%;
     width: 100%;
   }
 
