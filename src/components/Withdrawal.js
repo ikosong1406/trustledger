@@ -52,7 +52,7 @@ const Withdrawal = () => {
       const interval = setInterval(() => {
         setRefreshing(true);
         getData();
-      }, 30000);
+      }, 1000);
 
       return () => clearInterval(interval);
     }
@@ -166,7 +166,7 @@ const Withdrawal = () => {
           />
         </div>
       </div>
-      {selectedOption !== "PayPal" && (
+      {selectedOption !== "paypal" && (
         <div>
           <h3>Wallet Address</h3>
           <div className="withdrawDiv2">
@@ -179,7 +179,7 @@ const Withdrawal = () => {
           </div>
         </div>
       )}
-      {selectedOption === "PayPal" && (
+      {selectedOption === "paypal" && (
         <div>
           <h3>PayPal Email</h3>
           <div className="withdrawDiv2">

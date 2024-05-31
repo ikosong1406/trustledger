@@ -12,35 +12,35 @@ const Login = () => {
   const [password, setPassword] = useState("");
 
   const handleLogin = async (e) => {
-    navigate("/dashboard");
+    // navigate("/dashboard");
 
-    // e.preventDefault();
+    e.preventDefault();
 
-    // const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    // if (!emailPattern.test(email)) {
-    //   alert("Please enter a valid email address");
-    //   return;
-    // }
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailPattern.test(email)) {
+      alert("Please enter a valid email address");
+      return;
+    }
 
-    // const userData = {
-    //   email,
-    //   password,
-    // };
+    const userData = {
+      email,
+      password,
+    };
 
-    // try {
-    //   const response = await axios.post(`${BackendApi}/login`, userData);
-    //   const { token, role } = response.data;
-    //   storeUserToken(token);
-    //   if (role === "admin") {
-    //     navigate("/admin");
-    //   } else if (role === "user") {
-    //     navigate("/dashboard");
-    //   } else {
-    //     navigate("/");
-    //   }
-    // } catch (error) {
-    //   alert("Login error", error);
-    // }
+    try {
+      const response = await axios.post(`${BackendApi}/login`, userData);
+      const { token, role } = response.data;
+      storeUserToken(token);
+      if (role === "admin") {
+        navigate("/admin");
+      } else if (role === "user") {
+        navigate("/dashboard");
+      } else {
+        navigate("/");
+      }
+    } catch (error) {
+      alert("Login error", error);
+    }
   };
 
   return (

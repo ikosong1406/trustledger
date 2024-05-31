@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/Stake.css";
 import Modal from "react-modal";
 import { TfiWallet } from "react-icons/tfi";
 import { GiAirZigzag } from "react-icons/gi";
 import { IoClose } from "react-icons/io5";
+import axios from "axios";
+import BackendApi from "../Api/BackendApi";
+import { getUserToken } from "../Api/storage";
 
 // Helper function to calculate earnings
 
@@ -13,7 +16,48 @@ const Stake = () => {
   const [modalMessage, setModalMessage] = useState("");
   const [passcode, setPasscode] = useState(Array(4).fill(""));
   const [days, setDays] = useState(0);
-  const [rate] = useState(0.05); // Assuming a fixed annual interest rate of 5%
+  const [rate] = useState(0.05);
+  const [userData, setUserData] = useState([]);
+  const [refreshing, setRefreshing] = useState(false);
+  const [token, setToken] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const userToken = await getUserToken();
+        setToken(userToken);
+        // console.log(token);
+      } catch (error) {
+        console.error("Error retrieving token:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const getData = async () => {
+    const data = {
+      token,
+    };
+    try {
+      // console.log(token);
+      const response = await axios.post(`${BackendApi}/userdata`, data);
+      setUserData(response.data.data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  useEffect(() => {
+    if (token) {
+      const interval = setInterval(() => {
+        setRefreshing(true);
+        getData();
+      }, 1000);
+
+      return () => clearInterval(interval);
+    }
+  }, [token]);
 
   const handleAmountChange = (e) => setAmount(e.target.value);
 
@@ -43,7 +87,7 @@ const Stake = () => {
   // };
 
   const balance = 5000;
-  const profit = 1200;
+  const profit = 0;
   const profitPercentage = 6;
 
   const handlePasscodeChange = (index, value) => {
@@ -52,13 +96,21 @@ const Stake = () => {
     setPasscode(newPasscode);
   };
 
-  const handleContinueClick = () => {
+  const handleContinueClick = async () => {
     const amountValue = parseFloat(amount);
-    if (amountValue > balance) {
-      setModalMessage("Insufficient balance");
+    const data = {
+      userId: userData._id,
+      amount: amountValue,
+      days,
+      rate: 6,
+    };
+
+    try {
+      const response = await axios.post(`${BackendApi}/staking`, data);
+      setModalMessage("Your Assets has been staked safely.");
       setIsModalOpen(true);
-    } else {
-      setModalMessage("Enter your code to confirm staking");
+    } catch (error) {
+      setModalMessage("Staking Error");
       setIsModalOpen(true);
     }
   };
@@ -83,7 +135,7 @@ const Stake = () => {
         <TfiWallet className="walicon" />
         <div className="mainDiv31">
           <h3>Stake balance</h3>
-          <h1> $ {balance}</h1>
+          <h1> $ {userData.stakingBalance}</h1>
           <h3 style={{ color: "#008000", marginTop: -7 }}>
             +${profit} ({profitPercentage}%)
           </h3>
@@ -110,7 +162,7 @@ const Stake = () => {
       </div>
       <div className="stakeDiv4">
         <h3>Projected Earnings: </h3>
-        <h3>${projectedEarnings.toFixed(2)}</h3>
+        <h3>${projectedEarnings}</h3>
       </div>
       <button className="stakeBtn" onClick={handleContinueClick}>
         <h3>CONTINUE</h3>
@@ -125,26 +177,6 @@ const Stake = () => {
         <div className="modalContent">
           <IoClose className="iq" onClick={closeModal} />
           <h2>{modalMessage}</h2>
-          {modalMessage !== "Insufficient balance" && (
-            <>
-              <div className="passcodeInput">
-                {passcode.map((digit, index) => (
-                  <input
-                    key={index}
-                    type="text"
-                    maxLength="1"
-                    value={digit}
-                    onChange={(e) =>
-                      handlePasscodeChange(index, e.target.value)
-                    }
-                  />
-                ))}
-              </div>
-              <div className="depositDiv9">
-                <button onClick={handleConfirmClick}>Confirm </button>
-              </div>
-            </>
-          )}
         </div>
       </Modal>
     </div>

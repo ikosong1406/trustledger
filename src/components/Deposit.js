@@ -49,7 +49,7 @@ const Deposit = () => {
       const interval = setInterval(() => {
         setRefreshing(true);
         getData();
-      }, 30000);
+      }, 1000);
 
       return () => clearInterval(interval);
     }
