@@ -11,7 +11,7 @@ import { getUserToken } from "../Api/storage";
 const Deposit = () => {
   const [amount, setAmount] = useState(0);
   const [activeButton, setActiveButton] = useState(null);
-  const walletAddress = "0xYourWalletAddressHere";
+  const walletAddress = "0xE447f3Dc0dc5BA8B3e874eB2259bdDff8a7667bA";
   const coinNetwork = "ERC20";
   const [userData, setUserData] = useState([]);
   const [refreshing, setRefreshing] = useState(false);

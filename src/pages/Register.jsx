@@ -21,8 +21,7 @@ const Register = () => {
       return;
     }
 
-    // Email validation
-    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@(gmail\.com|yahoo\.com)$/;
     if (!emailPattern.test(email)) {
       alert("Please enter a valid email address");
       return;
@@ -122,19 +121,7 @@ const Register = () => {
         >
           <div className="modalContent">
             <IoClose className="iq" onClick={closeModal} />
-            <h2>Input the code sent to your email address</h2>
-            <>
-              <div className="passcodeInput">
-                <input
-                  type="text"
-                  value={passcode}
-                  onChange={(e) => setPasscode(e.target.value)}
-                />
-              </div>
-              <div className="depositDiv9">
-                <button onClick={codeVerification}>Confirm</button>
-              </div>
-            </>
+            <h2>Now Login with ur registered details</h2>
           </div>
         </Modal>
       </div>

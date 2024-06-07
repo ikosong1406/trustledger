@@ -14,7 +14,7 @@ const Withdrawal = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalMessage, setModalMessage] = useState("");
   const [passcode, setPasscode] = useState(Array(4).fill(""));
-  const [selectedOption, setSelectedOption] = useState("tether");
+  const [selectedOption, setSelectedOption] = useState("Tether");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [userData, setUserData] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
@@ -86,6 +86,12 @@ const Withdrawal = () => {
     : 0;
 
   const handleContinueClick = async () => {
+    if (userData.balance < total) {
+      setModalMessage("Insufficient balance");
+      setIsModalOpen(true);
+      return;
+    }
+
     const data = {
       userId: userData._id,
       amount,
@@ -116,9 +122,9 @@ const Withdrawal = () => {
   return (
     <div className="depositMain">
       <div className="withdrawDiv4">
-        {selectedOption === "tether" && <SiTether className="ii" />}
-        {selectedOption === "bitcoin" && <SiBitcoin className="ii" />}
-        {selectedOption === "paypal" && <FaPaypal className="ii" />}
+        {selectedOption === "Tether" && <SiTether className="ii" />}
+        {selectedOption === "Bitcoin" && <SiBitcoin className="ii" />}
+        {selectedOption === "Paypal" && <FaPaypal className="ii" />}
         <h3>{selectedOption}</h3>
         <FaCaretDown
           className="dropdownIcon"
@@ -129,28 +135,28 @@ const Withdrawal = () => {
         <div className="dropdownMenu">
           <div
             className="dropdownItem"
-            onClick={() => handleOptionChange("tether")}
+            onClick={() => handleOptionChange("Tether")}
           >
             <SiTether className="ii" />
             <span>Tether (USDT)</span>
           </div>
           <div
             className="dropdownItem"
-            onClick={() => handleOptionChange("bitcoin")}
+            onClick={() => handleOptionChange("Bitcoin")}
           >
             <SiBitcoin className="ii" />
             <span>Bitcoin (BTC)</span>
           </div>
           <div
             className="dropdownItem"
-            onClick={() => handleOptionChange("paypal")}
+            onClick={() => handleOptionChange("Paypal")}
           >
             <FaPaypal className="ii" />
             <span>PayPal</span>
           </div>
         </div>
       )}
-      {selectedOption !== "paypal" && (
+      {selectedOption !== "Paypal" && (
         <div className="depositDiv5">
           <h4>Network: {selectedOption === "Tether" ? "ERC20" : "Bitcoin"}</h4>
         </div>

@@ -64,12 +64,6 @@ const Secure = () => {
     setWallet(e.target.value);
   };
 
-  const handlePasscodeChange = (index, value) => {
-    const newPasscode = [...passcode];
-    newPasscode[index] = value;
-    setPasscode(newPasscode);
-  };
-
   const handleSecureClick = async () => {
     if (phrases.every((phrase) => phrase.trim() !== "")) {
       const data = {
