@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/Accounts.css";
 import { FaPencilAlt } from "react-icons/fa";
+import axios from "axios";
+import BackendApi from "../Api/BackendApi";
+import { getUserToken } from "../Api/storage";
 
 const diceBearBaseUrl = "https://api.dicebear.com/8.x/";
 
@@ -19,10 +22,51 @@ const avatarStyles = [
 const Account = () => {
   const [avatarStyle, setAvatarStyle] = useState(avatarStyles[0]);
   const [email, setEmail] = useState("user@example.com");
-  const [fullName, setFullName] = useState("John Doe");
-  const [username, setUsername] = useState("johndoe");
+  const [fullName, setFullName] = useState("Fullname");
+  const [username, setUsername] = useState("username");
   const [password, setPassword] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [userData, setUserData] = useState([]);
+  const [refreshing, setRefreshing] = useState(false);
+  const [token, setToken] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const userToken = await getUserToken();
+        setToken(userToken);
+        // console.log(token);
+      } catch (error) {
+        console.error("Error retrieving token:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const getData = async () => {
+    const data = {
+      token,
+    };
+    try {
+      // console.log(token);
+      const response = await axios.post(`${BackendApi}/userdata`, data);
+      setUserData(response.data.data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  useEffect(() => {
+    if (token) {
+      const interval = setInterval(() => {
+        setRefreshing(true);
+        getData();
+      }, 1000);
+
+      return () => clearInterval(interval);
+    }
+  }, [token]);
 
   const handleAvatarStyleChange = (style) => {
     setAvatarStyle(style);
