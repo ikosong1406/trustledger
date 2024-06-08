@@ -128,7 +128,7 @@ input {
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
-    margin-top: 50px;
+    margin-top: 30px;
   }
 
   .avatar-image {
@@ -197,5 +197,57 @@ input {
 
   .avatar-option:hover {
     border-color: #000;
+  }
+
+  .accountDiv9 {
+    display: flex;
+    width: 100%;
+    justify-content: right;
+    margin-top: 0px;
+  }
+
+  .accountDiv9 button {
+    width: 40%;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 10px;
+    margin-top: 30px;
+    background-color: var(--white);
+    font-family: "Poppins", sans-serif;
+    color: var(--indigo);
+  }
+  .accountDiv91 {
+    display: flex;
+    width: 100%;
+    justify-content: left;
+    margin-top: 0px;
+  }
+
+  .accountDiv91 button {
+    width: 70%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 10px;
+    margin-top: 30px;
+    background-color: var(--white);
+    font-family: "Poppins", sans-serif;
+    color: var(--indigo);
+  }
+  .accountDiv92 {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-top: 0px;
+  }
+
+  .accountDiv92 button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 10px;
+    margin-top: 30px;
+    background-color: rgb(153, 0, 0);
+    font-family: "Poppins", sans-serif;
+    color: var(--white);
   }
 }

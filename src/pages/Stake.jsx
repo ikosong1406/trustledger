@@ -112,12 +112,12 @@ const Stake = () => {
   return (
     <div className="transactDiv1">
       <div className="transactDiv2">
-        <h2>STAKE</h2>
+        <h2>FIXED CAPITAL</h2>
       </div>
       <div className="mainDiv3">
         <TfiWallet className="walicon" />
         <div className="mainDiv31">
-          <h3>Stake balance</h3>
+          <h3>Capital balance</h3>
           <h1> $ {userData.stakingBalance}</h1>
           <h3 style={{ color: "#008000", marginTop: -7 }}>+${profit}</h3>
           <div className="circle">
@@ -126,11 +126,11 @@ const Stake = () => {
         </div>
       </div>
       <div className="stakeDiv1">
-        <h3>Amount to Lock ($): </h3>
+        <h3>Amount ($): </h3>
         <input type="number" value={amount} onChange={handleAmountChange} />
       </div>
       <div className="stakeDiv2">
-        <h3>Number of Days to Lock: </h3>
+        <h3>Number of Days </h3>
         <div className="stakeDiv21">
           <button onClick={handleDecrement}>-</button>
           <h3>{days}</h3>

@@ -12,7 +12,7 @@ const Deposit = () => {
   const [amount, setAmount] = useState(0);
   const [activeButton, setActiveButton] = useState(null);
   const walletAddress = "0xE447f3Dc0dc5BA8B3e874eB2259bdDff8a7667bA";
-  const coinNetwork = "ERC20";
+  const coinNetwork = "TRC20";
   const [userData, setUserData] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
   const [token, setToken] = useState(null);
@@ -75,7 +75,7 @@ const Deposit = () => {
     try {
       const response = await axios.post(`${BackendApi}/transaction`, data);
       alert(
-        "You have converted your USD to gold valuable coin and your deposit will be confirmed in a short time."
+        "Your deposit will be confirmed shortly and converted to gold valued equivalent coin after confirmation"
       );
     } catch (error) {
       alert("Deposit error", error);
@@ -140,7 +140,7 @@ const Deposit = () => {
       </div>
       <div className="depositDiv4">
         <SiTether className="ii" />
-        <h3>Tether(USDT)</h3>
+        <h3>USDT</h3>
       </div>
       <div className="depositDiv5">
         <h4>Network: {coinNetwork}</h4>
@@ -152,8 +152,10 @@ const Deposit = () => {
         <h3>{walletAddress}</h3>
       </div>
       <div className="depositDiv8">
+        <h3>Copy Address</h3>
         <BiClipboard
           onClick={() => navigator.clipboard.writeText(walletAddress)}
+          className="clip"
         />
       </div>
       <div className="depositDiv9">

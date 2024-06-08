@@ -3,6 +3,7 @@ import "../styles/Main.css";
 import ReactApexChart from "react-apexcharts";
 import { FaBitcoin, FaEthereum } from "react-icons/fa";
 import { SiStellar, SiRipple, SiSolana } from "react-icons/si";
+import { SiTether } from "react-icons/si";
 import { BiMenuAltLeft } from "react-icons/bi";
 import { TfiWallet } from "react-icons/tfi";
 import { GiAirZigzag } from "react-icons/gi";
@@ -50,6 +51,7 @@ const Main = () => {
         bitcoin: fetchedData.bitcoin || 0.000015,
         ethereum: fetchedData.ethereum || 0.00026,
         ripples: fetchedData.ripples || 1.95,
+        stellar: fetchedData.ripples || 1.95,
         solana: fetchedData.solana || 0.006121,
         balance: fetchedData.balance || 0,
         firstname: fetchedData.firstname || "",
@@ -149,7 +151,7 @@ const Main = () => {
       chart: {
         type: "donut",
       },
-      labels: ["Tether", "Bitcoin", "Ethereum", "XRP", "Solana"],
+      labels: ["Tether", "Bitcoin", "Ethereum", "XRP", "XLM", "Solana"],
       responsive: [
         {
           breakpoint: 480,
@@ -184,15 +186,14 @@ const Main = () => {
         userData.bitcoin,
         userData.ethereum,
         userData.ripples,
+        userData.stellar,
         userData.solana,
       ],
       options: chartData1.options,
     });
   }, [userData]);
 
-  const balance = 10000; // Example balance in USD
   const profit = 0; // Example profit
-  const profitPercentage = 12; // Example profit percentage
 
   const fn = userData.firstname ? userData.firstname[0] : ""; // Handle null or undefined
   const ln = userData.lastname ? userData.lastname[0] : "";
@@ -208,6 +209,7 @@ const Main = () => {
         </h3>
       </div>
       <div className="mainDiv7">
+        <h2>Hi</h2>
         <h1>
           {userData.firstname} {userData.lastname}
         </h1>
@@ -217,9 +219,7 @@ const Main = () => {
         <div className="mainDiv31">
           <h3>Total balance</h3>
           <h1> $ {userData.balance}</h1>
-          <h3 style={{ color: "#008000", marginTop: -7 }}>
-            +${profit} ({profitPercentage}%)
-          </h3>
+          <h3 style={{ color: "#008000", marginTop: -7 }}>+${profit}</h3>
           <div className="circle">
             <GiAirZigzag className="zi" />
           </div>
@@ -245,6 +245,18 @@ const Main = () => {
         <h2>Assests</h2>
         <div className="mainDiv61">
           <div className="mainDiv62">
+            <SiTether className="icon" />
+            <div className="mainDiv63">
+              <h3>USDT</h3>
+              <h4 style={{ marginTop: -5, color: "gray" }}>Tether</h4>
+            </div>
+          </div>
+          <div className="mainDiv64">
+            <h3>{userData.tether}</h3>
+          </div>
+        </div>
+        <div className="mainDiv61">
+          <div className="mainDiv62">
             <FaBitcoin className="icon" />
             <div className="mainDiv63">
               <h3>BTC</h3>
@@ -253,7 +265,6 @@ const Main = () => {
           </div>
           <div className="mainDiv64">
             <h3>{userData.bitcoin}</h3>
-            <h4 style={{ marginTop: -5, color: "gray" }}>$7,124.16</h4>
           </div>
         </div>
         <div className="mainDiv61">
@@ -266,7 +277,6 @@ const Main = () => {
           </div>
           <div className="mainDiv64">
             <h3>{userData.ethereum}</h3>
-            <h4 style={{ marginTop: -5, color: "gray" }}>$7,124.16</h4>
           </div>
         </div>
         <div className="mainDiv61">
@@ -279,22 +289,19 @@ const Main = () => {
           </div>
           <div className="mainDiv64">
             <h3>{userData.ripples}</h3>
-            <h4 style={{ marginTop: -5, color: "gray" }}>$7,124.16</h4>
           </div>
         </div>
-        {/* <div className="mainDiv61">
+        <div className="mainDiv61">
           <div className="mainDiv62">
             <SiStellar className="icon" />
             <div className="mainDiv63">
               <h3>XLM</h3>
-              <h4 style={{ marginTop: -5, color: "gray" }}>Stellar</h4>
             </div>
           </div>
           <div className="mainDiv64">
             <h3>{userData.stellar}</h3>
-            <h4 style={{ marginTop: -5, color: "gray" }}>$7,124.16</h4>
           </div>
-        </div> */}
+        </div>
         <div className="mainDiv61">
           <div className="mainDiv62">
             <SiSolana className="icon" />
@@ -305,7 +312,6 @@ const Main = () => {
           </div>
           <div className="mainDiv64">
             <h3>{userData.solana}</h3>
-            <h4 style={{ marginTop: -5, color: "gray" }}>$7,124.16</h4>
           </div>
         </div>
       </div>

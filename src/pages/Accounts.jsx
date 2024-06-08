@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "../styles/Accounts.css";
 import { FaPencilAlt } from "react-icons/fa";
+import { RiCustomerService2Fill } from "react-icons/ri";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import BackendApi from "../Api/BackendApi";
 import { getUserToken } from "../Api/storage";
@@ -20,10 +22,11 @@ const avatarStyles = [
 ];
 
 const Account = () => {
+  const navigate = useNavigate();
   const [avatarStyle, setAvatarStyle] = useState(avatarStyles[0]);
-  const [email, setEmail] = useState("user@example.com");
-  const [fullName, setFullName] = useState("Fullname");
-  const [username, setUsername] = useState("username");
+  const [email, setEmail] = useState("");
+  const [fullName, setFullName] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [userData, setUserData] = useState([]);
@@ -92,6 +95,15 @@ const Account = () => {
 
   const avatarUrl = `${diceBearBaseUrl}${avatarStyle}/svg`;
 
+  const handleChatClick = () => {
+    // You can replace the URL with your specific Telegram chat link
+    window.open("https://t.me/worldtrustledger", "_blank");
+  };
+
+  const handleLogout = () => {
+    navigate("/");
+  };
+
   return (
     <div className="accountsDiv1">
       <div className="transactDiv2">
@@ -104,18 +116,31 @@ const Account = () => {
           onClick={() => setIsModalOpen(true)}
         />
       </div>
-      <div style={{ marginTop: 60 }}>
+      <div className="accountDiv9">
+        <button onClick={handleSaveChanges}>Save Changes</button>
+      </div>
+      <div>
         <h3>Email:</h3>
-        <input type="email" value={email} readOnly />
+        <input
+          type="email"
+          value={email}
+          placeholder={userData.email}
+          readOnly
+        />
       </div>
       <div>
-        <h3>Full Name:</h3>
-        <input type="text" value={fullName} onChange={handleFullNameChange} />
+        <h3>Name:</h3>
+        <input
+          type="text"
+          value={fullName}
+          placeholder={userData.firstname}
+          onChange={handleFullNameChange}
+        />
       </div>
-      <div>
+      {/* <div>
         <h3>Username:</h3>
         <input type="text" value={username} onChange={handleUsernameChange} />
-      </div>
+      </div> */}
       <div>
         <h3>Password:</h3>
         <input
@@ -124,8 +149,13 @@ const Account = () => {
           onChange={handlePasswordChange}
         />
       </div>
-      <div className="depositDiv9">
-        <button onClick={handleSaveChanges}>Save Changes</button>
+      <div className="accountDiv91">
+        <button onClick={handleChatClick}>
+          <RiCustomerService2Fill style={{ fontSize: 16 }} /> Live Chat
+        </button>
+      </div>
+      <div className="accountDiv92">
+        <button onClick={handleLogout}>Logout</button>
       </div>
 
       {isModalOpen && (

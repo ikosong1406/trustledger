@@ -128,6 +128,10 @@
   color: var(--white);
   font-family: "Poppins", sans-serif;
 }
+.mainDiv7 h2 {
+  color: var(--white);
+  font-family: "Poppins", sans-serif;
+}
 
 @media screen and (max-width: 925px) {
   .mainDiv1 {

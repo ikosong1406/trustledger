@@ -158,7 +158,7 @@ const Withdrawal = () => {
       )}
       {selectedOption !== "Paypal" && (
         <div className="depositDiv5">
-          <h4>Network: {selectedOption === "Tether" ? "ERC20" : "Bitcoin"}</h4>
+          <h4>Network: {selectedOption === "Tether" ? "TRC20" : "Bitcoin"}</h4>
         </div>
       )}
       <div>
@@ -214,7 +214,7 @@ const Withdrawal = () => {
         </div>
       </div>
       <div className="depositDiv9">
-        <button onClick={handleContinueClick}>Continue</button>
+        <button onClick={handleContinueClick}>Withdraw</button>
       </div>
 
       <Modal
