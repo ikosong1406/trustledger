@@ -14,6 +14,9 @@ import Transaction from "./pages/Transaction";
 import Secure from "./pages/Secure";
 import Stake from "./pages/Stake";
 import Accounts from "./pages/Accounts";
+import Privacy from "./pages/Privacypolicy";
+import Risk from "./pages/Riskwarning";
+import Terms from "./pages/TermsofUse";
 import AdminLayout from "./components/AdminLayout";
 import AdminHome from "./pages/AdminHome";
 import AdminPending from "./pages/AdminPending";
@@ -83,6 +86,30 @@ const App = () => {
                 element={
                   <Layout1>
                     <Register />
+                  </Layout1>
+                }
+              />
+              <Route
+                path="/privacy"
+                element={
+                  <Layout1>
+                    <Privacy />
+                  </Layout1>
+                }
+              />
+              <Route
+                path="/termsofuse"
+                element={
+                  <Layout1>
+                    <Terms />
+                  </Layout1>
+                }
+              />
+              <Route
+                path="/risk"
+                element={
+                  <Layout1>
+                    <Risk />
                   </Layout1>
                 }
               />

@@ -26,14 +26,14 @@ const Header1 = ({ clicked, setClicked }) => {
       </div>
 
       <div className="navList">
-        <NavLink to="/about" style={{ textDecoration: "none" }}>
-          <h3 className="navItems"> About</h3>
+        <NavLink to="/riskwarning" style={{ textDecoration: "none" }}>
+          <h3 className="navItems"> Market</h3>
+        </NavLink>
+        <NavLink to="/privacy" style={{ textDecoration: "none" }}>
+          <h3 className="navItems"> Privacy</h3>
         </NavLink>
         <NavLink to="/termsofuse" style={{ textDecoration: "none" }}>
           <h3 className="navItems"> Terms </h3>
-        </NavLink>
-        <NavLink to="/riskwarning" style={{ textDecoration: "none" }}>
-          <h3 className="navItems"> Market</h3>
         </NavLink>
       </div>
 
