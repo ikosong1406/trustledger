@@ -53,9 +53,12 @@ const Transaction = () => {
   };
 
   return (
-    <div>
+    <div className="admintransMain">
+      <div className="userDiv3">
+        <h2>TRANSACTION </h2>
+      </div>
       <h2 className="header">Deposit</h2>
-      <div className="transactionDiv1">
+      <div className="admintransDiv1">
         <h3> User Id </h3>
         <input
           type="text"
@@ -78,7 +81,7 @@ const Transaction = () => {
       </div>
 
       <h2 className="header1">Withdrawal</h2>
-      <div className="transactionDiv1">
+      <div className="admintransDiv1">
         <h3> User Id </h3>
         <input
           type="text"

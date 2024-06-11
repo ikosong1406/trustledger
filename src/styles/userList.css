@@ -1,15 +1,65 @@
-.userDiv1 {
-  margin-top: 10px;
-  border-radius: 10px;
-  display: flex;
-  justify-content: space-between;
+.user-list-container {
   padding: 10px;
+  box-sizing: border-box;
+  height: 100vh;
+  background-image: url(../images/simpleTech.jpeg);
+  background-size: cover;
+  background-repeat: no-repeat;
 }
-.userDiv2 {
-  background-color: gray;
-  padding: 10px;
-  margin-top: 10px;
-  border-radius: 10px;
+
+.userDiv3 {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+}
+
+.userDiv3 h2 {
+  color: var(--white);
+  font-size: 16px;
+}
+
+.userDiv1,
+.userDiv2 {
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr 1fr 1fr;
+  gap: 10px;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.userDiv1 {
+  font-weight: bold;
+}
+
+.userDiv2 {
+  align-items: center;
+}
+
+.m {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .userDiv1 {
+    display: none;
+  }
+
+  .userDiv2 {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .userDiv2 h3,
+  .userDiv2 select {
+    width: 100%;
+    /* margin: 5px 0; */
+  }
+
+  .m {
+    display: block;
+  }
+
+  .userDiv2 select {
+    width: 50%;
+  }
 }

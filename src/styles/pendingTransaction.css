@@ -1,32 +1,58 @@
+.transaction-container {
+  height: 100vh;
+  background-image: url(../images/simpleTech.jpeg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
 .search {
-  width: 40%;
   display: flex;
-  justify-content: space-between;
-  margin-top: 30px;
+  justify-content: center;
+  margin-bottom: 20px;
 }
 
 .inputT {
   padding: 10px;
-  border-radius: 10px;
-  border-color: gray;
-  border-width: 1px;
-  width: 70%;
+  font-size: 16px;
+  margin-right: 10px;
 }
 
 .btn1 {
-  padding: 10px;
-  border-radius: 10px;
-  border-color: gray;
-  border-width: 1px;
-  color: beige;
-  background-color: #420c8e;
+  padding: 10px 20px;
+  font-size: 16px;
   cursor: pointer;
 }
 
-.transactDiv1 {
-  margin-top: 30px;
-  border-radius: 10px;
-  display: flex;
-  justify-content: space-between;
+.transactDiv1,
+.transactDiv2 {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
   padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.transactDiv1 {
+  font-weight: bold;
+}
+
+.transactDiv2 {
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .transactDiv1 {
+    display: none;
+  }
+  .transactDiv2 {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(6, auto);
+  }
+
+  .transactDiv1 h3,
+  .transactDiv2 h3 {
+    margin: 5px 0;
+  }
 }
