@@ -39,7 +39,7 @@ const Privacypolicy = () => {
               </h3>
             </div>
             <div className="termDiv3">
-              <h1>Who is evo</h1>
+              <h1>Who are we</h1>
               <h3>
                 Trustledger fully regulated and licensed AML/CTF compliant
                 AUSTRAC registered Dual Gateway Exchange Platform. Buy, sell,

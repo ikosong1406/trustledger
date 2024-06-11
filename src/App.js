@@ -21,6 +21,7 @@ import AdminLayout from "./components/AdminLayout";
 import AdminHome from "./pages/AdminHome";
 import AdminPending from "./pages/AdminPending";
 import AdminTransact from "./pages/AdminTransact";
+import Market from "./pages/Market";
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -31,14 +32,6 @@ const App = () => {
       setIsLoading(false);
     }, 1000);
   }, []);
-
-  // const Layout = ({ children }) => (
-  //   <>
-  //     <Header />
-  //     {children}
-  //     <Footer />
-  //   </>
-  // );
 
   const Layout1 = ({ children }) => (
     <>
@@ -110,6 +103,14 @@ const App = () => {
                 element={
                   <Layout1>
                     <Risk />
+                  </Layout1>
+                }
+              />
+              <Route
+                path="/market"
+                element={
+                  <Layout1>
+                    <Market />
                   </Layout1>
                 }
               />
