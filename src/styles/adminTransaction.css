@@ -1,0 +1,11 @@
+.header {
+  color: #420c8e;
+}
+.header1 {
+  color: #420c8e;
+  margin-top: 50px;
+}
+.transactionDiv1 {
+  display: grid;
+  width: 50%;
+}

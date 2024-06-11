@@ -1,126 +1,83 @@
+// PendingTransactionComponent.js
 import React, { useState } from "react";
+import api from "../Api/BackendApi";
+import axios from "axios";
+import "../styles/pendingTransaction.css";
 
-// Dummy data for initial transactions list
-const dummyTransactions = [
-  { id: 1, userId: 101, amount: 100, type: "deposit", status: "pending" },
-  {
-    id: 2,
-    userId: 102,
-    amount: 200,
-    type: "withdraw",
-    method: "usdt",
-    walletAddress: "0x123456...",
-    status: "pending",
-  },
-  {
-    id: 3,
-    userId: 103,
-    amount: 300,
-    type: "withdraw",
-    method: "bitcoin",
-    walletAddress: "1A1zP1...",
-    status: "pending",
-  },
-  {
-    id: 4,
-    userId: 104,
-    amount: 400,
-    type: "withdraw",
-    method: "paypal",
-    emailAddress: "user@example.com",
-    status: "pending",
-  },
-  // Add more transactions as needed
-];
+const PendingTransactionComponent = () => {
+  const [pendingTransactions, setPendingTransactions] = useState([]);
+  const [transactionId, setTransactionId] = useState("");
 
-const AdminPending = () => {
-  const [transactions, setTransactions] = useState(dummyTransactions);
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(`${api}/allTransaction`);
+      return response.data;
+    } catch (error) {
+      throw error.response.data;
+    }
+  };
+  fetchData()
+    .then((pendingTransactions) => {
+      const data = pendingTransactions;
+      setPendingTransactions(data);
+    })
+    .catch((error) => {
+      console.error("Error fetching users:", error);
+    });
 
-  const handleStatusChange = (transactionId, newStatus) => {
-    const updatedTransactions = transactions.map((transaction) =>
-      transaction.id === transactionId
-        ? { ...transaction, status: newStatus }
-        : transaction
-    );
-    setTransactions(updatedTransactions);
-    // Add logic to update the transaction status in the backend here
+  const handleConfirmTransaction = async () => {
+    try {
+      const data = {
+        transactionId,
+      };
+      const response = await axios.post(`${api}/confirmTransaction`, data);
+      console.log("Response:", response.data);
+      if (response.data.status === "ok") {
+        alert("Transaction Confirmed");
+        setTransactionId("");
+      } else {
+        alert("Invalid transaction request");
+      }
+    } catch (error) {
+      console.error("Error depositing:", error);
+      alert("Error occurred while depositing. Please try again.");
+    }
   };
 
   return (
-    <div
-      style={{
-        padding: "20px",
-        maxWidth: "800px",
-        margin: "0 auto",
-        border: "1px solid #ddd",
-        borderRadius: "8px",
-      }}
-    >
-      <h2>Pending Transactions</h2>
-      <table style={{ width: "100%", borderCollapse: "collapse" }}>
-        <thead>
-          <tr>
-            <th style={{ border: "1px solid #ddd", padding: "8px" }}>ID</th>
-            <th style={{ border: "1px solid #ddd", padding: "8px" }}>
-              User ID
-            </th>
-            <th style={{ border: "1px solid #ddd", padding: "8px" }}>Amount</th>
-            <th style={{ border: "1px solid #ddd", padding: "8px" }}>Type</th>
-            <th style={{ border: "1px solid #ddd", padding: "8px" }}>Method</th>
-            <th style={{ border: "1px solid #ddd", padding: "8px" }}>
-              Wallet/Email
-            </th>
-            <th style={{ border: "1px solid #ddd", padding: "8px" }}>Status</th>
-            <th style={{ border: "1px solid #ddd", padding: "8px" }}>
-              Actions
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {transactions.map((transaction) => (
-            <tr key={transaction.id}>
-              <td style={{ border: "1px solid #ddd", padding: "8px" }}>
-                {transaction.id}
-              </td>
-              <td style={{ border: "1px solid #ddd", padding: "8px" }}>
-                {transaction.userId}
-              </td>
-              <td style={{ border: "1px solid #ddd", padding: "8px" }}>
-                ${transaction.amount}
-              </td>
-              <td style={{ border: "1px solid #ddd", padding: "8px" }}>
-                {transaction.type}
-              </td>
-              <td style={{ border: "1px solid #ddd", padding: "8px" }}>
-                {transaction.type === "withdraw" ? transaction.method : "N/A"}
-              </td>
-              <td style={{ border: "1px solid #ddd", padding: "8px" }}>
-                {transaction.method === "paypal"
-                  ? transaction.emailAddress
-                  : transaction.walletAddress}
-              </td>
-              <td style={{ border: "1px solid #ddd", padding: "8px" }}>
-                {transaction.status}
-              </td>
-              <td style={{ border: "1px solid #ddd", padding: "8px" }}>
-                <select
-                  value={transaction.status}
-                  onChange={(e) =>
-                    handleStatusChange(transaction.id, e.target.value)
-                  }
-                  style={{ padding: "5px" }}
-                >
-                  <option value="pending">Pending</option>
-                  <option value="successful">Successful</option>
-                  <option value="failed">Failed</option>
-                </select>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div>
+      <div className="search">
+        <input
+          type="text"
+          value={transactionId}
+          onChange={(e) => setTransactionId(e.target.value)}
+          placeholder="Transaction ID"
+          className="inputT"
+        />
+        <button onClick={handleConfirmTransaction} className="btn1">
+          Confirm
+        </button>
+      </div>
+      <div className="transactDiv1">
+        <h3>Transaction Id</h3>
+        <h3>User Id</h3>
+        <h3>Amount</h3>
+        <h3>Wallet</h3>
+        <h3>Type</h3>
+        <h3>Status</h3>
+      </div>
+      {pendingTransactions.map((list) => (
+        <div className="userDiv2" key={list.id}>
+          <h3>{list._id}</h3>
+          <h3>{list.userId}</h3>
+          <h3>{list.amount}</h3>
+          <h3>{list.walletAddress}</h3>
+          <h3>{list.type}</h3>
+          <h3>{list.status}</h3>
+        </div>
+      ))}
     </div>
   );
 };
 
-export default AdminPending;
+export default PendingTransactionComponent;

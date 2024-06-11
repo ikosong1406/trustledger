@@ -1,99 +1,106 @@
+// TransactionComponent.js
 import React, { useState } from "react";
+import "../styles/adminTransaction.css";
+import axios from "axios";
+import api from "../Api/BackendApi";
 
-const AdminTransact = () => {
-  const [transactType, setTransactType] = useState(null);
+const Transaction = () => {
   const [userId, setUserId] = useState("");
-  const [amount, setAmount] = useState("");
+  const [amount, setAmount] = useState(0);
+  const [userId1, setUserId1] = useState("");
+  const [amount1, setAmount1] = useState(0);
 
-  const handleTransactTypeChange = (type) => {
-    setTransactType(type);
-    setUserId("");
-    setAmount("");
+  const handleDeposit = async () => {
+    try {
+      const data = {
+        userId,
+        amount,
+      };
+      const response = await axios.post(`${api}/adminDeposit`, data);
+      console.log("Response:", response.data);
+      if (response.data.status === "ok") {
+        alert("Deposit successful");
+        setUserId("");
+        setAmount(0);
+      } else {
+        alert("Invalid deposit request");
+      }
+    } catch (error) {
+      console.error("Error depositing:", error);
+      alert("Error occurred while depositing. Please try again.");
+    }
   };
 
-  const handleUserIdChange = (e) => setUserId(e.target.value);
-  const handleAmountChange = (e) => setAmount(e.target.value);
-
-  const handleTransaction = () => {
-    if (transactType && userId && amount) {
-      alert(
-        `${
-          transactType === "deposit" ? "Deposited" : "Withdrew"
-        } $${amount} for user with ID ${userId}`
-      );
-      // Add logic to perform the transaction, e.g., sending data to a backend server.
-      setUserId("");
-      setAmount("");
-      setTransactType(null);
-    } else {
-      alert("Please fill in all fields.");
+  const handleWithdraw = async () => {
+    try {
+      const data = {
+        userId1,
+        amount1,
+      };
+      const response = await axios.post(`${api}/adminWithdrawal`, data);
+      console.log("Response:", response.data);
+      if (response.data.status === "ok") {
+        alert("Withdrawal successful");
+        setUserId("");
+        setAmount(0);
+      } else {
+        alert("Invalid withdrawal request");
+      }
+    } catch (error) {
+      console.error("Error depositing:", error);
+      alert("Error occurred while depositing. Please try again.");
     }
   };
 
   return (
-    <div
-      style={{
-        padding: "20px",
-        maxWidth: "400px",
-        margin: "0 auto",
-        border: "1px solid #ddd",
-        borderRadius: "8px",
-      }}
-    >
-      <h2>Admin Transact</h2>
-      <div style={{ marginBottom: "20px" }}>
-        <button
-          onClick={() => handleTransactTypeChange("deposit")}
-          style={{
-            marginRight: "10px",
-            padding: "10px 20px",
-            cursor: "pointer",
-          }}
-        >
+    <div>
+      <h2 className="header">Deposit</h2>
+      <div className="transactionDiv1">
+        <h3> User Id </h3>
+        <input
+          type="text"
+          value={userId}
+          onChange={(e) => setUserId(e.target.value)}
+          placeholder="User ID"
+          className="input"
+        />
+        <h3> Amount </h3>
+        <input
+          type="number"
+          value={amount}
+          onChange={(e) => setAmount(parseFloat(e.target.value))}
+          placeholder="Amount"
+          className="input"
+        />
+        <button onClick={handleDeposit} className="btn">
           Deposit
         </button>
-        <button
-          onClick={() => handleTransactTypeChange("withdraw")}
-          style={{ padding: "10px 20px", cursor: "pointer" }}
-        >
+      </div>
+
+      <h2 className="header1">Withdrawal</h2>
+      <div className="transactionDiv1">
+        <h3> User Id </h3>
+        <input
+          type="text"
+          value={userId1}
+          onChange={(e) => setUserId1(e.target.value)}
+          placeholder="User ID"
+          className="input"
+        />
+        <h3> Amount </h3>
+        <input
+          type="number"
+          value={amount1}
+          onChange={(e) => setAmount1(parseFloat(e.target.value))}
+          placeholder="Amount"
+          className="input"
+        />
+        <button onClick={handleWithdraw} className="btn">
           Withdraw
         </button>
       </div>
-      {transactType && (
-        <div>
-          <h3>{transactType === "deposit" ? "Deposit" : "Withdraw"} Funds</h3>
-          <div style={{ marginBottom: "10px" }}>
-            <label>
-              User ID:
-              <input
-                type="text"
-                value={userId}
-                onChange={handleUserIdChange}
-                style={{ marginLeft: "10px", padding: "5px", width: "100%" }}
-              />
-            </label>
-          </div>
-          <div style={{ marginBottom: "10px" }}>
-            <label>
-              Amount:
-              <input
-                type="number"
-                value={amount}
-                onChange={handleAmountChange}
-                style={{ marginLeft: "10px", padding: "5px", width: "100%" }}
-              />
-            </label>
-          </div>
-          <button
-            onClick={handleTransaction}
-            style={{ padding: "10px 20px", cursor: "pointer" }}
-          >
-            Submit
-          </button>
-        </div>
-      )}
     </div>
   );
 };
 
-export default AdminTransact;
+export default Transaction;
