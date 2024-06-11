@@ -3,6 +3,7 @@ import "../styles/Market.css";
 import axios from "axios";
 import { SiStellar } from "react-icons/si";
 import ReactApexChart from "react-apexcharts";
+import { LineChart } from "@mui/x-charts/LineChart";
 
 const Market = () => {
   const [chartData, setChartData] = useState({
@@ -99,6 +100,16 @@ const Market = () => {
           type="candlestick"
           height={350}
         />
+        {/* <LineChart
+          xAxis={[{ data: [1, 2, 3, 5, 8, 10] }]}
+          series={[
+            {
+              data: [2, 5.5, 2, 8.5, 1.5, 5],
+            },
+          ]}
+          width={500}
+          height={300}
+        /> */}
       </div>
     </div>
   );
