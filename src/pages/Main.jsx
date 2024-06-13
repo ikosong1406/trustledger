@@ -10,6 +10,8 @@ import { GiAirZigzag } from "react-icons/gi";
 import axios from "axios";
 import BackendApi from "../Api/BackendApi";
 import { getUserToken } from "../Api/storage";
+import Colors from "../components/Colors";
+import LiveChatButton from "../components/LiveChatButton"; // Import the FAB component
 
 const Main = () => {
   const [userData, setUserData] = useState({
@@ -83,7 +85,7 @@ const Main = () => {
     ],
     options: {
       chart: {
-        type: "candlestick",
+        type: "line",
         height: 350,
       },
       title: {
@@ -92,11 +94,35 @@ const Main = () => {
       },
       xaxis: {
         type: "datetime",
+        labels: {
+          show: false, // Hide x-axis labels
+        },
+        axisBorder: {
+          show: false, // Hide x-axis border
+        },
+        axisTicks: {
+          show: false, // Hide x-axis ticks
+        },
       },
       yaxis: {
+        labels: {
+          show: false, // Hide y-axis labels
+        },
+        axisBorder: {
+          show: false, // Hide y-axis border
+        },
+        axisTicks: {
+          show: false, // Hide y-axis ticks
+        },
         tooltip: {
           enabled: true,
         },
+      },
+      grid: {
+        // show: false,
+      },
+      stroke: {
+        colors: Colors.white, // Set the line color to white
       },
     },
     loading: true, // Add loading state
@@ -116,12 +142,7 @@ const Main = () => {
             const dayData = timeSeries[date];
             return {
               x: new Date(date),
-              y: [
-                parseFloat(dayData["1. open"]),
-                parseFloat(dayData["2. high"]),
-                parseFloat(dayData["3. low"]),
-                parseFloat(dayData["4. close"]),
-              ],
+              y: parseFloat(dayData["4. close"]), // Use the closing price for the line chart
             };
           });
 
@@ -198,6 +219,10 @@ const Main = () => {
   const fn = userData.firstname ? userData.firstname[0] : ""; // Handle null or undefined
   const ln = userData.lastname ? userData.lastname[0] : "";
 
+  const handleLiveChatClick = () => {
+    window.open("https://t.me/worldtrustledger", "_blank");
+  };
+
   return (
     <div className="mainDiv1">
       <div className="mainDiv2">
@@ -228,8 +253,8 @@ const Main = () => {
         <ReactApexChart
           options={chartData.options}
           series={chartData.series}
-          type="candlestick"
-          height={350}
+          type="line"
+          height={400}
         />
       </div>
       <div className="mainDiv5">
@@ -314,6 +339,7 @@ const Main = () => {
           </div>
         </div>
       </div>
+      <LiveChatButton onClick={handleLiveChatClick} />
     </div>
   );
 };

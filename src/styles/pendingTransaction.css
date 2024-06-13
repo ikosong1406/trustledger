@@ -25,8 +25,8 @@
   cursor: pointer;
 }
 
-.transactDiv1,
-.transactDiv2 {
+.pendingDiv1,
+.pendingDiv2 {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   gap: 10px;
@@ -34,25 +34,25 @@
   border-bottom: 1px solid #ccc;
 }
 
-.transactDiv1 {
+.pendingDiv1 {
   font-weight: bold;
 }
 
-.transactDiv2 {
+.pendingDiv2 {
   align-items: center;
 }
 
 @media (max-width: 768px) {
-  .transactDiv1 {
+  .pendingDiv1 {
     display: none;
   }
-  .transactDiv2 {
+  .pendingDiv2 {
     grid-template-columns: 1fr;
     grid-template-rows: repeat(6, auto);
   }
 
-  .transactDiv1 h3,
-  .transactDiv2 h3 {
+  .pendingDiv1 h3,
+  .pendingDiv2 h3 {
     margin: 5px 0;
   }
 }

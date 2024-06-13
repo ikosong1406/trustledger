@@ -58,7 +58,7 @@ const PendingTransactionComponent = () => {
           Confirm
         </button>
       </div>
-      <div className="transactDiv1">
+      <div className="pendingDiv1">
         <h3>Transaction Id</h3>
         <h3>User Id</h3>
         <h3>Amount</h3>
@@ -67,7 +67,7 @@ const PendingTransactionComponent = () => {
         <h3>Status</h3>
       </div>
       {pendingTransactions.map((list) => (
-        <div className="transactDiv2" key={list._id}>
+        <div className="pendingDiv2" key={list._id}>
           <h3>
             {" "}
             <span className="m">Transaction Id: </span>

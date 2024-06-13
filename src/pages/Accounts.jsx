@@ -149,11 +149,6 @@ const Account = () => {
           onChange={handlePasswordChange}
         />
       </div>
-      <div className="accountDiv91">
-        <button onClick={handleChatClick}>
-          <RiCustomerService2Fill style={{ fontSize: 16 }} /> Live Chat
-        </button>
-      </div>
       <div className="accountDiv92">
         <button onClick={handleLogout}>Logout</button>
       </div>
