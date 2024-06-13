@@ -3,18 +3,21 @@ import "../styles/Market.css";
 import axios from "axios";
 import { SiStellar } from "react-icons/si";
 import ReactApexChart from "react-apexcharts";
-import { LineChart } from "@mui/x-charts/LineChart";
+import Colors from "../components/Colors";
+import { useNavigate } from "react-router-dom";
 
 const Market = () => {
+  const navigation = useNavigate();
   const [chartData, setChartData] = useState({
     series: [
       {
+        name: "Price",
         data: [],
       },
     ],
     options: {
       chart: {
-        type: "candlestick",
+        type: "line",
         height: 350,
       },
       title: {
@@ -23,11 +26,35 @@ const Market = () => {
       },
       xaxis: {
         type: "datetime",
+        labels: {
+          show: false, // Hide x-axis labels
+        },
+        axisBorder: {
+          show: false, // Hide x-axis border
+        },
+        axisTicks: {
+          show: false, // Hide x-axis ticks
+        },
       },
       yaxis: {
+        labels: {
+          show: false, // Hide y-axis labels
+        },
+        axisBorder: {
+          show: false, // Hide y-axis border
+        },
+        axisTicks: {
+          show: false, // Hide y-axis ticks
+        },
         tooltip: {
           enabled: true,
         },
+      },
+      grid: {
+        // show: false,
+      },
+      stroke: {
+        colors: Colors.white, // Set the line color to white
       },
     },
     loading: true, // Add loading state
@@ -47,18 +74,14 @@ const Market = () => {
             const dayData = timeSeries[date];
             return {
               x: new Date(date),
-              y: [
-                parseFloat(dayData["1. open"]),
-                parseFloat(dayData["2. high"]),
-                parseFloat(dayData["3. low"]),
-                parseFloat(dayData["4. close"]),
-              ],
+              y: parseFloat(dayData["4. close"]), // Use the closing price for the line chart
             };
           });
 
           setChartData({
             series: [
               {
+                name: "Price",
                 data: marketData,
               },
             ],
@@ -75,16 +98,27 @@ const Market = () => {
 
     fetchMarketData();
   }, []);
+
+  const handleBuy = () => {
+    navigation("/login");
+  };
+
   return (
     <div className="marketDiv1">
       <div className="marketDiv2">
-        <SiStellar className="s" />
-        <h2>XLM</h2>
+        <div className="marketDiv21">
+          <SiStellar className="s" />
+          <div>
+            <h2>XLM</h2>
+            <h2>Stellar</h2>
+          </div>
+        </div>
+        <div className="marketDiv3">
+          <h1>$163.80</h1>
+          <h3>+ $8.04(2.3%)</h3>
+        </div>
       </div>
-      <div className="marketDiv3">
-        <h3>Stellar</h3>
-        <h1>23.751.00 US$</h1>
-      </div>
+
       <div className="marketDiv4">
         <h3>1h</h3>
         <h3>24h</h3>
@@ -97,9 +131,24 @@ const Market = () => {
         <ReactApexChart
           options={chartData.options}
           series={chartData.series}
-          type="candlestick"
-          height={350}
+          type="line"
+          height={400}
         />
+      </div>
+
+      <div className="marketDiv5">
+        <div className="marketDiv51">
+          <h4>current value</h4>
+          <h1>$16,380.70</h1>
+          <h3>$163.48</h3>
+        </div>
+        <div className="marketDiv51">
+          <h4>lots</h4>
+          <h1>X10</h1>
+        </div>
+      </div>
+      <div className="depositDiv9">
+        <button onClick={handleBuy}>BUY</button>
       </div>
     </div>
   );

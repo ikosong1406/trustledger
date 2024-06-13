@@ -209,9 +209,8 @@ const Main = () => {
         </h3>
       </div>
       <div className="mainDiv7">
-        <h2>Hi</h2>
         <h1>
-          {userData.firstname} {userData.lastname}
+          Hi,{userData.firstname} {userData.lastname}
         </h1>
       </div>
       <div className="mainDiv3">

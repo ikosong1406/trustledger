@@ -9,11 +9,17 @@
 .marketDiv2 {
   margin-top: 50px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+}
+
+.marketDiv21 {
+  width: 10%;
+  display: flex;
+  justify-content: space-between;
 }
 
 .s {
-  font-size: 25px;
+  font-size: 35px;
   color: var(--white);
   margin-top: 12px;
 }
@@ -24,7 +30,11 @@
 }
 
 .marketDiv3 h1 {
-  color: goldenrod;
+  color: var(--white);
+}
+
+.marketDiv3 h3 {
+  color: green;
 }
 
 .marketDiv4 {
@@ -38,15 +48,42 @@
   margin-top: 50px;
 }
 
+.marketDiv5 {
+  display: flex;
+  padding: 10px;
+  justify-content: space-between;
+  background-color: rgba(128, 128, 128, 0.385);
+  margin-top: 30px;
+  border-radius: 10px;
+}
+
+.marketDiv51 h4 {
+  color: rgb(148, 148, 148);
+}
+
+.marketDiv51 h1 {
+  color: var(--white);
+}
+
+.marketDiv51 h3 {
+  color: green;
+}
+
 @media screen and (max-width: 925px) {
   .marketDiv2 {
     margin-top: 50px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+  }
+
+  .marketDiv21 {
+    width: 35%;
+    display: flex;
+    justify-content: space-between;
   }
 
   .s {
-    font-size: 25px;
+    font-size: 35px;
     color: var(--white);
     margin-top: 12px;
   }
@@ -54,10 +91,17 @@
   .marketDiv2 h2 {
     color: var(--white);
     margin-left: 10px;
+    font-size: 16px;
   }
 
   .marketDiv3 h1 {
-    color: goldenrod;
+    color: var(--white);
+    font-size: 17px;
+  }
+
+  .marketDiv3 h3 {
+    color: green;
+    font-size: 16px;
   }
 
   .marketDiv4 {
@@ -68,6 +112,30 @@
     border-radius: 10px;
     padding-top: 0px;
     padding-bottom: 0px;
-    margin-top: 50px;
+    margin-top: 30px;
+  }
+
+  .marketDiv5 {
+    display: flex;
+    padding: 10px;
+    justify-content: space-between;
+    background-color: rgba(128, 128, 128, 0.385);
+    margin-top: 30px;
+    border-radius: 10px;
+  }
+
+  .marketDiv51 h4 {
+    color: rgb(148, 148, 148);
+    font-size: 12px;
+  }
+
+  .marketDiv51 h1 {
+    color: var(--white);
+    font-size: 18px;
+  }
+
+  .marketDiv51 h3 {
+    color: green;
+    font-size: 16px;
   }
 }
