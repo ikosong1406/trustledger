@@ -310,17 +310,6 @@ const Privacypolicy = () => {
               </h3>
             </div>
             <div className="termDiv3">
-              <h1>Fraud, Phishing and Email scams disclaimer</h1>
-              <h3>
-                Please be notified that Trustledger is not in any partnership
-                with entities who represent themselves as customer support
-                agents, providing customer support services via phone and/or
-                social media and promise to help solve your issues for money.
-                Remember - customer support is provided only via the Trustledger
-                website and is always provided free of charge.
-              </h3>
-            </div>
-            <div className="termDiv3">
               <h1>Contact Us</h1>
               <h3>
                 If you have any questions, comments, or concerns not

@@ -220,7 +220,8 @@ const Main = () => {
   const ln = userData.lastname ? userData.lastname[0] : "";
 
   const handleLiveChatClick = () => {
-    window.open("https://t.me/worldtrustledger", "_blank");
+    const email = "trustledger62@gmail.com"; // Replace with the recipient's email address
+    window.open(`mailto:${email}`, "_blank");
   };
 
   return (
