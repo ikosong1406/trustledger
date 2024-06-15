@@ -45,6 +45,7 @@ const Register = () => {
       lastname,
       email,
       password,
+      role: "user",
     };
 
     try {
