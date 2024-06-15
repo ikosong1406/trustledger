@@ -16,6 +16,7 @@ import shield from "../images/shield.png";
 import pics1 from "../images/pics1.jpg";
 import pics2 from "../images/pics2.jpg";
 import pics3 from "../images/pics3.jpg";
+import LiveChatButton from "../components/LiveChatButton"; // Import the FAB component
 
 const sectionVariants = {
   hidden: { opacity: 0, y: 100 },
@@ -31,6 +32,11 @@ const Landing = () => {
       setIsLoading(false);
     }, 1000);
   }, []);
+
+  const handleLiveChatClick = () => {
+    const email = "trustledger62@gmail.com"; // Replace with the recipient's email address
+    window.open(`mailto:${email}`, "_blank");
+  };
 
   return (
     <div>
@@ -275,6 +281,7 @@ const Landing = () => {
           </motion.div>
         </div>
       )}
+      <LiveChatButton onClick={handleLiveChatClick} />
     </div>
   );
 };

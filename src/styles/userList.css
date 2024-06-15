@@ -1,7 +1,7 @@
 .user-list-container {
   padding: 10px;
+  padding-bottom: 80px;
   box-sizing: border-box;
-  height: 100vh;
   background-image: url(../images/simpleTech.jpeg);
   background-size: cover;
   background-repeat: no-repeat;

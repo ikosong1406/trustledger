@@ -29,11 +29,6 @@ const Register = () => {
       return;
     }
 
-    if (!termsAccepted) {
-      alert("You must accept the terms and conditions");
-      return;
-    }
-
     const emailPattern = /^[a-zA-Z0-9._%+-]+@(gmail\.com|yahoo\.com)$/;
     if (!emailPattern.test(email)) {
       alert("Please enter a valid email address");
@@ -51,6 +46,11 @@ const Register = () => {
     try {
       const response = await axios.post(`${BackendApi}/register`, userData);
       setIsModalOpen(true);
+      setFirstname("");
+      setLastname("");
+      setEmail("");
+      setPassword("");
+      setConfirmPassword("");
     } catch (error) {
       alert("Registration error", error);
     }
@@ -120,12 +120,7 @@ const Register = () => {
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
           </div>
-          <button
-            type="submit"
-            className="registerBtn"
-            onClick={handleSubmit}
-            disabled={!termsAccepted}
-          >
+          <button type="submit" className="registerBtn" onClick={handleSubmit}>
             <h3>REGISTER</h3>
           </button>
         </div>
