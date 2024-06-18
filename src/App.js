@@ -17,10 +17,6 @@ import Accounts from "./pages/Accounts";
 import Privacy from "./pages/Privacypolicy";
 import Risk from "./pages/Riskwarning";
 import Terms from "./pages/TermsofUse";
-import AdminLayout from "./components/AdminLayout";
-import AdminHome from "./pages/AdminHome";
-import AdminPending from "./pages/AdminPending";
-import AdminTransact from "./pages/AdminTransact";
 import Market from "./pages/Market";
 
 const App = () => {
@@ -121,12 +117,6 @@ const App = () => {
                 <Route path="secure" element={<Secure />} />
                 <Route path="stake" element={<Stake />} />
                 <Route path="accounts" element={<Accounts />} />
-              </Route>
-              <Route path="/admin" element={<AdminLayout />}>
-                <Route index element={<AdminHome />} />
-                <Route path="home" element={<AdminHome />} />
-                <Route path="pending" element={<AdminPending />} />
-                <Route path="transact" element={<AdminTransact />} />
               </Route>
             </Routes>
           </Router>

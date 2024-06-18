@@ -4,7 +4,7 @@ import axios from "axios";
 import BackendApi from "../Api/BackendApi";
 import "../styles/Register.css";
 import Modal from "react-modal";
-import { IoClose, IoEyeOff, IoEye } from "react-icons/io5";
+import { IoClose } from "react-icons/io5";
 
 const Register = () => {
   const [passcode, setPasscode] = useState("");
