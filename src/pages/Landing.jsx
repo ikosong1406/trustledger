@@ -253,8 +253,6 @@ const Landing = () => {
             </div>
             <div className="landDiv72">
               <div className="landDiv721">
-                {/* <h3>Pre-sale is Live Now</h3>
-                <h4>Ends In:</h4> */}
                 <div className="landDiv7211">
                   <div className="x">
                     <h2 className="landDiv72111">500k</h2>

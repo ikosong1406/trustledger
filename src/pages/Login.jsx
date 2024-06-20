@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import "../styles/Login.css";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import BackendApi from "../Api/BackendApi";
 import { storeUserToken } from "../Api/storage";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import BackendApi from "../Api/BackendApi";
+import "../styles/Login.css";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -16,7 +18,7 @@ const Login = () => {
 
     const emailPattern = /^[a-zA-Z0-9._%+-]+@(gmail\.com|yahoo\.com)$/;
     if (!emailPattern.test(email)) {
-      alert("Please enter a valid email address");
+      toast.error("Please enter a valid email address");
       return;
     }
 
@@ -27,8 +29,9 @@ const Login = () => {
 
     try {
       const response = await axios.post(`${BackendApi}/login`, userData);
-      const { token, role } = response.data;
+      const { token, role, message } = response.data;
       storeUserToken(token);
+      toast.success(message);
       if (role === "admin") {
         navigate("/admin");
       } else if (role === "user") {
@@ -37,12 +40,13 @@ const Login = () => {
         navigate("/");
       }
     } catch (error) {
-      alert("Login error", error);
+      toast.error("Login error");
     }
   };
 
   return (
     <div className="loginDiv1">
+      <ToastContainer />
       <div className="loginDiv2">
         <div className="loginDiv21">
           <h1>Welcome back</h1>
@@ -52,14 +56,14 @@ const Login = () => {
           <h3>Email</h3>
           <input
             type="text"
-            placeholder="Username"
+            placeholder=""
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
           <h3>Password</h3>
           <input
             type="password"
-            placeholder="Password"
+            placeholder=""
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
