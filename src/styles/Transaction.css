@@ -50,6 +50,8 @@
 @media screen and (max-width: 925px) {
   .transactDiv1 {
     padding: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
     padding-bottom: 120px;
   }
   .transactDiv2 {

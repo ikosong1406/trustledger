@@ -107,6 +107,8 @@ input {
   }
   .accountsDiv1 {
     padding: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
     padding-bottom: 120px;
     display: block;
   }
