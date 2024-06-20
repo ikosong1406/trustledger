@@ -3,34 +3,42 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import BackendApi from "../Api/BackendApi";
 import "../styles/Register.css";
-import Modal from "react-modal";
-import { IoClose } from "react-icons/io5";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Register = () => {
-  const [passcode, setPasscode] = useState("");
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [isChecked, setIsChecked] = useState(false); // Checkbox state
+
+  const handleCheckboxChange = () => {
+    setIsChecked(!isChecked);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!isChecked) {
+      toast.error("Please agree to the terms and conditions");
+      return;
+    }
+
     if (!firstname || !lastname || !email || !password || !confirmPassword) {
-      alert("Please fill out all fields");
+      toast.error("Please fill out all fields");
       return;
     }
 
     if (password !== confirmPassword) {
-      alert("Passwords do not match");
+      toast.error("Passwords do not match");
       return;
     }
 
     const emailPattern = /^[a-zA-Z0-9._%+-]+@(gmail\.com|yahoo\.com)$/;
     if (!emailPattern.test(email)) {
-      alert("Please enter a valid email address");
+      toast.error("Please enter a valid email address");
       return;
     }
 
@@ -44,24 +52,20 @@ const Register = () => {
 
     try {
       const response = await axios.post(`${BackendApi}/register`, userData);
-      setIsModalOpen(true);
+      toast.success("Now Login with your registered details");
       setFirstname("");
       setLastname("");
       setEmail("");
       setPassword("");
       setConfirmPassword("");
     } catch (error) {
-      alert("Registration error", error);
+      toast.error("Registration error");
     }
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-    setPasscode(Array(4).fill(""));
   };
 
   return (
     <div className="registerDiv1">
+      <ToastContainer />
       <div className="registerDiv2">
         <div className="registerDiv21">
           <h1>Welcome</h1>
@@ -106,6 +110,30 @@ const Register = () => {
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
           </div>
+          <div
+            style={{
+              display: "flex",
+              marginTop: 20,
+              width: "100%",
+            }}
+          >
+            <input
+              type="checkbox"
+              id="termsCheckbox"
+              checked={isChecked}
+              onChange={handleCheckboxChange}
+              style={{ width: 20 }}
+            />
+            <h3>
+              I agree to the{" "}
+              <a
+                href="/termsofuse"
+                style={{ textDecoration: "none", color: "goldenrod" }}
+              >
+                terms and conditions
+              </a>
+            </h3>
+          </div>
           <button type="submit" className="registerBtn" onClick={handleSubmit}>
             <h3>REGISTER</h3>
           </button>
@@ -128,17 +156,6 @@ const Register = () => {
             </span>
           </h3>
         </div>
-        <Modal
-          isOpen={isModalOpen}
-          onRequestClose={closeModal}
-          className="modalContent"
-          overlayClassName="modalOverlay"
-        >
-          <div className="modalContent">
-            <IoClose className="iq" onClick={closeModal} />
-            <h2>Now Login with your registered details</h2>
-          </div>
-        </Modal>
       </div>
     </div>
   );
