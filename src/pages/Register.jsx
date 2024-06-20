@@ -15,7 +15,6 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [termsAccepted, setTermsAccepted] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -56,22 +55,9 @@ const Register = () => {
     }
   };
 
-  const codeVerification = async (e) => {
-    try {
-      const response = await axios.post(`${BackendApi}/verifyEmail`, passcode);
-      alert("Account created, please Login");
-    } catch (error) {
-      alert("Verification error", error);
-    }
-  };
-
   const closeModal = () => {
     setIsModalOpen(false);
     setPasscode(Array(4).fill(""));
-  };
-
-  const togglePasswordVisibility = () => {
-    setShowPassword((prevState) => !prevState);
   };
 
   return (

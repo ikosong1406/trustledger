@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef, memo } from "react";
 import "../styles/Main.css";
 import ReactApexChart from "react-apexcharts";
 import { FaBitcoin, FaEthereum } from "react-icons/fa";
@@ -77,95 +77,6 @@ const Main = () => {
     }
   }, [token]);
 
-  const [chartData, setChartData] = useState({
-    series: [
-      {
-        data: [],
-      },
-    ],
-    options: {
-      chart: {
-        type: "line",
-        height: 350,
-      },
-      title: {
-        text: "Ripple (XRP) Candlestick Chart",
-        align: "left",
-      },
-      xaxis: {
-        type: "datetime",
-        labels: {
-          show: false, // Hide x-axis labels
-        },
-        axisBorder: {
-          show: false, // Hide x-axis border
-        },
-        axisTicks: {
-          show: false, // Hide x-axis ticks
-        },
-      },
-      yaxis: {
-        labels: {
-          show: false, // Hide y-axis labels
-        },
-        axisBorder: {
-          show: false, // Hide y-axis border
-        },
-        axisTicks: {
-          show: false, // Hide y-axis ticks
-        },
-        tooltip: {
-          enabled: true,
-        },
-      },
-      grid: {
-        // show: false,
-      },
-      stroke: {
-        colors: Colors.white, // Set the line color to white
-      },
-    },
-    loading: true, // Add loading state
-  });
-
-  useEffect(() => {
-    const fetchMarketData = async () => {
-      try {
-        const response = await axios.get(
-          "https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_DAILY&symbol=XRP&market=USD&apikey=YOUR_API_KEY"
-        );
-
-        const timeSeries =
-          response.data["Time Series (Digital Currency Daily)"];
-        if (timeSeries) {
-          const marketData = Object.keys(timeSeries).map((date) => {
-            const dayData = timeSeries[date];
-            return {
-              x: new Date(date),
-              y: parseFloat(dayData["4. close"]), // Use the closing price for the line chart
-            };
-          });
-
-          setChartData({
-            series: [
-              {
-                data: marketData,
-              },
-            ],
-            options: chartData.options,
-            loading: false, // Update loading state
-          });
-        } else {
-          console.error("Invalid API response structure", response.data);
-        }
-      } catch (error) {
-        console.error("Error fetching market data:", error);
-      }
-    };
-
-    fetchMarketData();
-  }, []);
-
   const [chartData1, setChartData1] = useState({
     series: [20, 20, 20, 20, 20],
     options: {
@@ -224,6 +135,106 @@ const Main = () => {
     window.open(`mailto:${email}`, "_blank");
   };
 
+  const containerRef = useRef(null);
+  const advancedChartRef = useRef(null);
+
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src =
+      "https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js";
+    script.async = true;
+    script.innerHTML = JSON.stringify({
+      symbols: [
+        {
+          proName: "BITSTAMP:BTCUSD",
+          title: "Bitcoin",
+        },
+        {
+          proName: "BITSTAMP:ETHUSD",
+          title: "Ethereum",
+        },
+        {
+          description: "BTC/USDT",
+          proName: "BINANCE:BTCUSDT",
+        },
+        {
+          description: "ETH/USDT",
+          proName: "BINANCE:ETHUSDT",
+        },
+        {
+          description: "SOL/USDT",
+          proName: "BINANCE:SOLUSDT",
+        },
+        {
+          description: "XRP/USDT",
+          proName: "BINANCE:XRPUSDT",
+        },
+        {
+          description: "XLM/USDT",
+          proName: "BINANCE:XLMUSDT",
+        },
+        {
+          description: "Stellar",
+          proName: "CRYPTOCAP:XLM",
+        },
+        {
+          description: "Tether",
+          proName: "CRYPTOCAP:USDT",
+        },
+        {
+          description: "Solana",
+          proName: "CRYPTOCAP:SOL",
+        },
+      ],
+      showSymbolLogo: true,
+      isTransparent: false,
+      displayMode: "adaptive",
+      colorTheme: "dark",
+      locale: "en",
+    });
+
+    if (containerRef.current) {
+      containerRef.current.appendChild(script);
+    }
+
+    return () => {
+      if (containerRef.current) {
+        containerRef.current.innerHTML = "";
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src =
+      "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
+    script.type = "text/javascript";
+    script.async = true;
+    script.innerHTML = `
+        {
+          "width": "100%",
+          "height": "610",
+          "symbol": "CRYPTOCAP:XLM",
+          "interval": "D",
+          "timezone": "Etc/UTC",
+          "theme": "dark",
+          "style": "1",
+          "locale": "en",
+          "allow_symbol_change": true,
+          "calendar": false,
+          "support_host": "https://www.tradingview.com"
+        }`;
+    if (advancedChartRef.current) {
+      advancedChartRef.current.appendChild(script);
+    }
+
+    return () => {
+      if (advancedChartRef.current) {
+        advancedChartRef.current.innerHTML = "";
+      }
+    };
+  }, []);
+
   return (
     <div className="mainDiv1">
       <div className="mainDiv2">
@@ -251,12 +262,37 @@ const Main = () => {
         </div>
       </div>
       <div className="mainDiv4">
-        <ReactApexChart
-          options={chartData.options}
-          series={chartData.series}
-          type="line"
-          height={400}
-        />
+        <div className="tradingview-widget-container" ref={containerRef}>
+          <div
+            className="tradingview-widget-container__widget"
+            style={{ height: "100%", width: "100%" }}
+          ></div>
+          <div className="tradingview-widget-copyright">
+            <a
+              href="https://www.tradingview.com/"
+              rel="noopener nofollow"
+              target="_blank"
+            >
+              <span>TradingView</span>
+            </a>
+          </div>
+        </div>
+
+        <div className="tradingview-widget-container" ref={advancedChartRef}>
+          <div
+            className="tradingview-widget-container__widget"
+            style={{ height: "500px", width: "100%" }} // Adjust the height here
+          ></div>
+          <div className="tradingview-widget-copyright">
+            <a
+              href="https://www.tradingview.com/"
+              rel="noopener nofollow"
+              target="_blank"
+            >
+              <span>TradingView</span>
+            </a>
+          </div>
+        </div>
       </div>
       <div className="mainDiv5">
         <h2>Assest Allocation</h2>
