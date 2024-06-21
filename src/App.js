@@ -18,10 +18,6 @@ import Privacy from "./pages/Privacypolicy";
 import Risk from "./pages/Riskwarning";
 import Terms from "./pages/TermsofUse";
 import Market from "./pages/Market";
-import AdminLayout from "./components/AdminLayout";
-import AdminHome from "./pages/AdminHome";
-import AdminPending from "./pages/AdminPending";
-import AdminTransaction from "./pages/AdminTransact";
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -121,12 +117,6 @@ const App = () => {
                 <Route path="secure" element={<Secure />} />
                 <Route path="stake" element={<Stake />} />
                 <Route path="accounts" element={<Accounts />} />
-              </Route>
-              <Route path="/admin" element={<AdminLayout />}>
-                <Route index element={<AdminHome />} />
-                <Route path="adminHome" element={<AdminHome />} />
-                <Route path="adminPending" element={<AdminPending />} />
-                <Route path="adminTransaction" element={<AdminTransaction />} />
               </Route>
             </Routes>
           </Router>
