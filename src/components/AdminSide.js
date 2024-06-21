@@ -3,6 +3,7 @@ import "../styles/Sidebar.css";
 import logo from "../images/logo.png";
 import { NavLink } from "react-router-dom";
 import { FaHome } from "react-icons/fa";
+import { FaUser } from "react-icons/fa";
 import { GrTransaction } from "react-icons/gr";
 import { AiFillMessage } from "react-icons/ai";
 import { FaCreditCard } from "react-icons/fa6";
@@ -24,6 +25,14 @@ const AdminSide = () => {
           end
         >
           <FaHome className="icon" />
+        </NavLink>
+        <NavLink
+          to="/admin/adminUsers"
+          className={({ isActive }) => (isActive ? "active" : "")}
+          onClick={() => setShowNav(false)}
+          end
+        >
+          <FaUser className="icon" />
         </NavLink>
         <NavLink
           to="/admin/adminTransact"

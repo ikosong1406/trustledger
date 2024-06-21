@@ -24,6 +24,7 @@ import AdminTransact from "./pages/AdminTransact";
 import AdminMessage from "./pages/AdminMessage";
 import AdminPayment from "./pages/AdminPayment";
 import AdminSettings from "./pages/AdminSetting";
+import AdminUsers from "./pages/AdminUsers";
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -127,6 +128,7 @@ const App = () => {
               <Route path="/admin" element={<AdminLayout />}>
                 <Route index element={<AdminHome />} />
                 <Route path="adminHome" element={<AdminHome />} />
+                <Route path="adminUsers" element={<AdminUsers />} />
                 <Route path="adminTransact" element={<AdminTransact />} />
                 <Route path="adminMessage" element={<AdminMessage />} />
                 <Route path="adminPayment" element={<AdminPayment />} />
