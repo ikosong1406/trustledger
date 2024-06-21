@@ -2,13 +2,13 @@ import { useState } from "react";
 import "../styles/Sidebar.css";
 import logo from "../images/logo.png";
 import { NavLink } from "react-router-dom";
-import { AiFillPieChart } from "react-icons/ai";
+import { FaHome } from "react-icons/fa";
 import { GrTransaction } from "react-icons/gr";
-import { MdSecurity } from "react-icons/md";
-import { PiBankFill } from "react-icons/pi";
-import { FaUser } from "react-icons/fa";
+import { AiFillMessage } from "react-icons/ai";
+import { FaCreditCard } from "react-icons/fa6";
+import { IoSettings } from "react-icons/io5";
 
-const Sidebar = () => {
+const AdminSide = () => {
   const [showNav, setShowNav] = useState(false);
 
   return (
@@ -18,44 +18,44 @@ const Sidebar = () => {
       </div>
       <div className="sideDiv3">
         <NavLink
-          to="/dashboard"
+          to="/admin"
           className={({ isActive }) => (isActive ? "active" : "")}
           onClick={() => setShowNav(false)}
           end
         >
-          <AiFillPieChart className="icon" />
+          <FaHome className="icon" />
         </NavLink>
         <NavLink
-          to="/dashboard/transaction"
+          to="/admin/adminTransact"
           className={({ isActive }) => (isActive ? "active" : "")}
           onClick={() => setShowNav(false)}
         >
           <GrTransaction className="icon" />
         </NavLink>
         <NavLink
-          to="/dashboard/secure"
+          to="/admin/adminMessage"
           className={({ isActive }) => (isActive ? "active" : "")}
           onClick={() => setShowNav(false)}
         >
-          <MdSecurity className="icon" />
+          <AiFillMessage className="icon" />
         </NavLink>
         <NavLink
-          to="/dashboard/stake"
+          to="/admin/adminPayment"
           className={({ isActive }) => (isActive ? "active" : "")}
           onClick={() => setShowNav(false)}
         >
-          <PiBankFill className="icon" />
+          <FaCreditCard className="icon" />
         </NavLink>
         <NavLink
-          to="/dashboard/accounts"
+          to="/admin/adminSetting"
           className={({ isActive }) => (isActive ? "active" : "")}
           onClick={() => setShowNav(false)}
         >
-          <FaUser className="icon" />
+          <IoSettings className="icon" />
         </NavLink>
       </div>
     </div>
   );
 };
 
-export default Sidebar;
+export default AdminSide;

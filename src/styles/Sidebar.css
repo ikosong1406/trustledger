@@ -14,18 +14,16 @@
   justify-content: center;
 }
 
-.sideDiv2 .logo {
-  color: var(--white);
-  font-size: 50px;
-  font-family: "Roboto", sans-serif;
-  rotate: 330deg;
+.sideDiv2 img {
+  width: 100px;
+  margin-top: 20px;
 }
 
 .sideDiv3 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 50px;
+  margin-top: 100px;
 }
 
 .sideDiv3 a {
