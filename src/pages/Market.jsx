@@ -1,10 +1,5 @@
 import React, { useEffect, useRef, memo } from "react";
 import "../styles/Market.css";
-import axios from "axios";
-import { SiStellar } from "react-icons/si";
-import ReactApexChart from "react-apexcharts";
-import Colors from "../components/Colors";
-import { useNavigate } from "react-router-dom";
 
 const Market = () => {
   const container = useRef();
@@ -117,16 +112,6 @@ const Market = () => {
       }
     };
   }, []);
-
-  //   <!-- TradingView Widget BEGIN -->
-  // <div class="tradingview-widget-container">
-  //   <div class="tradingview-widget-container__widget"></div>
-  //   <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
-  //   <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-forex-cross-rates.js" async>
-
-  //   </script>
-  // </div>
-  // <!-- TradingView Widget END -->
 
   return (
     <div className="marketDiv1">

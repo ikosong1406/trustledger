@@ -1,0 +1,27 @@
+.adHomeMain {
+  background-color: #020a18;
+}
+
+.adHomeDiv1 {
+  padding: 10px;
+}
+
+.adHomeDiv2 {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.adHomeDiv21 {
+  padding: 10px;
+  background-color: #253745;
+  display: flex;
+  border-radius: 10px;
+  width: 20%;
+  justify-content: space-between;
+}
+
+.adHomeDiv3 {
+  margin-top: 20px;
+}
