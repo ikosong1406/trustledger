@@ -82,7 +82,7 @@ const AdminHome = () => {
   }, []);
 
   return (
-    <div className="adHomeMain">
+    <div className="adHomeMain" style={{ minHeight: 500 }}>
       <div className="adHomeDiv1">
         <h1 style={{ color: Colors.white, marginLeft: 20 }}>Dashboard</h1>
       </div>

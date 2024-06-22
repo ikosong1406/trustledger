@@ -1,58 +1,72 @@
 import React, { useState } from "react";
+import api from "../Api/BackendApi";
+import axios from "axios";
+import Colors from "../components/Colors";
+import "../styles/AdminMessage.css";
 
 const AdminMessage = () => {
-  const [email, setEmail] = useState("");
-  const [subject, setSubject] = useState("");
-  const [message, setMessage] = useState("");
-  const [status, setStatus] = useState("");
+  const [emailDetails, setEmailDetails] = useState({
+    to: "",
+    subject: "",
+    body: "",
+  });
 
-  const handleSend = async () => {
-    // Send email logic (dummy implementation for now)
-    console.log("Sending email:", { email, subject, message });
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setEmailDetails((prevDetails) => ({
+      ...prevDetails,
+      [name]: value,
+    }));
+  };
 
-    // Replace this with actual email sending logic
-    setTimeout(() => {
-      setStatus("Email sent successfully!");
-    }, 1000);
+  const handleSendEmail = async () => {
+    try {
+      await axios.post(`${api}/sendEmail`, emailDetails);
+      alert("Email sent successfully!");
+      setEmailDetails({ to: "", subject: "", body: "" });
+    } catch (error) {
+      console.error("Error sending email:", error);
+      alert("Failed to send email. Please try again.");
+    }
   };
 
   return (
-    <div>
-      <h1>Send Message</h1>
-      <div>
+    <div className="adHomeMain" style={{ minHeight: 500 }}>
+      <div className="sendEmailHeader">
+        <h1 style={{ color: Colors.white, marginLeft: 20 }}>Messages</h1>
+      </div>
+      <div className="emailForm">
         <label>
-          To (Email):
+          To:
           <input
             type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
+            name="to"
+            value={emailDetails.to}
+            onChange={handleChange}
+            placeholder="Enter recipient's email"
           />
         </label>
-      </div>
-      <div>
         <label>
           Subject:
           <input
             type="text"
-            value={subject}
-            onChange={(e) => setSubject(e.target.value)}
-            required
+            name="subject"
+            value={emailDetails.subject}
+            onChange={handleChange}
+            placeholder="Enter email subject"
           />
         </label>
-      </div>
-      <div>
         <label>
-          Message:
+          Body:
           <textarea
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            required
+            name="body"
+            value={emailDetails.body}
+            onChange={handleChange}
+            placeholder="Enter email body"
           />
         </label>
+        <button onClick={handleSendEmail}>Send</button>
       </div>
-      <button onClick={handleSend}>Send Email</button>
-      {status && <p>{status}</p>}
     </div>
   );
 };

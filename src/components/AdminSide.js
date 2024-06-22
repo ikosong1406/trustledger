@@ -55,13 +55,6 @@ const AdminSide = () => {
         >
           <FaCreditCard className="icon" />
         </NavLink>
-        <NavLink
-          to="/admin/adminSetting"
-          className={({ isActive }) => (isActive ? "active" : "")}
-          onClick={() => setShowNav(false)}
-        >
-          <IoSettings className="icon" />
-        </NavLink>
       </div>
     </div>
   );
