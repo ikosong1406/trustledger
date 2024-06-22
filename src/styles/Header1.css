@@ -1,17 +1,5 @@
-/* :root {
-  --blue: #0038a8;
-  --black: #454646;
-  --white: #e8eaeb;
-  --red: #dc2649;
-  --indigo: #4b0082;
-  --violet: #32174d;
-} */
-
 .head1Div1 {
-  /* background-color: var(--violet); */
-  background-image: url(../images/background.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-color: var(--indigo);
   width: 100%;
   position: fixed;
   z-index: 99;

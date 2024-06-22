@@ -16,7 +16,7 @@ import shield from "../images/shield.png";
 import pics1 from "../images/pics1.jpg";
 import pics2 from "../images/pics2.jpg";
 import pics3 from "../images/pics3.jpg";
-import LiveChatButton from "../components/LiveChatButton"; // Import the FAB component
+import LandingButton from "../components/LandingButton";
 
 const sectionVariants = {
   hidden: { opacity: 0, y: 100 },
@@ -279,7 +279,7 @@ const Landing = () => {
           </motion.div>
         </div>
       )}
-      <LiveChatButton onClick={handleLiveChatClick} />
+      <LandingButton />
     </div>
   );
 };

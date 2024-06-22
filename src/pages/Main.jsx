@@ -131,7 +131,7 @@ const Main = () => {
   const ln = userData.lastname ? userData.lastname[0] : "";
 
   const handleLiveChatClick = () => {
-    const email = "trustledger62@gmail.com"; // Replace with the recipient's email address
+    const email = "trustledger62@gmail.com";
     window.open(`mailto:${email}`, "_blank");
   };
 

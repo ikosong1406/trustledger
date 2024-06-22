@@ -1,6 +1,7 @@
-.footerrDiv1 {
-  height: 60px;
-  background-color: var(--violet);
+.footerDiv1 {
+  /* height: 100px; */
+  background-color: var(--indigo);
+  padding-bottom: 10px;
 }
 
 .footerDiv2 {
@@ -8,6 +9,7 @@
   background-color: var(--indigo);
   display: flex;
   padding: 30px;
+  padding-top: 10px;
 }
 
 .logoDiv1 {

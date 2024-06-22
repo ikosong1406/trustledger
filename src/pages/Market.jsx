@@ -35,7 +35,7 @@ const Market = () => {
           ],
           "chartOnly": false,
           "width": "100%",
-          "height": "500",
+          "height": "450",
           "locale": "en",
           "colorTheme": "dark",
           "autosize": false,
@@ -86,7 +86,7 @@ const Market = () => {
     script.innerHTML = `
             {
   "width": "100%",
-  "height": 400,
+  "height": 300,
   "currencies": [
     "EUR",
     "USD",
