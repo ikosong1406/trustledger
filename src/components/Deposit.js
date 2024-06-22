@@ -7,6 +7,8 @@ import { BiClipboard } from "react-icons/bi";
 import axios from "axios";
 import BackendApi from "../Api/BackendApi";
 import { getUserToken } from "../Api/storage";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Deposit = () => {
   const [amount, setAmount] = useState(0);
@@ -74,16 +76,17 @@ const Deposit = () => {
 
     try {
       const response = await axios.post(`${BackendApi}/transaction`, data);
-      alert(
+      toast.success(
         "Your deposit will be confirmed shortly and converted to gold valued equivalent coin after confirmation"
       );
     } catch (error) {
-      alert("Deposit error", error);
+      toast.error("Deposit error", error);
     }
   };
 
   return (
     <div className="depositMain">
+      <ToastContainer />
       <div className="depositDiv1">
         <div className="depositDiv11">
           <button

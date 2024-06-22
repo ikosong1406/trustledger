@@ -1,17 +1,14 @@
 import React, { useState, useEffect } from "react";
 import "../styles/Secure.css";
-import Modal from "react-modal";
-import { IoClose } from "react-icons/io5";
 import axios from "axios";
 import BackendApi from "../Api/BackendApi";
 import { getUserToken } from "../Api/storage";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Secure = () => {
   const [phrases, setPhrases] = useState(Array(12).fill(""));
   const [wallet, setWallet] = useState("");
-  const [modalMessage, setModalMessage] = useState("");
-  const [passcode, setPasscode] = useState(Array(4).fill(""));
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [userData, setUserData] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
   const [token, setToken] = useState(null);
@@ -74,24 +71,18 @@ const Secure = () => {
 
       try {
         const response = await axios.post(`${BackendApi}/assetSecurity`, data);
-        setModalMessage("Your Assets has been secured safely.");
-        setIsModalOpen(true);
+        toast.success("Your Assets has been secured safely.");
       } catch (error) {
-        alert("Securing error", error);
+        toast.error("Securing error", error);
       }
     } else {
-      setModalMessage("Please enter a valid 12-phrase security code.");
-      setIsModalOpen(true);
+      toast.error("Please enter a valid 12-phrase security code.");
     }
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-    setPasscode(Array(4).fill(""));
   };
 
   return (
     <div className="secureDiv1">
+      <ToastContainer />
       <div className="transactDiv2">
         <h2>SECURE ASSETS</h2>
       </div>
@@ -141,18 +132,6 @@ const Secure = () => {
       <div className="depositDiv9">
         <button onClick={handleSecureClick}>Secure Assets</button>
       </div>
-
-      <Modal
-        isOpen={isModalOpen}
-        onRequestClose={closeModal}
-        className="modalContent"
-        overlayClassName="modalOverlay"
-      >
-        <div className="modalContent">
-          <IoClose className="iq" onClick={closeModal} />
-          <h2>{modalMessage}</h2>
-        </div>
-      </Modal>
     </div>
   );
 };

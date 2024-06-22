@@ -7,14 +7,13 @@ import { IoClose } from "react-icons/io5";
 import axios from "axios";
 import BackendApi from "../Api/BackendApi";
 import { getUserToken } from "../Api/storage";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 // Helper function to calculate earnings
 
 const Stake = () => {
   const [amount, setAmount] = useState("");
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalMessage, setModalMessage] = useState("");
-  const [passcode, setPasscode] = useState(Array(4).fill(""));
   const [days, setDays] = useState(0);
   const [rate] = useState(0.2);
   const [userData, setUserData] = useState([]);
@@ -82,8 +81,7 @@ const Stake = () => {
   const handleContinueClick = async () => {
     const amountValue = parseFloat(amount);
     if (userData.balance < amountValue) {
-      setModalMessage("Insufficient balance");
-      setIsModalOpen(true);
+      toast.error("Insufficient balance");
       return;
     }
 
@@ -96,21 +94,15 @@ const Stake = () => {
 
     try {
       const response = await axios.post(`${BackendApi}/staking`, data);
-      setModalMessage("Your Assets has been staked safely.");
-      setIsModalOpen(true);
+      toast.success("Your Assets has been staked safely.");
     } catch (error) {
-      setModalMessage("Staking Error");
-      setIsModalOpen(true);
+      toast.error("Staking Error");
     }
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-    setPasscode(Array(4).fill(""));
   };
 
   return (
     <div className="transactDiv1">
+      <ToastContainer />
       <div className="transactDiv2">
         <h2>FIXED CAPITAL</h2>
       </div>
@@ -148,18 +140,6 @@ const Stake = () => {
       <button className="stakeBtn" onClick={handleContinueClick}>
         <h3>CONTINUE</h3>
       </button>
-
-      <Modal
-        isOpen={isModalOpen}
-        onRequestClose={closeModal}
-        className="modalContent"
-        overlayClassName="modalOverlay"
-      >
-        <div className="modalContent">
-          <IoClose className="iq" onClick={closeModal} />
-          <h2>{modalMessage}</h2>
-        </div>
-      </Modal>
     </div>
   );
 };

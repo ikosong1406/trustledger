@@ -1,19 +1,16 @@
 import React, { useState, useEffect } from "react";
 import "../styles/Withdrawal.css";
-import Modal from "react-modal";
 import { SiTether, SiBitcoin } from "react-icons/si";
 import { FaPaypal, FaCaretDown } from "react-icons/fa";
-import { IoClose } from "react-icons/io5";
 import axios from "axios";
 import BackendApi from "../Api/BackendApi";
 import { getUserToken } from "../Api/storage";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Withdrawal = () => {
   const [amount, setAmount] = useState("");
   const [walletAddress, setWalletAddress] = useState("");
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalMessage, setModalMessage] = useState("");
-  const [passcode, setPasscode] = useState(Array(4).fill(""));
   const [selectedOption, setSelectedOption] = useState("Tether");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [userData, setUserData] = useState([]);
@@ -73,12 +70,6 @@ const Withdrawal = () => {
     setIsDropdownOpen(false);
   };
 
-  const handlePasscodeChange = (index, value) => {
-    const newPasscode = [...passcode];
-    newPasscode[index] = value;
-    setPasscode(newPasscode);
-  };
-
   const transactionFee = amount ? (parseFloat(amount) * 0.02).toFixed(2) : 0;
 
   const total = amount
@@ -87,8 +78,7 @@ const Withdrawal = () => {
 
   const handleContinueClick = async () => {
     if (userData.balance < total) {
-      setModalMessage("Insufficient balance");
-      setIsModalOpen(true);
+      toast.error("Insufficient balance");
       return;
     }
 
@@ -102,25 +92,15 @@ const Withdrawal = () => {
 
     try {
       const response = await axios.post(`${BackendApi}/transaction`, data);
-      alert("Your withdrawal will be confirmed shortly");
+      toast.success("Your withdrawal will be confirmed shortly");
     } catch (error) {
-      alert("Withdrawal error", error);
+      toast.error("Withdrawal error", error);
     }
-  };
-
-  const handleConfirmClick = () => {
-    // Perform the withdrawal action here
-    alert("Withdrawal confirmed!");
-    setIsModalOpen(false);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-    setPasscode(Array(4).fill(""));
   };
 
   return (
     <div className="depositMain">
+      <ToastContainer />
       <div className="withdrawDiv4">
         {selectedOption === "Tether" && <SiTether className="ii" />}
         {selectedOption === "Bitcoin" && <SiBitcoin className="ii" />}
@@ -216,38 +196,6 @@ const Withdrawal = () => {
       <div className="depositDiv9">
         <button onClick={handleContinueClick}>Withdraw</button>
       </div>
-
-      <Modal
-        isOpen={isModalOpen}
-        onRequestClose={closeModal}
-        className="modalContent"
-        overlayClassName="modalOverlay"
-      >
-        <div className="modalContent">
-          <IoClose className="iq" onClick={closeModal} />
-          <h2>{modalMessage}</h2>
-          {modalMessage !== "Insufficient balance" && (
-            <>
-              <div className="passcodeInput">
-                {passcode.map((digit, index) => (
-                  <input
-                    key={index}
-                    type="text"
-                    maxLength="1"
-                    value={digit}
-                    onChange={(e) =>
-                      handlePasscodeChange(index, e.target.value)
-                    }
-                  />
-                ))}
-              </div>
-              <div className="depositDiv9">
-                <button onClick={handleConfirmClick}>Confirm Withdrawal</button>
-              </div>
-            </>
-          )}
-        </div>
-      </Modal>
     </div>
   );
 };
