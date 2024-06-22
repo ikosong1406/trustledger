@@ -18,6 +18,7 @@ import Privacy from "./pages/Privacypolicy";
 import Risk from "./pages/Riskwarning";
 import Terms from "./pages/TermsofUse";
 import Market from "./pages/Market";
+import UserTransaction from "./pages/UserTransaction";
 import AdminLayout from "./components/AdminLayout";
 import AdminHome from "./pages/AdminHome";
 import AdminTransact from "./pages/AdminTransact";
@@ -122,6 +123,7 @@ const App = () => {
                 <Route path="transaction" element={<Transaction />} />
                 <Route path="secure" element={<Secure />} />
                 <Route path="stake" element={<Stake />} />
+                <Route path="usertransaction" element={<UserTransaction />} />
                 <Route path="accounts" element={<Accounts />} />
               </Route>
               <Route path="/admin" element={<AdminLayout />}>

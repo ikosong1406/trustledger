@@ -7,6 +7,7 @@ import { GrTransaction } from "react-icons/gr";
 import { MdSecurity } from "react-icons/md";
 import { PiBankFill } from "react-icons/pi";
 import { FaUser } from "react-icons/fa";
+import { FaList } from "react-icons/fa";
 
 const BottomTabNavigator = () => {
   const [showNav, setShowNav] = useState(false);
@@ -41,6 +42,13 @@ const BottomTabNavigator = () => {
         onClick={() => setShowNav(false)}
       >
         <PiBankFill className="icon" />
+      </NavLink>
+      <NavLink
+        to="/dashboard/usertransaction"
+        className={({ isActive }) => (isActive ? "active" : "")}
+        onClick={() => setShowNav(false)}
+      >
+        <FaList className="icon" />
       </NavLink>
       <NavLink
         to="/dashboard/accounts"
