@@ -1,12 +1,29 @@
-import React, { useEffect, useRef, memo } from "react";
+import React, { useState, useEffect, useRef, memo } from "react";
 import "../styles/AdminHome.css";
 import Colors from "../components/Colors";
 import { FaUsers } from "react-icons/fa";
 import { FaFirstOrder } from "react-icons/fa";
 import { FaChartLine } from "react-icons/fa6";
 import { MdOutlinePendingActions } from "react-icons/md";
+import api from "../Api/BackendApi";
+import axios from "axios";
 
 const AdminHome = () => {
+  const [numUsers, setNumUsers] = useState(0);
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const response = await axios.get(`${api}/allUsers`);
+        setNumUsers(response.data.length);
+      } catch (error) {
+        console.error("Error fetching users:", error);
+      }
+    };
+
+    fetchUsers();
+  }, []);
+
   const container = useRef();
 
   useEffect(() => {
@@ -90,7 +107,7 @@ const AdminHome = () => {
         <div className="adHomeDiv21">
           <div className="adHome211">
             <p style={{ color: "gray", fontWeight: 500 }}>Total User</p>
-            <h2 style={{ color: Colors.white }}>40,000</h2>
+            <h2 style={{ color: Colors.white }}>{numUsers}</h2>
           </div>
           <FaUsers
             style={{
@@ -105,7 +122,7 @@ const AdminHome = () => {
         <div className="adHomeDiv21">
           <div className="adHome211">
             <p style={{ color: "gray", fontWeight: 500 }}>Total Order</p>
-            <h2 style={{ color: Colors.white }}>10293</h2>
+            <h2 style={{ color: Colors.white }}>0</h2>
           </div>
           <FaFirstOrder
             style={{
@@ -120,7 +137,7 @@ const AdminHome = () => {
         <div className="adHomeDiv21">
           <div className="adHome211">
             <p style={{ color: "gray", fontWeight: 500 }}>Total Sales</p>
-            <h2 style={{ color: Colors.white }}>$89,000</h2>
+            <h2 style={{ color: Colors.white }}>$0</h2>
           </div>
           <FaChartLine
             style={{
@@ -135,7 +152,7 @@ const AdminHome = () => {
         <div className="adHomeDiv21">
           <div className="adHome211">
             <p style={{ color: "gray", fontWeight: 500 }}>Total Pending</p>
-            <h2 style={{ color: Colors.white }}>2040</h2>
+            <h2 style={{ color: Colors.white }}>0</h2>
           </div>
           <MdOutlinePendingActions
             style={{
