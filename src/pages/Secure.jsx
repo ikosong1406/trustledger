@@ -117,6 +117,8 @@ const Secure = () => {
           gridTemplateColumns: "repeat(2, 1fr)",
           gap: "10px",
           marginTop: 30,
+          padding: 15,
+          marginLeft: -10,
         }}
       >
         {phrases.map((phrase, index) => (

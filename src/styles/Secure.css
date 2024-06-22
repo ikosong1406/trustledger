@@ -7,9 +7,7 @@ h3 {
   padding: 30px;
   padding-bottom: 50px;
   display: block;
-  background-image: url(../images/simpleTech.jpeg);
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-color: #131a26;
 }
 
 li {
@@ -17,7 +15,7 @@ li {
 }
 
 input {
-  padding: 8px;
+  padding: 7px;
   background-color: transparent;
   border: 1px solid var(--white);
   border-radius: 10px;
@@ -44,7 +42,7 @@ input {
   }
 
   input {
-    padding: 8px;
+    padding: 7px;
     background-color: transparent;
     border: 1px solid var(--white);
     border-radius: 10px;

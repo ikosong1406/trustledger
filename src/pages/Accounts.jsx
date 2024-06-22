@@ -95,11 +95,6 @@ const Account = () => {
 
   const avatarUrl = `${diceBearBaseUrl}${avatarStyle}/svg`;
 
-  const handleChatClick = () => {
-    // You can replace the URL with your specific Telegram chat link
-    window.open("https://t.me/worldtrustledger", "_blank");
-  };
-
   const handleLogout = () => {
     navigate("/");
   };
@@ -117,7 +112,9 @@ const Account = () => {
         />
       </div>
       <div className="accountDiv9">
-        <button onClick={handleSaveChanges}>Save Changes</button>
+        <button onClick={handleSaveChanges} style={{ border: "none" }}>
+          Save Changes
+        </button>
       </div>
       <div>
         <h3>Email:</h3>
@@ -150,7 +147,9 @@ const Account = () => {
         />
       </div>
       <div className="accountDiv92">
-        <button onClick={handleLogout}>Logout</button>
+        <button onClick={handleLogout} style={{ border: "none" }}>
+          Logout
+        </button>
       </div>
 
       {isModalOpen && (

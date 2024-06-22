@@ -1,9 +1,7 @@
 .transactDiv1 {
   padding: 40px;
   display: block;
-  background-image: url(../images/simpleTech.jpeg);
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-color: #131a26;
 }
 .transactDiv2 {
   display: flex;

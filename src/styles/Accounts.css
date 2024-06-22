@@ -7,9 +7,7 @@ h3 {
   padding: 30px;
   padding-bottom: 50px;
   display: block;
-  background-image: url(../images/simpleTech.jpeg);
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-color: #131a26;
 }
 
 input {

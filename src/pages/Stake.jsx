@@ -111,7 +111,6 @@ const Stake = () => {
         <div className="mainDiv31">
           <h3>Capital balance</h3>
           <h1> $ {userData.stakingBalance}</h1>
-          <h3 style={{ color: "#008000", marginTop: -7 }}>+${profit}</h3>
           <div className="circle">
             <GiAirZigzag className="zi" />
           </div>
@@ -137,9 +136,9 @@ const Stake = () => {
         <h3>Projected Earnings: </h3>
         <h3>${projectedEarnings}</h3>
       </div>
-      <button className="stakeBtn" onClick={handleContinueClick}>
-        <h3>CONTINUE</h3>
-      </button>
+      <div className="depositDiv9">
+        <button onClick={handleContinueClick}>Save Capital</button>
+      </div>
     </div>
   );
 };
