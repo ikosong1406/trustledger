@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../styles/AdminPayment.css";
 import Colors from "../components/Colors";
+import { FcSimCardChip } from "react-icons/fc";
 
 const AdminPayment = () => {
   const [paymentMethods, setPaymentMethods] = useState([
@@ -56,6 +57,47 @@ const AdminPayment = () => {
         <h1 style={{ color: Colors.white, marginLeft: 20 }}>
           Payment and Withdrawal Management
         </h1>
+      </div>
+      <div style={{ marginLeft: 30 }}>
+        <div className="methods-container">
+          <h2 style={{ color: "gray" }}>Deposit Methods</h2>
+          <div className="card-container">
+            {paymentMethods.map((method) => (
+              <div className="adHomeDiv21" key={method.id}>
+                <div className="adHome211">
+                  <h3>{method.type}</h3>
+                  <p style={{ color: "gray", fontWeight: 500 }}>
+                    Address: {method.address}
+                  </p>
+                  <p style={{ color: "gray", fontWeight: 500 }}>
+                    Limit: ${method.limit}
+                  </p>
+                </div>
+                <FcSimCardChip style={{ fontSize: 40, alignSelf: "center" }} />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="methods-container">
+          <h2 style={{ color: "gray" }}>Withdrawal Methods</h2>
+          <div className="card-container">
+            {withdrawalMethods.map((method) => (
+              <div className="adHomeDiv21" key={method.id}>
+                <div className="adHome211">
+                  <h3>{method.type}</h3>
+                  <p style={{ color: "gray", fontWeight: 500 }}>
+                    Address: {method.address}
+                  </p>
+                  <p style={{ color: "gray", fontWeight: 500 }}>
+                    Limit: ${method.limit}
+                  </p>
+                </div>
+                <FcSimCardChip style={{ fontSize: 40, alignSelf: "center" }} />
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
       <div className="form-container">
         <h2>Add Payment Method</h2>
@@ -125,32 +167,6 @@ const AdminPayment = () => {
           />
         </label>
         <button onClick={addWithdrawalMethod}>Add Withdrawal Method</button>
-      </div>
-
-      <div className="methods-container">
-        <h2>Payment Methods</h2>
-        <div className="card-container">
-          {paymentMethods.map((method) => (
-            <div className="card" key={method.id}>
-              <h3>{method.type}</h3>
-              <p>Address: {method.address}</p>
-              <p>Limit: ${method.limit}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="methods-container">
-        <h2>Withdrawal Methods</h2>
-        <div className="card-container">
-          {withdrawalMethods.map((method) => (
-            <div className="card" key={method.id}>
-              <h3>{method.type}</h3>
-              <p>Address: {method.address}</p>
-              <p>Limit: ${method.limit}</p>
-            </div>
-          ))}
-        </div>
       </div>
     </div>
   );

@@ -267,15 +267,6 @@ const Main = () => {
             className="tradingview-widget-container__widget"
             style={{ height: "100%", width: "100%" }}
           ></div>
-          <div className="tradingview-widget-copyright">
-            <a
-              href="https://www.tradingview.com/"
-              rel="noopener nofollow"
-              target="_blank"
-            >
-              <span>TradingView</span>
-            </a>
-          </div>
         </div>
 
         <div className="tradingview-widget-container" ref={advancedChartRef}>
@@ -283,15 +274,6 @@ const Main = () => {
             className="tradingview-widget-container__widget"
             style={{ height: "500px", width: "100%" }} // Adjust the height here
           ></div>
-          <div className="tradingview-widget-copyright">
-            <a
-              href="https://www.tradingview.com/"
-              rel="noopener nofollow"
-              target="_blank"
-            >
-              <span>TradingView</span>
-            </a>
-          </div>
         </div>
       </div>
       <div className="mainDiv5">
