@@ -39,16 +39,16 @@ const UserTransaction = () => {
       case "deposit":
         return (
           <FaArrowDown
-            style={{ color: "green", fontSize: 25, marginTop: 10 }}
+            style={{ color: "green", fontSize: 25, marginTop: 20 }}
           />
         );
       case "withdrawal":
         return (
-          <FaArrowUp style={{ color: "red", fontSize: 25, marginTop: 10 }} />
+          <FaArrowUp style={{ color: "red", fontSize: 25, marginTop: 20 }} />
         );
       case "fixed":
         return (
-          <FaLock style={{ color: "white", fontSize: 25, marginTop: 10 }} />
+          <FaLock style={{ color: "white", fontSize: 25, marginTop: 20 }} />
         );
       default:
         return null;
