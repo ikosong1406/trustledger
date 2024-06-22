@@ -57,3 +57,18 @@ td {
 button {
   margin-right: 10px;
 }
+
+.status-dot {
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 5px;
+  align-self: center;
+}
+.status-active {
+  background-color: green;
+}
+.status-blocked {
+  background-color: red;
+}
