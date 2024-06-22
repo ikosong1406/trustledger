@@ -1,9 +1,7 @@
 .mainDiv1 {
   padding: 70px;
   padding-bottom: 50px;
-  background-image: url(../images/simpleTech.jpeg);
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-color: #131a26;
 }
 
 .mainDiv2 {
@@ -41,11 +39,12 @@
   padding-bottom: 20px;
   margin-bottom: 50px;
   border-radius: 20px;
-  background: rgb(17, 33, 45);
+  background: rgb(19, 26, 38);
   background: linear-gradient(
-    97deg,
-    rgba(17, 33, 45, 1) 0%,
-    rgba(5, 38, 89, 1) 100%
+    67deg,
+    rgba(19, 26, 38, 1) 0%,
+    rgba(83, 86, 92, 1) 50%,
+    rgba(19, 26, 38, 1) 100%
   );
 }
 
@@ -85,10 +84,6 @@
   color: var(--indigo);
 }
 
-.mainDiv4 {
-  margin-top: 20px;
-}
-
 .mainDiv5 h2 {
   color: var(--white);
   font-family: "Poppins", sans-serif;
@@ -112,12 +107,16 @@
 
 .mainDiv62 {
   display: flex;
-  width: 70%;
-  justify-content: space-between;
+  width: 20%;
 }
 .mainDiv62 .icon {
   font-size: 30px;
   align-self: center;
+  width: 30%;
+}
+
+.mainDiv63 {
+  width: 20%;
 }
 
 .mainDiv7 {

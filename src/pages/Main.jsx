@@ -92,7 +92,14 @@ const Main = () => {
               width: 350,
             },
             legend: {
-              position: "bottom",
+              position: "right", // Ensure legend is on the right in mobile view
+              horizontalAlign: "left",
+              verticalAlign: "middle",
+              floating: false,
+              fontSize: "12px",
+              labels: {
+                colors: ["#373d3f"],
+              },
             },
           },
         },
@@ -101,11 +108,20 @@ const Main = () => {
         width: 0,
       },
       legend: {
-        position: "bottom",
+        position: "right", // Ensure legend is on the right in desktop view
+        horizontalAlign: "left",
+        verticalAlign: "middle",
+        floating: false,
+        fontSize: "14px",
         labels: {
           colors: ["#373d3f"],
-          useSeriesColors: false,
-          fontSize: "14px",
+        },
+      },
+      plotOptions: {
+        pie: {
+          donut: {
+            size: "70%", // Adjust the size of the donut
+          },
         },
       },
     },
@@ -269,15 +285,15 @@ const Main = () => {
           ></div>
         </div>
 
-        <div className="tradingview-widget-container" ref={advancedChartRef}>
+        {/* <div className="tradingview-widget-container" ref={advancedChartRef}>
           <div
             className="tradingview-widget-container__widget"
             style={{ height: "500px", width: "100%" }} // Adjust the height here
           ></div>
-        </div>
+        </div> */}
       </div>
       <div className="mainDiv5">
-        <h2>Assest Allocation</h2>
+        <h2 style={{ marginBottom: 30, marginTop: 30 }}>Assest Allocation</h2>
         <ReactApexChart
           options={chartData1.options}
           series={chartData1.series}
@@ -288,7 +304,7 @@ const Main = () => {
         <h2>Assests</h2>
         <div className="mainDiv61">
           <div className="mainDiv62">
-            <SiTether className="icon" />
+            <SiTether className="icon" style={{ color: "#26A17B" }} />
             <div className="mainDiv63">
               <h3>USDT</h3>
               <h4 style={{ marginTop: -5, color: "gray" }}>Tether</h4>
@@ -300,7 +316,7 @@ const Main = () => {
         </div>
         <div className="mainDiv61">
           <div className="mainDiv62">
-            <FaBitcoin className="icon" />
+            <FaBitcoin className="icon" style={{ color: "#F7931A" }} />
             <div className="mainDiv63">
               <h3>BTC</h3>
               <h4 style={{ marginTop: -5, color: "gray" }}>Bitcoin</h4>
@@ -312,7 +328,7 @@ const Main = () => {
         </div>
         <div className="mainDiv61">
           <div className="mainDiv62">
-            <FaEthereum className="icon" />
+            <FaEthereum className="icon" style={{ color: " #3C3C3D" }} />
             <div className="mainDiv63">
               <h3>ETH</h3>
               <h4 style={{ marginTop: -5, color: "gray" }}>Ethereum</h4>
@@ -324,7 +340,7 @@ const Main = () => {
         </div>
         <div className="mainDiv61">
           <div className="mainDiv62">
-            <SiRipple className="icon" />
+            <SiRipple className="icon" style={{ color: "#00AAE4" }} />
             <div className="mainDiv63">
               <h3>XRP</h3>
               <h4 style={{ marginTop: -5, color: "gray" }}>Ripple</h4>
@@ -336,7 +352,7 @@ const Main = () => {
         </div>
         <div className="mainDiv61">
           <div className="mainDiv62">
-            <SiStellar className="icon" />
+            <SiStellar className="icon" style={{ color: " #000000" }} />
             <div className="mainDiv63">
               <h3>XLM</h3>
             </div>
@@ -347,7 +363,7 @@ const Main = () => {
         </div>
         <div className="mainDiv61">
           <div className="mainDiv62">
-            <SiSolana className="icon" />
+            <SiSolana className="icon" style={{ color: "#00FFA3" }} />
             <div className="mainDiv63">
               <h3>SOL</h3>
               <h4 style={{ marginTop: -5, color: "gray" }}>Solana</h4>
