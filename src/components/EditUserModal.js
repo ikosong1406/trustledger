@@ -67,7 +67,6 @@ const EditUserModal = ({ user, closeModal }) => {
             onChange={handleChange}
           />
         </label>
-        <h1>{formData.Id}</h1>
         <label>
           Last Name:
           <input

@@ -79,7 +79,16 @@ const AdminTransact = () => {
                 <td>{transaction.amount}</td>
                 <td>{transaction.method}</td>
                 <td>{transaction.address}</td>
-                <td>{transaction.status}</td>
+                <td>
+                  <span
+                    className={`status-dot ${
+                      transaction.status === "confirmed"
+                        ? "status-active"
+                        : "status-pending"
+                    }`}
+                  ></span>
+                  {transaction.status}
+                </td>
                 <td>
                   <FaEdit
                     onClick={() => handleEditClick(transaction)}

@@ -1,12 +1,15 @@
 // src/components/EditTransactionModal.jsx
 import React, { useState } from "react";
+import "../styles/Modal.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { IoClose } from "react-icons/io5";
+import axios from "axios";
+import api from "../Api/BackendApi";
 
 const EditTransactionModal = ({ transaction, closeModal }) => {
   const [formData, setFormData] = useState({
-    type: transaction.type,
-    amount: transaction.amount,
-    method: transaction.method,
-    address: transaction.address,
+    Id: transaction._id,
     status: transaction.status,
   });
 
@@ -18,62 +21,43 @@ const EditTransactionModal = ({ transaction, closeModal }) => {
     }));
   };
 
-  const handleSave = () => {
-    // Save changes to the server
-    console.log("Transaction details updated:", formData);
-    closeModal();
+  const handleSave = async () => {
+    const data = {
+      transactionId: formData.Id,
+      status: formData.status,
+    };
+    try {
+      const response = await axios.post(`${api}/adminEdittransaction`, data);
+      toast.success("Transaction details updated successfully");
+    } catch (error) {
+      toast.error("Error updating Transaction details:", error);
+    }
   };
 
   return (
     <div className="modal">
       <div className="modal-content">
-        <h2>Edit Transaction</h2>
-        <label>
-          Type:
-          <input
-            type="text"
-            name="type"
-            value={formData.type}
-            onChange={handleChange}
+        <ToastContainer />
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <h2 style={{ color: "white" }}>Edit Transaction</h2>
+          <IoClose
+            style={{
+              fontSize: 25,
+              alignSelf: "center",
+              color: "white",
+              cursor: "pointer",
+            }}
+            onClick={closeModal}
           />
-        </label>
-        <label>
-          Amount:
-          <input
-            type="number"
-            name="amount"
-            value={formData.amount}
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          Method:
-          <input
-            type="text"
-            name="method"
-            value={formData.method}
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          Address:
-          <input
-            type="text"
-            name="address"
-            value={formData.address}
-            onChange={handleChange}
-          />
-        </label>
+        </div>
         <label>
           Status:
           <select name="status" value={formData.status} onChange={handleChange}>
-            <option value="Pending">Pending</option>
-            <option value="Approved">Approved</option>
-            <option value="Declined">Declined</option>
+            <option value="pending">Pending</option>
+            <option value="confirmed">Approved</option>
           </select>
         </label>
         <button onClick={handleSave}>Save</button>
-        <button onClick={closeModal}>Cancel</button>
       </div>
     </div>
   );
