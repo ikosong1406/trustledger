@@ -52,7 +52,11 @@ const Login = () => {
         navigate("/");
       }
     } catch (error) {
-      toast.error("Login error");
+      if (error.response) {
+        toast.error(error.response.data.data);
+      } else {
+        toast.error("Login error");
+      }
       setLoading(false); // Stop loading after error
     }
   };
