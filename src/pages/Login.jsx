@@ -12,13 +12,16 @@ const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    setLoading(true); // Start loading
 
     const emailPattern = /^[a-zA-Z0-9._%+-]+@(gmail\.com|yahoo\.com)$/;
     if (!emailPattern.test(email)) {
       toast.error("Please enter a valid email address");
+      setLoading(false); // Stop loading if email is invalid
       return;
     }
 
@@ -29,9 +32,18 @@ const Login = () => {
 
     try {
       const response = await axios.post(`${BackendApi}/login`, userData);
-      const { token, role, message } = response.data;
+      const { token, role, status, message } = response.data;
+
+      if (status === "blocked") {
+        toast.error("Account has been deactivated");
+        setLoading(false); // Stop loading if account is blocked
+        return;
+      }
+
       storeUserToken(token);
       toast.success(message);
+      setLoading(false); // Stop loading after success
+
       if (role === "admin") {
         navigate("/admin");
       } else if (role === "user") {
@@ -41,6 +53,7 @@ const Login = () => {
       }
     } catch (error) {
       toast.error("Login error");
+      setLoading(false); // Stop loading after error
     }
   };
 
@@ -68,8 +81,12 @@ const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
           <h4>Forgot Password ?</h4>
-          <button className="loginBtn" onClick={handleLogin}>
-            <h3>LOGIN</h3>
+          <button className="loginBtn" onClick={handleLogin} disabled={loading}>
+            {loading ? (
+              <div className="loadingAnimation"></div>
+            ) : (
+              <h3>LOGIN</h3>
+            )}
           </button>
         </div>
         <div className="loginDiv23">
