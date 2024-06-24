@@ -7,12 +7,18 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import BackendApi from "../Api/BackendApi";
 import "../styles/Login.css";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handlePasswordToggle = () => {
+    setShowPassword(!showPassword);
+  };
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -71,19 +77,28 @@ const Login = () => {
         </div>
         <div className="loginDiv22">
           <h3>Email</h3>
-          <input
-            type="text"
-            placeholder=""
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
+          <div className="password-input-container">
+            <input
+              type="text"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
           <h3>Password</h3>
-          <input
-            type="password"
-            placeholder=""
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+          <div className="password-input-container">
+            <input
+              type={showPassword ? "text" : "password"}
+              name="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <span
+              onClick={handlePasswordToggle}
+              className="password-toggle-icon"
+            >
+              {showPassword ? <FaEye /> : <FaEyeSlash />}
+            </span>
+          </div>
           <h4>Forgot Password ?</h4>
           <button className="loginBtn" onClick={handleLogin} disabled={loading}>
             {loading ? (
