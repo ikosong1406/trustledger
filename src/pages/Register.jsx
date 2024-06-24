@@ -5,6 +5,7 @@ import BackendApi from "../Api/BackendApi";
 import "../styles/Register.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Register = () => {
   const [firstname, setFirstname] = useState("");
@@ -13,11 +14,20 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [isChecked, setIsChecked] = useState(false); // Checkbox state
-  const [loading, setLoading] = useState(false); // Loading state
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
+  };
+
+  const handlePasswordToggle = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const handleConfirmPasswordToggle = () => {
+    setShowConfirmPassword(!showConfirmPassword);
   };
 
   const handleSubmit = async (e) => {
@@ -82,25 +92,31 @@ const Register = () => {
         </div>
         <div className="registerDiv22">
           <h3>Firstname</h3>
-          <input
-            type="text"
-            name="firstname"
-            value={firstname}
-            onChange={(e) => setFirstname(e.target.value)}
-          />
+          <div className="password-input-container">
+            <input
+              type="text"
+              name="firstname"
+              value={firstname}
+              onChange={(e) => setFirstname(e.target.value)}
+            />
+          </div>
           <h3>Lastname</h3>
-          <input
-            type="text"
-            name="lastname"
-            value={lastname}
-            onChange={(e) => setLastname(e.target.value)}
-          />
+          <div className="password-input-container">
+            <input
+              type="text"
+              name="lastname"
+              value={lastname}
+              onChange={(e) => setLastname(e.target.value)}
+            />
+          </div>
           <h3>Email</h3>
-          <input
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
+          <div className="password-input-container">
+            <input
+              type="text"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
           <h3>Password</h3>
           <div className="password-input-container">
             <input
@@ -109,15 +125,27 @@ const Register = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
+            <span
+              onClick={handlePasswordToggle}
+              className="password-toggle-icon"
+            >
+              {showPassword ? <FaEye /> : <FaEyeSlash />}
+            </span>
           </div>
           <h3>Confirm Password</h3>
           <div className="password-input-container">
             <input
-              type={showPassword ? "text" : "password"}
+              type={showConfirmPassword ? "text" : "password"}
               name="confirmPassword"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
+            <span
+              onClick={handleConfirmPasswordToggle}
+              className="password-toggle-icon"
+            >
+              {showConfirmPassword ? <FaEye /> : <FaEyeSlash />}
+            </span>
           </div>
           <div
             style={{

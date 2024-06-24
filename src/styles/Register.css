@@ -46,12 +46,18 @@
   margin-top: 20px;
 }
 
+.password-input-container {
+  background-color: var(--white);
+  width: 60%;
+  border-radius: 10px;
+}
+
 .registerDiv22 input {
   padding: 12px;
-  width: 60%;
+  width: 90%;
   border-radius: 5px;
-  background-color: var(--white);
   color: var(--indigo);
+  background-color: var(--white);
 }
 
 .registerDiv22 h4 {
