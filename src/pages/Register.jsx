@@ -14,6 +14,7 @@ const Register = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [isChecked, setIsChecked] = useState(false); // Checkbox state
+  const [loading, setLoading] = useState(false); // Loading state
 
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
@@ -50,16 +51,24 @@ const Register = () => {
       role: "user",
     };
 
+    setLoading(true); // Start loading
+
     try {
       const response = await axios.post(`${BackendApi}/register`, userData);
-      toast.success("Now Login with your registered details");
+      toast.success(response.data.data);
       setFirstname("");
       setLastname("");
       setEmail("");
       setPassword("");
       setConfirmPassword("");
     } catch (error) {
-      toast.error("Registration error");
+      if (error.response) {
+        toast.error(error.response.data.data);
+      } else {
+        toast.error("Registration error");
+      }
+    } finally {
+      setLoading(false); // Stop loading
     }
   };
 
@@ -134,8 +143,17 @@ const Register = () => {
               </a>
             </h3>
           </div>
-          <button type="submit" className="registerBtn" onClick={handleSubmit}>
-            <h3>REGISTER</h3>
+          <button
+            type="submit"
+            className="registerBtn"
+            onClick={handleSubmit}
+            disabled={loading}
+          >
+            {loading ? (
+              <div className="loadingAnimation"></div>
+            ) : (
+              <h3>REGISTER</h3>
+            )}
           </button>
         </div>
         <div className="registerDiv23">
