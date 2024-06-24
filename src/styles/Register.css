@@ -50,11 +50,18 @@
   background-color: var(--white);
   width: 60%;
   border-radius: 10px;
+  display: flex;
+}
+
+.password-toggle-icon {
+  align-self: center;
+  font-size: 15px;
+  margin-right: 5px;
 }
 
 .registerDiv22 input {
   padding: 12px;
-  width: 90%;
+  width: 88%;
   border-radius: 5px;
   color: var(--indigo);
   background-color: var(--white);
@@ -160,8 +167,13 @@
 
   .registerDiv22 input {
     padding: 8px;
-    width: 100%;
     color: var(--indigo);
+  }
+
+  .password-input-container {
+    display: flex;
+    width: 100%;
+    border-radius: 10px;
   }
 
   .registerDiv22 h4 {
