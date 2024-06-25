@@ -71,6 +71,7 @@ const Register = () => {
       setEmail("");
       setPassword("");
       setConfirmPassword("");
+      setIsChecked(false);
     } catch (error) {
       if (error.response) {
         toast.error(error.response.data.data);
