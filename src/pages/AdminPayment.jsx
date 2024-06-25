@@ -4,9 +4,12 @@ import Colors from "../components/Colors";
 import { FcSimCardChip } from "react-icons/fc";
 import axios from "axios";
 import api from "../Api/BackendApi";
+import { FaEdit } from "react-icons/fa";
+import EditMethodModal from "../components/EditMethodModal";
 
 const AdminPayment = () => {
   const [method, setMethod] = useState([]);
+  const [selected, setSelected] = useState(null);
 
   useEffect(() => {
     const fetchMethod = async () => {
@@ -21,39 +24,61 @@ const AdminPayment = () => {
     fetchMethod();
   }, []);
 
-  const [newPaymentMethod, setNewPaymentMethod] = useState({
-    type: "",
-    address: "",
-    limit: "",
-  });
+  const handleEditClick = (method) => {
+    setSelected(method);
+  };
+
+  const closeModal = () => {
+    setSelected(null);
+  };
 
   return (
     <div className="adHomeMain" style={{ minHeight: 500 }}>
       <div className="paymentManagementHeader">
-        <h1 style={{ color: Colors.white, marginLeft: 20 }}>
-          Payment and Withdrawal Management
-        </h1>
+        <h1 style={{ color: Colors.white, marginLeft: 20 }}>Deposit Methods</h1>
       </div>
-      <div style={{ marginLeft: 30 }}>
-        <div className="methods-container">
-          <h2 style={{ color: "gray" }}>Deposit Methods</h2>
-          <div className="card-container">
-            {method.map((data) => (
-              <div className="adHomeDiv21" key={data._id}>
-                <div className="adHome211">
-                  <h3>{data.name}</h3>
-                  <p style={{ color: "gray", fontWeight: 500 }}>
-                    Address: {data.walletAddress}
-                  </p>
-                  <p style={{ color: "gray", fontWeight: 500 }}>
-                    Network: {data.network}
-                  </p>
-                </div>
-                <FcSimCardChip style={{ fontSize: 40, alignSelf: "center" }} />
+      <div className="methods-container">
+        <div className="card-container">
+          {method.map((data) => (
+            <div
+              style={{
+                backgroundColor: "#253745",
+                width: "50%",
+                padding: "20px",
+                display: "flex",
+                borderRadius: 10,
+                justifyContent: "space-between",
+                border: "2px solid goldenrod",
+              }}
+              key={data._id}
+            >
+              <div className="adHome211">
+                <h3 style={{ fontSize: 30 }}>{data.name}</h3>
+                <p style={{ color: "gray", fontWeight: 500, fontSize: 18 }}>
+                  Address: {data.walletAddress}
+                </p>
+                <p style={{ color: "gray", fontWeight: 500, fontSize: 18 }}>
+                  Network: {data.network}
+                </p>
               </div>
-            ))}
-          </div>
+              <div style={{ display: "flex" }}>
+                <FcSimCardChip style={{ fontSize: 60, alignSelf: "center" }} />
+                <FaEdit
+                  onClick={() => handleEditClick(data)}
+                  style={{
+                    cursor: "pointer",
+                    fontSize: 18,
+                    color: Colors.white,
+                  }}
+                />
+              </div>
+            </div>
+          ))}
         </div>
+
+        {selected && (
+          <EditMethodModal method={selected} closeModal={closeModal} />
+        )}
       </div>
     </div>
   );
