@@ -1,38 +1,76 @@
 import React, { useEffect, useState } from "react";
 import { FaArrowDown, FaArrowUp, FaLock } from "react-icons/fa";
+import axios from "axios";
+import api from "../Api/BackendApi";
+import { getUserToken } from "../Api/storage";
 // import "./TransactionList.css";
 
 const UserTransaction = () => {
-  const [transactions, setTransactions] = useState([
-    {
-      id: 1,
-      type: "deposit",
-      status: "confirmed",
-      amount: 100,
-      date: "2024-06-01",
-    },
-    {
-      id: 2,
-      type: "withdrawal",
-      status: "pending",
-      amount: 50,
-      date: "2024-06-02",
-    },
-    {
-      id: 3,
-      type: "fixed",
-      status: "confirmed",
-      amount: 200,
-      date: "2024-06-03",
-    },
-    {
-      id: 4,
-      type: "deposit",
-      status: "pending",
-      amount: 150,
-      date: "2024-06-04",
-    },
-  ]);
+  const [userData, setUserData] = useState(null);
+  const [refreshing, setRefreshing] = useState(false);
+  const [token, setToken] = useState(null);
+  const [transactions, setTransactions] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const userToken = await getUserToken();
+        setToken(userToken);
+        // console.log(token);
+      } catch (error) {
+        console.error("Error retrieving token:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const getData = async () => {
+    const data = {
+      token,
+    };
+    try {
+      const response = await axios.post(`${api}/userdata`, data);
+      setUserData(response.data.data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  useEffect(() => {
+    if (token) {
+      const interval = setInterval(() => {
+        setRefreshing(true);
+        getData();
+      }, 1000);
+
+      return () => clearInterval(interval);
+    }
+  }, [token]);
+
+  useEffect(() => {
+    const fetchTransactions = async () => {
+      if (userData && userData._id) {
+        const data = {
+          userId: userData._id,
+        };
+
+        try {
+          const response = await axios.get(`${api}/allTransaction`, {
+            params: data,
+          });
+          setTransactions(response.data);
+        } catch (error) {
+          console.error("Error fetching transactions:", error);
+        } finally {
+          setLoading(false);
+        }
+      }
+    };
+
+    fetchTransactions();
+  }, [userData]);
 
   const getIcon = (type) => {
     switch (type) {
@@ -54,49 +92,62 @@ const UserTransaction = () => {
         return null;
     }
   };
+
   return (
     <div className="transactDiv1" style={{ minHeight: 670 }}>
       <div className="transactDiv2">
         <h2>TRANSACTIONS</h2>
       </div>
-      {transactions.map((transaction) => (
-        <div
-          key={transaction.id}
-          style={{
-            borderBottom: "1px solid white",
-            marginTop: 20,
-            display: "flex",
-            justifyContent: "space-between",
-            paddingBottom: 10,
-          }}
-        >
-          <div style={{ display: "flex" }}>
-            <div className="transaction-icon">{getIcon(transaction.type)}</div>
-            <div style={{ marginLeft: 20 }}>
-              <h3>
-                {transaction.type.charAt(0).toUpperCase() +
-                  transaction.type.slice(1)}
-              </h3>
+      {loading ? (
+        <p style={{ color: "white", textAlign: "center", fontSize: 16 }}>
+          Loading...
+        </p>
+      ) : transactions.length === 0 ? (
+        <p style={{ color: "white", textAlign: "center", fontSize: 16 }}>
+          No transactions
+        </p>
+      ) : (
+        transactions.map((transaction) => (
+          <div
+            key={transaction._id}
+            style={{
+              borderBottom: "1px solid white",
+              marginTop: 20,
+              display: "flex",
+              justifyContent: "space-between",
+              paddingBottom: 10,
+            }}
+          >
+            <div style={{ display: "flex" }}>
+              <div className="transaction-icon">
+                {getIcon(transaction.type)}
+              </div>
+              <div style={{ marginLeft: 20 }}>
+                <h3>
+                  {transaction.type.charAt(0).toUpperCase() +
+                    transaction.type.slice(1)}
+                </h3>
 
-              <p style={{ color: "gray" }}>
-                <span
-                  className={`status-dot ${
-                    transaction.status === "confirmed"
-                      ? "status-active"
-                      : "status-pending"
-                  }`}
-                ></span>
-                {transaction.status}
-              </p>
+                <p style={{ color: "gray" }}>
+                  <span
+                    className={`status-dot ${
+                      transaction.status === "confirmed"
+                        ? "status-active"
+                        : "status-pending"
+                    }`}
+                  ></span>
+                  {transaction.status}
+                </p>
+              </div>
+            </div>
+
+            <div>
+              <h3>${transaction.amount}</h3>
+              <p style={{ color: "gray" }}>{transaction.date}</p>
             </div>
           </div>
-
-          <div>
-            <h3>${transaction.amount}</h3>
-            <p style={{ color: "gray" }}>{transaction.date}</p>
-          </div>
-        </div>
-      ))}
+        ))
+      )}
     </div>
   );
 };

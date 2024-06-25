@@ -7,27 +7,6 @@ import Colors from "../components/Colors";
 
 const AdminTransact = () => {
   const [transactions, setTransactions] = useState([]);
-
-  // useEffect(() => {
-  //   // Fetch transactions from the server (dummy data for now)
-  //   setTransactions([
-  //     {
-  //       id: 1,
-  //       user: "John Doe",
-  //       amount: 100,
-  //       type: "Deposit",
-  //       status: "Completed",
-  //     },
-  //     {
-  //       id: 2,
-  //       user: "Jane Smith",
-  //       amount: 50,
-  //       type: "Withdrawal",
-  //       status: "Pending",
-  //     },
-  //   ]);
-  // }, []);
-
   const [selectedTransaction, setSelectedTransaction] = useState(null);
 
   useEffect(() => {
@@ -74,7 +53,7 @@ const AdminTransact = () => {
           <tbody>
             {transactions.map((transaction) => (
               <tr key={transaction.id}>
-                <td>{transaction._id.slice(-5)}</td>
+                <td>{transaction.userId.slice(-5)}</td>
                 <td>{transaction.type}</td>
                 <td>{transaction.amount}</td>
                 <td>{transaction.method}</td>
