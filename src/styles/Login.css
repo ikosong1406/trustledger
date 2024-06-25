@@ -106,7 +106,7 @@
 .loginDiv24 {
   display: flex;
   justify-content: center;
-  width: 90%;
+  width: 100%;
 }
 
 .loginDiv24 h3 {
@@ -193,7 +193,7 @@
   .loginDiv23 {
     margin-top: 20px;
     margin-left: 10%;
-    width: 70%;
+    width: 80%;
   }
 
   .loginDiv24 h3 {
