@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { FaEdit } from "react-icons/fa";
+import { FaEdit, FaComments } from "react-icons/fa"; // Import the chat icon
 import EditUserModal from "../components/EditUserModal";
 import "../styles/AdminUser.css";
 import api from "../Api/BackendApi";
 import { ThreeCircles } from "react-loader-spinner";
 import Colors from "../components/Colors";
+import { useNavigate } from "react-router-dom";
 
 const AdminUsers = () => {
   const [users, setUsers] = useState([]);
   const [selectedUser, setSelectedUser] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const navigation = useNavigate();
 
   useEffect(() => {
     setIsLoading(true);
@@ -34,6 +36,10 @@ const AdminUsers = () => {
 
   const handleEditClick = (user) => {
     setSelectedUser(user);
+  };
+
+  const handleChatClick = (email) => {
+    navigation("/admin/adminMessage", { state: { email } });
   };
 
   const closeModal = () => {
@@ -67,6 +73,7 @@ const AdminUsers = () => {
                   <th>Balance</th>
                   <th>Status</th>
                   <th>Edit</th>
+                  <th>Chat</th> {/* Add Chat column */}
                 </tr>
               </thead>
               <tbody>
@@ -91,6 +98,16 @@ const AdminUsers = () => {
                     <td>
                       <FaEdit
                         onClick={() => handleEditClick(user)}
+                        style={{
+                          cursor: "pointer",
+                          fontSize: 18,
+                          color: Colors.white,
+                        }}
+                      />
+                    </td>
+                    <td>
+                      <FaComments
+                        onClick={() => handleChatClick(user.email)}
                         style={{
                           cursor: "pointer",
                           fontSize: 18,

@@ -3,10 +3,12 @@ import axios from "axios";
 import "../styles/AdminMessage.css";
 import { ThreeCircles } from "react-loader-spinner";
 import Colors from "../components/Colors";
+import { useLocation } from "react-router-dom"; // Import useLocation for receiving state
 
 const AdminMessage = () => {
+  const location = useLocation();
   const [emailDetails, setEmailDetails] = useState({
-    to: "",
+    to: location.state?.email || "", // Set the initial value from the state if available
     subject: "",
     body: "",
   });
