@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { FaArrowDown, FaArrowUp, FaLock } from "react-icons/fa";
 import axios from "axios";
-import api from "../Api/BackendApi";
+import { FaArrowDown, FaArrowUp, FaLock } from "react-icons/fa";
 import { getUserToken } from "../Api/storage";
+import api from "../Api/BackendApi";
 import { ThreeCircles } from "react-loader-spinner";
 import Colors from "../components/Colors";
 
@@ -26,7 +26,6 @@ const UserTransaction = () => {
       try {
         const userToken = await getUserToken();
         setToken(userToken);
-        // console.log(token);
       } catch (error) {
         console.error("Error retrieving token:", error);
       }
@@ -36,14 +35,15 @@ const UserTransaction = () => {
   }, []);
 
   const getData = async () => {
-    const data = {
-      token,
-    };
+    const data = { token };
     try {
       const response = await axios.post(`${api}/userdata`, data);
       setUserData(response.data.data);
+      setTransactions(response.data.data.transactions); // Assuming transactions are nested in response.data.data.transactions
+      setLoading(false); // Set loading to false after data is fetched
     } catch (error) {
       console.error("Error fetching data:", error);
+      setLoading(false); // Set loading to false on error
     }
   };
 
@@ -57,29 +57,6 @@ const UserTransaction = () => {
       return () => clearInterval(interval);
     }
   }, [token]);
-
-  useEffect(() => {
-    const fetchTransactions = async () => {
-      if (userData && userData._id) {
-        const data = {
-          userId: userData._id,
-        };
-
-        try {
-          const response = await axios.get(`${api}/allTransaction`, {
-            params: data,
-          });
-          setTransactions(response.data);
-        } catch (error) {
-          console.error("Error fetching transactions:", error);
-        } finally {
-          setLoading(false);
-        }
-      }
-    };
-
-    fetchTransactions();
-  }, [userData]);
 
   const getIcon = (type) => {
     switch (type) {
@@ -149,22 +126,24 @@ const UserTransaction = () => {
                         transaction.type.slice(1)}
                     </h3>
 
-                    <p style={{ color: "gray" }}>
-                      <span
-                        className={`status-dot ${
-                          transaction.status === "confirmed"
-                            ? "status-active"
-                            : "status-pending"
-                        }`}
-                      ></span>
-                      {transaction.status}
-                    </p>
+                    <h3>${transaction.amount}</h3>
+                    <h3>${transaction.profit}</h3>
                   </div>
                 </div>
 
                 <div>
-                  <h3>${transaction.amount}</h3>
+                  <p style={{ color: "gray" }}>
+                    <span
+                      className={`status-dot ${
+                        transaction.status === "confirmed"
+                          ? "status-active"
+                          : "status-pending"
+                      }`}
+                    ></span>
+                    {transaction.status}
+                  </p>
                   <p style={{ color: "gray" }}>{transaction.date}</p>
+                  <p style={{ color: "gray" }}>{transaction.dueDate}</p>
                 </div>
               </div>
             ))
