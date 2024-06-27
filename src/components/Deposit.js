@@ -49,7 +49,7 @@ const Deposit = () => {
     try {
       // console.log(token);
       const response = await axios.post(`${BackendApi}/userdata`, data);
-      setUserData(response.data);
+      setUserData(response.data.data);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -89,11 +89,15 @@ const Deposit = () => {
     // setActiveButton(amount);
   };
 
+  // console.log(userData);
+
   const handleConfirmClick = async () => {
+    const profit = amount * 2.5;
     const data = {
       userId: userData._id,
       amount,
       type: "deposit",
+      profit,
     };
 
     try {

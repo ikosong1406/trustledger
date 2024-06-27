@@ -13,7 +13,7 @@ import Colors from "../components/Colors";
 const Withdrawal = () => {
   const [amount, setAmount] = useState("");
   const [walletAddress, setWalletAddress] = useState("");
-  const [selectedOption, setSelectedOption] = useState("Tether");
+  const [selectedOption, setSelectedOption] = useState("tether");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [userData, setUserData] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
@@ -102,7 +102,7 @@ const Withdrawal = () => {
 
     try {
       const response = await axios.post(`${BackendApi}/transaction`, data);
-      toast.success("Your withdrawal will be confirmed shortly");
+      toast.success("Your withdrawal will be confirmed ");
     } catch (error) {
       toast.error("Withdrawal error", error);
     }
@@ -124,9 +124,9 @@ const Withdrawal = () => {
         <div className="depositMain">
           <ToastContainer />
           <div className="withdrawDiv4">
-            {selectedOption === "Tether" && <SiTether className="ii" />}
-            {selectedOption === "Bitcoin" && <SiBitcoin className="ii" />}
-            {selectedOption === "Paypal" && <FaPaypal className="ii" />}
+            {selectedOption === "tether" && <SiTether className="ii" />}
+            {selectedOption === "bitcoin" && <SiBitcoin className="ii" />}
+            {selectedOption === "paypal" && <FaPaypal className="ii" />}
             <h3>{selectedOption}</h3>
             <FaCaretDown
               className="dropdownIcon"
@@ -137,21 +137,21 @@ const Withdrawal = () => {
             <div className="dropdownMenu">
               <div
                 className="dropdownItem"
-                onClick={() => handleOptionChange("Tether")}
+                onClick={() => handleOptionChange("tether")}
               >
                 <SiTether className="ii" />
                 <span>Tether (USDT)</span>
               </div>
               <div
                 className="dropdownItem"
-                onClick={() => handleOptionChange("Bitcoin")}
+                onClick={() => handleOptionChange("bitcoin")}
               >
                 <SiBitcoin className="ii" />
                 <span>Bitcoin (BTC)</span>
               </div>
               <div
                 className="dropdownItem"
-                onClick={() => handleOptionChange("Paypal")}
+                onClick={() => handleOptionChange("paypal")}
               >
                 <FaPaypal className="ii" />
                 <span>PayPal</span>
