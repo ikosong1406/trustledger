@@ -75,13 +75,17 @@ const Register = () => {
 
     try {
       const response = await axios.post(`${BackendApi}/register`, userData);
-      toast.success(response.data.data);
-      setFirstname("");
-      setLastname("");
-      setEmail("");
-      setPassword("");
-      setConfirmPassword("");
-      setIsChecked(false);
+      if (response.data.status === "ok") {
+        toast.success(response.data.data);
+        setFirstname("");
+        setLastname("");
+        setEmail("");
+        setPassword("");
+        setConfirmPassword("");
+        setIsChecked(false);
+      } else {
+        toast.error(response.data.data);
+      }
     } catch (error) {
       if (error.response) {
         toast.error(error.response.data.data);

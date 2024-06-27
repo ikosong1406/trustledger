@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../styles/Header.css";
-import { IoLogOut } from "react-icons/io5";
+import { FaPowerOff } from "react-icons/fa";
 import { IoNotifications } from "react-icons/io5";
 import { FaSearch } from "react-icons/fa";
 import Modal from "react-modal";
@@ -85,17 +85,7 @@ const Header = () => {
   };
 
   const handleLogout = () => {
-    toast.info("Are you sure you want to logout?", {
-      position: "top-center",
-      autoClose: false,
-      closeOnClick: true,
-      draggable: true,
-      onClose: () => {
-        // Handle logout logic
-        console.log("User logged out");
-        navigate("/");
-      },
-    });
+    navigate("/");
   };
 
   return (
@@ -128,6 +118,13 @@ const Header = () => {
             <span className="notificationIndicator"></span>
           )}
         </div>
+      </div>
+
+      <div style={{ alignSelf: "center", marginRight: 20 }}>
+        <FaPowerOff
+          style={{ fontSize: 25, color: Colors.white, alignSelf: "center" }}
+          onClick={handleLogout}
+        />
       </div>
 
       <div className="headerDiv3">
