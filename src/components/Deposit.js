@@ -9,6 +9,8 @@ import BackendApi from "../Api/BackendApi";
 import { getUserToken } from "../Api/storage";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { ThreeCircles } from "react-loader-spinner";
+import Colors from "../components/Colors";
 
 const Deposit = () => {
   const [amount, setAmount] = useState(0);
@@ -17,6 +19,14 @@ const Deposit = () => {
   const [userData, setUserData] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
   const [token, setToken] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -97,93 +107,109 @@ const Deposit = () => {
   };
 
   return (
-    <div className="depositMain">
-      <ToastContainer />
-      <div className="depositDiv1">
-        <div className="depositDiv11">
-          <button
-            onClick={() => handleDepositClick(500)}
-            className={`button ${amount === 500 ? "active" : ""}`}
-          >
-            $500
-          </button>
-          <button
-            onClick={() => handleDepositClick(1000)}
-            className={`button ${amount === 1000 ? "active" : ""}`}
-          >
-            $1000
-          </button>
-          <button
-            onClick={() => handleDepositClick(2000)}
-            className={`button ${amount === 2000 ? "active" : ""}`}
-          >
-            $2000
-          </button>
+    <div>
+      {isLoading ? (
+        <div className="spinner-container">
+          <ThreeCircles
+            height="80"
+            width="80"
+            color={Colors.white}
+            ariaLabel="bars-loading"
+            visible={true}
+          />
         </div>
-        <div className="depositDiv11">
-          <button
-            onClick={() => handleDepositClick(5000)}
-            className={`button ${amount === 5000 ? "active" : ""}`}
-          >
-            $5000
-          </button>
-          <button
-            onClick={() => handleDepositClick(10000)}
-            className={`button ${amount === 10000 ? "active" : ""}`}
-          >
-            $10000
-          </button>
-          <button
-            onClick={() => handleDepositClick(20000)}
-            className={`button ${amount === 20000 ? "active" : ""}`}
-          >
-            $20000
-          </button>
-        </div>
-      </div>
-      <div className="depositDiv2">
-        <input
-          type="number"
-          value={amount}
-          onChange={handleAmountChange}
-          placeholder="Min deposit $500"
-        />
-      </div>
-      <div className="depositDiv3">
-        <FiAlertOctagon className="i" />
-        <h3>You will receive {amount * 2.5}</h3>
-      </div>
-      <div>
-        {method.map((data) => (
-          <div key={data.walletAddress}>
-            <div className="depositDiv4">
-              <SiTether className="ii" />
-              <h3>{data.name}</h3>
+      ) : (
+        <div className="depositMain">
+          <ToastContainer />
+          <div className="depositDiv1">
+            <div className="depositDiv11">
+              <button
+                onClick={() => handleDepositClick(500)}
+                className={`button ${amount === 500 ? "active" : ""}`}
+              >
+                $500
+              </button>
+              <button
+                onClick={() => handleDepositClick(1000)}
+                className={`button ${amount === 1000 ? "active" : ""}`}
+              >
+                $1000
+              </button>
+              <button
+                onClick={() => handleDepositClick(2000)}
+                className={`button ${amount === 2000 ? "active" : ""}`}
+              >
+                $2000
+              </button>
             </div>
-            <div className="depositDiv5">
-              <h4>Network: {data.network}</h4>
-            </div>
-            <div className="depositDiv6">
-              <QRCode value={data.walletAddress} className="qr" />
-            </div>
-            <div className="depositDiv7">
-              <h3>{data.walletAddress}</h3>
-            </div>
-            <div className="depositDiv8">
-              <h3>Copy Address</h3>
-              <BiClipboard
-                onClick={() =>
-                  navigator.clipboard.writeText(data.walletAddress)
-                }
-                className="clip"
-              />
+            <div className="depositDiv11">
+              <button
+                onClick={() => handleDepositClick(5000)}
+                className={`button ${amount === 5000 ? "active" : ""}`}
+              >
+                $5000
+              </button>
+              <button
+                onClick={() => handleDepositClick(10000)}
+                className={`button ${amount === 10000 ? "active" : ""}`}
+              >
+                $10000
+              </button>
+              <button
+                onClick={() => handleDepositClick(20000)}
+                className={`button ${amount === 20000 ? "active" : ""}`}
+              >
+                $20000
+              </button>
             </div>
           </div>
-        ))}
-      </div>
-      <div className="depositDiv9">
-        <button onClick={handleConfirmClick}>I have made the transfer</button>
-      </div>
+          <div className="depositDiv2">
+            <input
+              type="number"
+              value={amount}
+              onChange={handleAmountChange}
+              placeholder="Min deposit $500"
+            />
+          </div>
+          <div className="depositDiv3">
+            <FiAlertOctagon className="i" />
+            <h3>You will receive {amount * 2.5}</h3>
+          </div>
+          <div>
+            {method.map((data) => (
+              <div key={data.walletAddress}>
+                <div className="depositDiv4">
+                  <SiTether className="ii" />
+                  <h3>{data.name}</h3>
+                </div>
+                <div className="depositDiv5">
+                  <h4>Network: {data.network}</h4>
+                </div>
+                <div className="depositDiv6">
+                  <QRCode value={data.walletAddress} className="qr" />
+                </div>
+                <div className="depositDiv7">
+                  <h3>{data.walletAddress}</h3>
+                </div>
+                <div className="depositDiv8">
+                  <h3>Copy Address</h3>
+                  <BiClipboard
+                    onClick={() =>
+                      navigator.clipboard.writeText(data.walletAddress)
+                    }
+                    className="clip"
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="depositDiv9">
+            <button onClick={handleConfirmClick}>
+              I have made the transfer
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

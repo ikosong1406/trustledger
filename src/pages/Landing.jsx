@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../styles/Landing.css";
 import { Link } from "react-router-dom";
-import { Bars } from "react-loader-spinner";
+import { ThreeCircles } from "react-loader-spinner";
 import Colors from "../components/Colors";
 import { motion } from "framer-motion";
 import img from "../images/img.png";
@@ -42,7 +42,7 @@ const Landing = () => {
     <div>
       {isLoading ? (
         <div className="spinner-container">
-          <Bars
+          <ThreeCircles
             height="80"
             width="80"
             color={Colors.violet}
@@ -279,7 +279,7 @@ const Landing = () => {
           </motion.div>
         </div>
       )}
-      <LandingButton />
+      <LandingButton onClick={handleLiveChatClick} />
     </div>
   );
 };

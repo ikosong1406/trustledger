@@ -10,6 +10,7 @@ import { GiAirZigzag } from "react-icons/gi";
 import axios from "axios";
 import BackendApi from "../Api/BackendApi";
 import { getUserToken } from "../Api/storage";
+import { ThreeCircles } from "react-loader-spinner";
 import Colors from "../components/Colors";
 import LiveChatButton from "../components/LiveChatButton"; // Import the FAB component
 
@@ -26,6 +27,14 @@ const Main = () => {
   });
   const [refreshing, setRefreshing] = useState(false);
   const [token, setToken] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+  }, []);
 
   const fetchData = async () => {
     try {
@@ -252,129 +261,138 @@ const Main = () => {
   }, []);
 
   return (
-    <div className="mainDiv1">
-      <div className="mainDiv2">
-        <BiMenuAltLeft className="icon" />
-        <h2>WALLET</h2>
-        <h3>
-          {fn}
-          {ln}
-        </h3>
-      </div>
-      <div className="mainDiv7">
-        <h1>
-          Hi,{userData.firstname} {userData.lastname}
-        </h1>
-      </div>
-      <div className="mainDiv3">
-        <TfiWallet className="walicon" />
-        <div className="mainDiv31">
-          <h3>Total balance</h3>
-          <h1> $ {userData.balance}</h1>
-          <h3 style={{ color: "#008000", marginTop: -7 }}>+${profit}</h3>
-          <div className="circle">
-            <GiAirZigzag className="zi" />
+    <div>
+      {isLoading ? (
+        <div className="spinner-container">
+          <ThreeCircles
+            height="80"
+            width="80"
+            color={Colors.violet}
+            ariaLabel="bars-loading"
+            visible={true}
+          />
+        </div>
+      ) : (
+        <div className="mainDiv1">
+          <div className="mainDiv2">
+            <BiMenuAltLeft className="icon" />
+            <h2>WALLET</h2>
+            <h3>
+              {fn}
+              {ln}
+            </h3>
           </div>
-        </div>
-      </div>
-      <div className="mainDiv4">
-        <div className="tradingview-widget-container" ref={containerRef}>
-          <div
-            className="tradingview-widget-container__widget"
-            style={{ height: "100%", width: "100%" }}
-          ></div>
-        </div>
-
-        {/* <div className="tradingview-widget-container" ref={advancedChartRef}>
-          <div
-            className="tradingview-widget-container__widget"
-            style={{ height: "500px", width: "100%" }} // Adjust the height here
-          ></div>
-        </div> */}
-      </div>
-      <div className="mainDiv5">
-        <h2 style={{ marginBottom: 30, marginTop: 30 }}>Assest Allocation</h2>
-        <ReactApexChart
-          options={chartData1.options}
-          series={chartData1.series}
-          type="donut"
-        />
-      </div>
-      <div className="mainDiv6">
-        <h2>Assests</h2>
-        <div className="mainDiv61">
-          <div className="mainDiv62">
-            <SiTether className="icon" style={{ color: "#26A17B" }} />
-            <div className="mainDiv63">
-              <h3>USDT</h3>
-              <h4 style={{ marginTop: -5, color: "gray" }}>Tether</h4>
+          <div className="mainDiv7">
+            <h1>
+              Hi,{userData.firstname} {userData.lastname}
+            </h1>
+          </div>
+          <div className="mainDiv3">
+            <TfiWallet className="walicon" />
+            <div className="mainDiv31">
+              <h3>Total balance</h3>
+              <h1> $ {userData.balance}</h1>
+              <h3 style={{ color: "#008000", marginTop: -7 }}>+${profit}</h3>
+              <div className="circle">
+                <GiAirZigzag className="zi" />
+              </div>
             </div>
           </div>
-          <div className="mainDiv64">
-            <h3>{userData.tether}</h3>
-          </div>
-        </div>
-        <div className="mainDiv61">
-          <div className="mainDiv62">
-            <FaBitcoin className="icon" style={{ color: "#F7931A" }} />
-            <div className="mainDiv63">
-              <h3>BTC</h3>
-              <h4 style={{ marginTop: -5, color: "gray" }}>Bitcoin</h4>
+          <div className="mainDiv4">
+            <div className="tradingview-widget-container" ref={containerRef}>
+              <div
+                className="tradingview-widget-container__widget"
+                style={{ height: "100%", width: "100%" }}
+              ></div>
             </div>
           </div>
-          <div className="mainDiv64">
-            <h3>{userData.bitcoin}</h3>
+          <div className="mainDiv5">
+            <h2 style={{ marginBottom: 30, marginTop: 30 }}>
+              Assest Allocation
+            </h2>
+            <ReactApexChart
+              options={chartData1.options}
+              series={chartData1.series}
+              type="donut"
+            />
           </div>
-        </div>
-        <div className="mainDiv61">
-          <div className="mainDiv62">
-            <FaEthereum className="icon" style={{ color: " #3C3C3D" }} />
-            <div className="mainDiv63">
-              <h3>ETH</h3>
-              <h4 style={{ marginTop: -5, color: "gray" }}>Ethereum</h4>
+          <div className="mainDiv6">
+            <h2>Assests</h2>
+            <div className="mainDiv61">
+              <div className="mainDiv62">
+                <SiTether className="icon" style={{ color: "#26A17B" }} />
+                <div className="mainDiv63">
+                  <h3>USDT</h3>
+                  <h4 style={{ marginTop: -5, color: "gray" }}>Tether</h4>
+                </div>
+              </div>
+              <div className="mainDiv64">
+                <h3>{userData.tether}</h3>
+              </div>
+            </div>
+            <div className="mainDiv61">
+              <div className="mainDiv62">
+                <FaBitcoin className="icon" style={{ color: "#F7931A" }} />
+                <div className="mainDiv63">
+                  <h3>BTC</h3>
+                  <h4 style={{ marginTop: -5, color: "gray" }}>Bitcoin</h4>
+                </div>
+              </div>
+              <div className="mainDiv64">
+                <h3>{userData.bitcoin}</h3>
+              </div>
+            </div>
+            <div className="mainDiv61">
+              <div className="mainDiv62">
+                <FaEthereum className="icon" style={{ color: " #3C3C3D" }} />
+                <div className="mainDiv63">
+                  <h3>ETH</h3>
+                  <h4 style={{ marginTop: -5, color: "gray" }}>Ethereum</h4>
+                </div>
+              </div>
+              <div className="mainDiv64">
+                <h3>{userData.ethereum}</h3>
+              </div>
+            </div>
+            <div className="mainDiv61">
+              <div className="mainDiv62">
+                <SiRipple className="icon" style={{ color: "#00AAE4" }} />
+                <div className="mainDiv63">
+                  <h3>XRP</h3>
+                  <h4 style={{ marginTop: -5, color: "gray" }}>Ripple</h4>
+                </div>
+              </div>
+              <div className="mainDiv64">
+                <h3>{userData.ripples}</h3>
+              </div>
+            </div>
+            <div className="mainDiv61">
+              <div className="mainDiv62">
+                <SiStellar className="icon" style={{ color: " #000000" }} />
+                <div className="mainDiv63">
+                  <h3>XLM</h3>
+                </div>
+              </div>
+              <div className="mainDiv64">
+                <h3>{userData.stellar}</h3>
+              </div>
+            </div>
+            <div className="mainDiv61">
+              <div className="mainDiv62">
+                <SiSolana className="icon" style={{ color: "#00FFA3" }} />
+                <div className="mainDiv63">
+                  <h3>SOL</h3>
+                  <h4 style={{ marginTop: -5, color: "gray" }}>Solana</h4>
+                </div>
+              </div>
+              <div className="mainDiv64">
+                <h3>{userData.solana}</h3>
+              </div>
             </div>
           </div>
-          <div className="mainDiv64">
-            <h3>{userData.ethereum}</h3>
-          </div>
+          <LiveChatButton onClick={handleLiveChatClick} />
         </div>
-        <div className="mainDiv61">
-          <div className="mainDiv62">
-            <SiRipple className="icon" style={{ color: "#00AAE4" }} />
-            <div className="mainDiv63">
-              <h3>XRP</h3>
-              <h4 style={{ marginTop: -5, color: "gray" }}>Ripple</h4>
-            </div>
-          </div>
-          <div className="mainDiv64">
-            <h3>{userData.ripples}</h3>
-          </div>
-        </div>
-        <div className="mainDiv61">
-          <div className="mainDiv62">
-            <SiStellar className="icon" style={{ color: " #000000" }} />
-            <div className="mainDiv63">
-              <h3>XLM</h3>
-            </div>
-          </div>
-          <div className="mainDiv64">
-            <h3>{userData.stellar}</h3>
-          </div>
-        </div>
-        <div className="mainDiv61">
-          <div className="mainDiv62">
-            <SiSolana className="icon" style={{ color: "#00FFA3" }} />
-            <div className="mainDiv63">
-              <h3>SOL</h3>
-              <h4 style={{ marginTop: -5, color: "gray" }}>Solana</h4>
-            </div>
-          </div>
-          <div className="mainDiv64">
-            <h3>{userData.solana}</h3>
-          </div>
-        </div>
-      </div>
-      <LiveChatButton onClick={handleLiveChatClick} />
+      )}
     </div>
   );
 };

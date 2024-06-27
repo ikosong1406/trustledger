@@ -1,15 +1,17 @@
 import React, { useState, useEffect, useRef, memo } from "react";
 import "../styles/AdminHome.css";
-import Colors from "../components/Colors";
 import { FaUsers } from "react-icons/fa";
 import { FaFirstOrder } from "react-icons/fa";
 import { FaChartLine } from "react-icons/fa6";
 import { MdOutlinePendingActions } from "react-icons/md";
 import api from "../Api/BackendApi";
 import axios from "axios";
+import { ThreeCircles } from "react-loader-spinner";
+import Colors from "../components/Colors";
 
 const AdminHome = () => {
   const [numUsers, setNumUsers] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -96,6 +98,13 @@ const AdminHome = () => {
         container.current.innerHTML = "";
       }
     };
+  }, []);
+
+  useEffect(() => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
   }, []);
 
   return (

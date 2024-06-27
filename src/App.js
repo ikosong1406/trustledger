@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Bars } from "react-loader-spinner";
+import { ThreeCircles } from "react-loader-spinner";
 import "./App.css";
 import Colors from "./components/Colors";
 import Landing from "./pages/Landing";
@@ -47,7 +47,7 @@ const App = () => {
     <div>
       {isLoading ? (
         <div className="spinner-container">
-          <Bars
+          <ThreeCircles
             height="80"
             width="80"
             color={Colors.violet}

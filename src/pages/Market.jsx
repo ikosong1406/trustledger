@@ -1,5 +1,7 @@
-import React, { useEffect, useRef, memo } from "react";
+import React, { useState, useEffect, useRef, memo } from "react";
 import "../styles/Market.css";
+import { ThreeCircles } from "react-loader-spinner";
+import Colors from "../components/Colors";
 
 const Market = () => {
   const container = useRef();
@@ -75,6 +77,15 @@ const Market = () => {
         container.current.innerHTML = "";
       }
     };
+  }, []);
+
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
   }, []);
 
   useEffect(() => {

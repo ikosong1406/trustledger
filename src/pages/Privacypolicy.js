@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Bars } from "react-loader-spinner";
+import { ThreeCircles } from "react-loader-spinner";
 import Colors from "../components/Colors";
 
 const Privacypolicy = () => {
@@ -15,7 +15,7 @@ const Privacypolicy = () => {
     <div>
       {isLoading ? (
         <div className="spinner-container">
-          <Bars
+          <ThreeCircles
             height="80"
             width="80"
             color={Colors.violet}

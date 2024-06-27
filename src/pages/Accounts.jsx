@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import BackendApi from "../Api/BackendApi";
 import { getUserToken } from "../Api/storage";
+import { ThreeCircles } from "react-loader-spinner";
+import Colors from "../components/Colors";
 
 const diceBearBaseUrl = "https://api.dicebear.com/8.x/";
 
@@ -32,6 +34,14 @@ const Account = () => {
   const [userData, setUserData] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
   const [token, setToken] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -100,76 +110,86 @@ const Account = () => {
   };
 
   return (
-    <div className="accountsDiv1">
-      <div className="transactDiv2">
-        <h2>ACCOUNTS</h2>
-      </div>
-      <div className="avatar-container">
-        <img src={avatarUrl} alt="Avatar" className="avatar-image" />
-        <FaPencilAlt
-          className="edit-icon"
-          onClick={() => setIsModalOpen(true)}
-        />
-      </div>
-      <div className="accountDiv9">
-        <button onClick={handleSaveChanges} style={{ border: "none" }}>
-          Save Changes
-        </button>
-      </div>
-      <div>
-        <h3>Email:</h3>
-        <input
-          type="email"
-          value={email}
-          placeholder={userData.email}
-          readOnly
-        />
-      </div>
-      <div>
-        <h3>Name:</h3>
-        <input
-          type="text"
-          value={fullName}
-          placeholder={userData.firstname}
-          onChange={handleFullNameChange}
-        />
-      </div>
-      {/* <div>
-        <h3>Username:</h3>
-        <input type="text" value={username} onChange={handleUsernameChange} />
-      </div> */}
-      <div>
-        <h3>Password:</h3>
-        <input
-          type="password"
-          value={password}
-          onChange={handlePasswordChange}
-        />
-      </div>
-      <div className="accountDiv92">
-        <button onClick={handleLogout} style={{ border: "none" }}>
-          Logout
-        </button>
-      </div>
-
-      {isModalOpen && (
-        <div className="modal">
-          <div className="modal-content">
-            <span className="close" onClick={() => setIsModalOpen(false)}>
-              &times;
-            </span>
-            <div className="avatar-options">
-              {avatarStyles.map((style) => (
-                <img
-                  key={style}
-                  src={`${diceBearBaseUrl}${style}/svg`}
-                  alt={style}
-                  className="avatar-option"
-                  onClick={() => handleAvatarStyleChange(style)}
-                />
-              ))}
-            </div>
+    <div>
+      {isLoading ? (
+        <div className="spinner-container">
+          <ThreeCircles
+            height="80"
+            width="80"
+            color={Colors.white}
+            ariaLabel="bars-loading"
+            visible={true}
+          />
+        </div>
+      ) : (
+        <div className="accountsDiv1">
+          <div className="transactDiv2">
+            <h2>ACCOUNTS</h2>
           </div>
+          <div className="avatar-container">
+            <img src={avatarUrl} alt="Avatar" className="avatar-image" />
+            <FaPencilAlt
+              className="edit-icon"
+              onClick={() => setIsModalOpen(true)}
+            />
+          </div>
+          <div className="accountDiv9">
+            <button onClick={handleSaveChanges} style={{ border: "none" }}>
+              Save Changes
+            </button>
+          </div>
+          <div>
+            <h3>Email:</h3>
+            <input
+              type="email"
+              value={email}
+              placeholder={userData.email}
+              readOnly
+            />
+          </div>
+          <div>
+            <h3>Name:</h3>
+            <input
+              type="text"
+              value={fullName}
+              placeholder={userData.firstname}
+              onChange={handleFullNameChange}
+            />
+          </div>
+          <div>
+            <h3>Password:</h3>
+            <input
+              type="password"
+              value={password}
+              onChange={handlePasswordChange}
+            />
+          </div>
+          <div className="accountDiv92">
+            <button onClick={handleLogout} style={{ border: "none" }}>
+              Logout
+            </button>
+          </div>
+
+          {isModalOpen && (
+            <div className="modal">
+              <div className="modal-content">
+                <span className="close" onClick={() => setIsModalOpen(false)}>
+                  &times;
+                </span>
+                <div className="avatar-options">
+                  {avatarStyles.map((style) => (
+                    <img
+                      key={style}
+                      src={`${diceBearBaseUrl}${style}/svg`}
+                      alt={style}
+                      className="avatar-option"
+                      onClick={() => handleAvatarStyleChange(style)}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       )}
     </div>

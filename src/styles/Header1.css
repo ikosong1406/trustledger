@@ -23,6 +23,7 @@
 .navList {
   align-self: center;
   display: flex;
+  margin-left: 25%;
 }
 
 .navItems {
@@ -38,6 +39,7 @@
 .authLinks {
   padding-right: 500px;
   align-self: center;
+  margin-left: 10%;
 }
 
 .signBtn {
@@ -84,6 +86,7 @@
   .navList {
     display: flex;
     margin-right: 20px;
+    margin-left: 5%;
   }
 
   .navItems {
@@ -95,6 +98,7 @@
     padding-right: 40px;
     align-self: center;
     width: 25%;
+    margin-left: 0;
   }
 
   .signBtn {
