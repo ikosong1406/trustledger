@@ -30,15 +30,10 @@ const EditMethodModal = ({ method, closeModal }) => {
       walletAddress: formData.walletAddress,
     };
     try {
-      await axios.post(`${api}/editMethod`, data);
+      const response = await axios.post(`${api}/editMethod`, data);
       toast.success("Deposit Method updated successfully");
-      closeModal(); // Close the modal after successful save
     } catch (error) {
-      const errorMessage =
-        error.response?.data?.message ||
-        error.message ||
-        "Error updating deposit details";
-      toast.error(errorMessage);
+      toast.error("Error updating method details:", error);
     }
   };
 

