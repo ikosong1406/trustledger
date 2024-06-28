@@ -63,6 +63,7 @@ const AdminTransact = () => {
               <thead>
                 <tr>
                   <th>ID</th>
+                  <th>Name</th>
                   <th>Type</th>
                   <th>Amount</th>
                   <th>Method</th>
@@ -75,6 +76,9 @@ const AdminTransact = () => {
                 {transactions.map((transaction) => (
                   <tr key={transaction.id}>
                     <td>{transaction.userId.slice(-5)}</td>
+                    <td>
+                      {transaction.name} {transaction.lname}
+                    </td>
                     <td>{transaction.type}</td>
                     <td>{transaction.amount}</td>
                     <td>{transaction.method}</td>

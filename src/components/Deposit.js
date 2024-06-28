@@ -95,6 +95,8 @@ const Deposit = () => {
     const profit = amount * 2.5;
     const data = {
       userId: userData._id,
+      name: userData.firstname,
+      lname: userData.lastname,
       amount,
       type: "deposit",
       profit,

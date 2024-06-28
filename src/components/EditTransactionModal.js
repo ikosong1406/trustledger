@@ -6,6 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { IoClose } from "react-icons/io5";
 import axios from "axios";
 import api from "../Api/BackendApi";
+import Colors from "./Colors";
 
 const EditTransactionModal = ({ transaction, closeModal }) => {
   const [formData, setFormData] = useState({
@@ -36,7 +37,7 @@ const EditTransactionModal = ({ transaction, closeModal }) => {
 
   return (
     <div className="modal">
-      <div className="modal-content">
+      <div className="modal-content" style={{ backgroundColor: Colors.violet }}>
         <ToastContainer />
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <h2 style={{ color: "white" }}>Edit Transaction</h2>

@@ -34,13 +34,13 @@ const AdminSide = () => {
         >
           <FaUser className="icon" />
         </NavLink>
-        {/* <NavLink
+        <NavLink
           to="/admin/adminTransact"
           className={({ isActive }) => (isActive ? "active" : "")}
           onClick={() => setShowNav(false)}
         >
           <GrTransaction className="icon" />
-        </NavLink> */}
+        </NavLink>
         {/* <NavLink
           to="/admin/adminMessage"
           className={({ isActive }) => (isActive ? "active" : "")}

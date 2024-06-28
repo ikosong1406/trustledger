@@ -108,7 +108,7 @@ const Header = () => {
         />
       </div>
 
-      <div className="headerDiv2">
+      {/* <div className="headerDiv2">
         <div style={{ position: "relative" }}>
           <IoNotifications
             style={{ cursor: "pointer", color: Colors.white }}
@@ -118,7 +118,7 @@ const Header = () => {
             <span className="notificationIndicator"></span>
           )}
         </div>
-      </div>
+      </div> */}
 
       <div style={{ alignSelf: "center", marginRight: 20 }}>
         <FaPowerOff

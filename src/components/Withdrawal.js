@@ -94,6 +94,8 @@ const Withdrawal = () => {
 
     const data = {
       userId: userData._id,
+      name: userData.firstname,
+      lname: userData.lastname,
       amount,
       type: "withdrawal",
       walletAddress,
