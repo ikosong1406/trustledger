@@ -1,7 +1,7 @@
+// src/pages/AdminUsers.jsx
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { FaEdit, FaComments } from "react-icons/fa"; // Import the chat icon
-import EditUserModal from "../components/EditUserModal";
+import { FaEdit, FaComments } from "react-icons/fa";
 import "../styles/AdminUser.css";
 import api from "../Api/BackendApi";
 import { ThreeCircles } from "react-loader-spinner";
@@ -10,9 +10,8 @@ import { useNavigate } from "react-router-dom";
 
 const AdminUsers = () => {
   const [users, setUsers] = useState([]);
-  const [selectedUser, setSelectedUser] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const navigation = useNavigate();
+  const navigate = useNavigate();
 
   useEffect(() => {
     setIsLoading(true);
@@ -34,16 +33,12 @@ const AdminUsers = () => {
     fetchUsers();
   }, []);
 
-  const handleEditClick = (user) => {
-    setSelectedUser(user);
+  const handleEditClick = (users) => {
+    navigate(`/admin/adminUserdetails`, { state: { users } });
   };
 
   const handleChatClick = (email) => {
-    navigation("/admin/adminMessage", { state: { email } });
-  };
-
-  const closeModal = () => {
-    setSelectedUser(null);
+    navigate("/admin/adminMessage", { state: { email } });
   };
 
   return (
@@ -73,7 +68,7 @@ const AdminUsers = () => {
                   <th>Balance</th>
                   <th>Status</th>
                   <th>Edit</th>
-                  <th>Chat</th> {/* Add Chat column */}
+                  <th>Chat</th>
                 </tr>
               </thead>
               <tbody>
@@ -120,9 +115,6 @@ const AdminUsers = () => {
               </tbody>
             </table>
           </div>
-          {selectedUser && (
-            <EditUserModal user={selectedUser} closeModal={closeModal} />
-          )}
         </div>
       )}
     </div>
