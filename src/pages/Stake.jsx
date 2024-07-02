@@ -103,7 +103,7 @@ const Stake = () => {
 
     try {
       const response = await axios.post(`${BackendApi}/staking`, data);
-      toast.success("Your Assets has been staked safely.");
+      toast.success("Your Fixed Capital has been done safely.");
       setAmount("");
     } catch (error) {
       toast.error("Staking Error");

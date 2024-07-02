@@ -3,14 +3,17 @@ import axios from "axios";
 import "../styles/AdminMessage.css";
 import { ThreeCircles } from "react-loader-spinner";
 import Colors from "../components/Colors";
-import { useLocation } from "react-router-dom"; // Import useLocation for receiving state
+import { useLocation } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import BackendApi from "../Api/BackendApi";
 
 const AdminMessage = () => {
   const location = useLocation();
   const [emailDetails, setEmailDetails] = useState({
     to: location.state?.email || "", // Set the initial value from the state if available
     subject: "",
-    body: "",
+    text: "",
   });
   const [isLoading, setIsLoading] = useState(false);
 
@@ -30,13 +33,18 @@ const AdminMessage = () => {
   };
 
   const handleSendEmail = async () => {
+    const data = {
+      to: emailDetails.to,
+      subject: emailDetails.subject,
+      text: emailDetails.text,
+    };
     try {
-      await axios.post("http://localhost:5000/sendEmail", emailDetails);
-      alert("Email sent successfully!");
-      setEmailDetails({ to: "", subject: "", body: "" });
+      await axios.post(`${BackendApi}/sendMail`, data);
+      toast.success("Email sent successfully!");
+      setEmailDetails({ to: "", subject: "", text: "" });
     } catch (error) {
       console.error("Error sending email:", error);
-      alert("Failed to send email. Please try again.");
+      toast.error("Failed to send email. Please try again.");
     }
   };
 
@@ -81,12 +89,12 @@ const AdminMessage = () => {
               />
             </label>
             <label>
-              Body:
+              Text:
               <textarea
-                name="body"
-                value={emailDetails.body}
+                name="text"
+                value={emailDetails.text}
                 onChange={handleChange}
-                placeholder="Enter email body"
+                placeholder="Enter email text"
               />
             </label>
             <button onClick={handleSendEmail}>Send</button>
