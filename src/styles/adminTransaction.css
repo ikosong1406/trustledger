@@ -1,0 +1,41 @@
+.header {
+  color: var(--white);
+}
+.header1 {
+  color: var(--white);
+  margin-top: 50px;
+}
+.transactionDiv1 {
+  display: grid;
+  height: 100vh;
+  background-image: url(../images/simpleTech.jpeg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.admintransMain {
+  height: 100vh;
+  background-image: url(../images/simpleTech.jpeg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.admintransDiv1 h3 {
+  color: gray;
+}
+
+.admintransDiv1 button {
+  margin-top: 20px;
+  background-color: goldenrod;
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: var(--white);
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  border: none;
+}

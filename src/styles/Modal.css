@@ -1,0 +1,27 @@
+.page-content {
+  min-height: 500px;
+  padding-left: 20px;
+  padding-right: 20px;
+  display: block;
+  padding-bottom: 30px;
+}
+
+.security-phrase-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  margin-top: 10px;
+  padding: 20px;
+  padding-left: 0px;
+}
+
+.security-phrase-item {
+  background-color: var(--white); /* Or any other background color */
+  padding: 10px;
+  text-align: center;
+  border-radius: 4px;
+}
+
+.modal-content {
+  background-color: var(--indigo);
+}

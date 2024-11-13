@@ -1,0 +1,33 @@
+.riskDiv1 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.riskDiv2 {
+  width: 48%;
+}
+
+.riskDiv2 h3 {
+  font-weight: 400;
+  margin-top: 20px;
+  color: var(--black);
+}
+
+@media screen and (max-width: 925px) {
+  .riskDiv1 {
+    display: block;
+    justify-content: space-between;
+  }
+
+  .riskDiv2 {
+    width: 100%;
+  }
+
+  .riskDiv2 h3 {
+    font-size: 14px;
+  }
+
+  .riskDiv2 img {
+    width: 280px;
+  }
+}

@@ -1,0 +1,48 @@
+/* src/styles/paymentWithdrawalManagement.css */
+.paymentManagementMain {
+  padding: 20px;
+  background-color: #f5f5f5;
+  max-width: 800px;
+  margin: 0 auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.paymentManagementHeader {
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 10px 10px 0 0;
+}
+
+.methods-container {
+  margin-bottom: 20px;
+  margin-left: 30px;
+}
+
+.methods-container h2 {
+  margin-bottom: 20px;
+}
+
+.card-container {
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: calc(33.333% - 20px);
+  box-sizing: border-box;
+}
+
+.card h3 {
+  margin-top: 0;
+  color: #333333;
+}
+
+.card p {
+  margin: 10px 0;
+  color: #666666;
+}

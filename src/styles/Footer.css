@@ -1,0 +1,100 @@
+.footerDiv1 {
+  /* height: 100px; */
+  background-color: var(--indigo);
+  padding-bottom: 10px;
+}
+
+.footerDiv2 {
+  justify-content: space-around;
+  background-color: var(--indigo);
+  display: flex;
+  padding: 30px;
+  padding-top: 10px;
+}
+
+.logoDiv1 {
+  display: flex;
+  align-self: center;
+}
+
+.logoImage1 {
+  width: 70px;
+  margin-left: 5px;
+}
+
+.logoName1 {
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  margin-top: 23px;
+  color: var(--green);
+}
+
+.footerDiv3 {
+  display: grid;
+}
+
+.footerDiv4 {
+  display: flex;
+  justify-content: space-between;
+  width: 25%;
+}
+
+.legal {
+  color: var(--white);
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.legal1 {
+  color: var(--white);
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  text-decoration: none;
+  margin-top: 10px;
+}
+
+@media screen and (max-width: 925px) {
+  .footerrDiv1 {
+    height: 40px;
+  }
+
+  .footerDiv2 {
+    justify-content: left;
+    display: grid;
+  }
+
+  .logoImage1 {
+    width: 30px;
+    margin-left: 0px;
+  }
+
+  .logoName1 {
+    margin-top: 19px;
+    font-size: 16px;
+  }
+
+  .footerDiv3 {
+    margin-top: 10px;
+  }
+
+  .footerDiv4 {
+    display: flex;
+    justify-content: space-between;
+    width: 30vh;
+  }
+
+  .legal {
+    font-size: 15px;
+  }
+
+  .legal1 {
+    font-size: 12px;
+  }
+
+  .copy {
+    font-size: 5px;
+  }
+}

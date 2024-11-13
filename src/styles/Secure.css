@@ -1,0 +1,52 @@
+h3 {
+  color: var(--white);
+  font-size: 13px;
+  font-family: "Poppins", sans-serif;
+}
+.secureDiv1 {
+  padding: 30px;
+  padding-bottom: 50px;
+  display: block;
+  background-color: #131a26;
+}
+
+li {
+  color: goldenrod;
+}
+
+input {
+  padding: 7px;
+  background-color: transparent;
+  border: 1px solid var(--white);
+  border-radius: 10px;
+  color: var(--white);
+  margin-top: 5px;
+}
+
+@media screen and (max-width: 925px) {
+  h3 {
+    color: var(--white);
+    font-size: 13px;
+    font-family: "Poppins", sans-serif;
+  }
+  .secureDiv1 {
+    padding: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 120px;
+    display: block;
+  }
+
+  li {
+    color: goldenrod;
+  }
+
+  input {
+    padding: 7px;
+    background-color: transparent;
+    border: 1px solid var(--white);
+    border-radius: 10px;
+    color: var(--white);
+    margin-top: 5px;
+  }
+}

@@ -1,0 +1,272 @@
+h3 {
+  color: var(--white);
+  font-size: 13px;
+  font-family: "Poppins", sans-serif;
+}
+.accountsDiv1 {
+  padding: 30px;
+  padding-bottom: 50px;
+  display: block;
+  background-color: #131a26;
+}
+
+input {
+  padding: 15px;
+  background-color: transparent;
+  border: 1px solid var(--white);
+  border-radius: 10px;
+  color: var(--white);
+  margin-top: 5px;
+  width: 90%;
+}
+
+.avatar-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-top: 50px;
+}
+
+.avatar-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 2px solid goldenrod;
+}
+
+.edit-icon {
+  position: absolute;
+  right: 100px;
+  top: 70px;
+  cursor: pointer;
+  background: white;
+  border-radius: 50%;
+  padding: 5px;
+  font-size: 20px;
+  color: var(--blue);
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: var(--white);
+  padding: 20px;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 500px;
+  text-align: center;
+}
+
+.close {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  font-size: 24px;
+  cursor: pointer;
+  color: var(--blue);
+}
+
+.avatar-options {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.avatar-option {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  border-radius: 50%;
+  border: 2px solid transparent;
+}
+
+.avatar-option:hover {
+  border-color: #000;
+}
+
+.accountDiv9 {
+  display: flex;
+  width: 100%;
+  justify-content: right;
+  margin-top: 0px;
+}
+
+.accountDiv9 button {
+  width: 20%;
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 10px;
+  margin-top: 30px;
+  background-color: var(--white);
+  font-family: "Poppins", sans-serif;
+  color: var(--indigo);
+}
+
+.accountDiv92 {
+  display: flex;
+  width: 90%;
+  justify-content: center;
+  margin-top: 60px;
+}
+
+.accountDiv92 button {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 10px;
+  margin-top: 10px;
+  background-color: rgb(153, 0, 0);
+  font-family: "Poppins", sans-serif;
+  color: var(--white);
+}
+
+@media screen and (max-width: 925px) {
+  h3 {
+    color: var(--white);
+    font-size: 13px;
+    font-family: "Poppins", sans-serif;
+  }
+  .accountsDiv1 {
+    padding: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 120px;
+    display: block;
+  }
+
+  input {
+    padding: 15px;
+    /* padding-top: 10px; */
+    background-color: transparent;
+    border: 1px solid var(--white);
+    border-radius: 10px;
+    color: var(--white);
+    margin-top: 5px;
+    width: 90%;
+  }
+
+  .avatar-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-top: 30px;
+  }
+
+  .avatar-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 2px solid goldenrod;
+  }
+
+  .edit-icon {
+    position: absolute;
+    right: 100px;
+    top: 70px;
+    cursor: pointer;
+    background: white;
+    border-radius: 50%;
+    padding: 5px;
+    font-size: 20px;
+    color: var(--blue);
+  }
+
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .modal-content {
+    background-color: var(--white);
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 500px;
+    text-align: center;
+  }
+
+  .close {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--blue);
+  }
+
+  .avatar-options {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .avatar-option {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    border-radius: 50%;
+    border: 2px solid transparent;
+  }
+
+  .avatar-option:hover {
+    border-color: #000;
+  }
+
+  .accountDiv9 {
+    display: flex;
+    width: 100%;
+    justify-content: right;
+    margin-top: 0px;
+  }
+
+  .accountDiv9 button {
+    width: 40%;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 10px;
+    margin-top: 30px;
+    background-color: var(--white);
+    font-family: "Poppins", sans-serif;
+    color: var(--indigo);
+  }
+  .accountDiv92 {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-top: 60px;
+  }
+
+  .accountDiv92 button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 10px;
+    margin-top: 30px;
+    background-color: rgb(153, 0, 0);
+    font-family: "Poppins", sans-serif;
+    color: var(--white);
+  }
+}

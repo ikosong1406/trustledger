@@ -1,0 +1,80 @@
+.headerMain {
+  background: var(--indigo);
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.headerDiv12 {
+  width: 50%;
+  border: 1px solid var(--white);
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 10px;
+  padding-right: 2%;
+  margin-right: 10%;
+}
+
+.headerDiv12 input {
+  width: 90%;
+  padding: 5px;
+  border: 1px solid var(--white);
+  border-radius: 10px;
+}
+
+.headerDiv2 {
+  width: 7%;
+  display: flex;
+  align-self: center;
+  justify-content: space-between;
+  font-size: 25px;
+  color: #0070c0;
+}
+
+.notificationIndicator {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  width: 10px;
+  height: 10px;
+  background-color: red;
+  border-radius: 50%;
+}
+
+.headerDiv3 {
+  display: flex;
+  align-self: center;
+}
+
+.headerDiv3 img {
+  width: 40px;
+  height: 40px;
+  border-radius: 100px;
+  align-self: center;
+}
+
+.Modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  border-radius: 4px;
+  padding: 20px;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}

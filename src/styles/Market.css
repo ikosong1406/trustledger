@@ -1,0 +1,17 @@
+.marketDiv1 {
+  padding: 10px;
+  padding-top: 70px;
+  padding-bottom: 30px;
+  display: block;
+  background-image: url(../images/background.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 925px) {
+  .marketDiv2 {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+  }
+}

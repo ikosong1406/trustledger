@@ -1,0 +1,202 @@
+.loginDiv1 {
+  display: flex;
+  background-image: url(../images/pics.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding-top: 70px;
+  justify-content: center;
+  min-height: 600px;
+}
+
+.loginDiv2 {
+  padding: 60px;
+  padding-bottom: 60px;
+  padding-top: 60px;
+  width: 100%;
+  background-color: #253745bc;
+}
+
+.loginDiv21 {
+  margin-left: 25%;
+}
+
+.loginDiv21 h1 {
+  color: var(--white);
+  font-family: "Poppins", sans-serif;
+  font-size: 30px;
+  margin-top: -5px;
+}
+
+.loginDiv21 h3 {
+  color: var(--white);
+  font-family: "Poppins", sans-serif;
+  margin-top: -15px;
+  font-size: 12px;
+}
+
+.loginDiv22 {
+  margin-top: 50px;
+  width: 70%;
+  display: block;
+  margin-left: 25%;
+}
+
+.loginDiv22 h3 {
+  color: var(--white);
+  font-family: "Poppins", sans-serif;
+  margin-top: 30px;
+}
+
+.loginDiv22 input {
+  padding: 12px;
+  width: 90%;
+  border-radius: 5px;
+  background-color: var(--white);
+  color: var(--indigo);
+}
+
+.loginDiv22 h4 {
+  color: var(--white);
+  font-family: "Poppins", sans-serif;
+  text-align: right;
+  width: 60%;
+}
+
+.loginBtn {
+  background-color: var(--white);
+  padding: 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  width: 62%;
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+  padding-bottom: 5px;
+  margin-top: 40px;
+  border: none;
+}
+
+.loginBtn h3 {
+  color: var(--black);
+  margin-top: 0px;
+  font-size: 16px;
+}
+
+.loginDiv23 {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+  width: 60%;
+  margin-left: 17%;
+}
+
+.loginDiv23 hr {
+  width: 25%;
+  background-color: gray;
+  border: none;
+  height: 2px;
+}
+
+.loginDiv23 h4 {
+  margin-top: -5px;
+  color: gray;
+}
+
+.loginDiv24 {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.loginDiv24 h3 {
+  color: var(--white);
+}
+
+.loadingAnimation {
+  border: 4px solid #f3f3f3; /* Light grey */
+  border-top: 4px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media screen and (max-width: 925px) {
+  .loginDiv1 {
+    display: flex;
+  }
+
+  .loginDiv2 {
+    padding: 20px;
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  .loginDiv21 {
+    margin-left: 10%;
+    padding: 5px;
+  }
+
+  .loginDiv21 h1 {
+    font-size: 20px;
+    margin-top: 0px;
+  }
+
+  .loginDiv21 h3 {
+    margin-top: -5px;
+    font-size: 13px;
+  }
+
+  .loginDiv22 {
+    margin-top: 20px;
+    width: 80%;
+    margin-left: 10%;
+  }
+
+  .loginDiv22 h3 {
+    margin-top: 12px;
+  }
+
+  .loginDiv22 input {
+    padding: 8px;
+    width: 100%;
+  }
+
+  .loginDiv22 h4 {
+    font-size: 10px;
+    width: 100%;
+  }
+
+  .loginBtn {
+    padding: 5px;
+    padding-top: 12px;
+    padding-bottom: 0px;
+    margin-top: 20px;
+    width: 100%;
+  }
+
+  .loginBtn h3 {
+    margin-top: 0px;
+    font-size: 13px;
+  }
+
+  .loginDiv23 {
+    margin-top: 20px;
+    margin-left: 10%;
+    width: 80%;
+  }
+
+  .loginDiv24 h3 {
+    font-size: 13px;
+  }
+}
