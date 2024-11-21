@@ -111,6 +111,8 @@ const Deposit = () => {
     }
   };
 
+  const Address = "wallet address example";
+
   return (
     <div>
       {isLoading ? (
@@ -177,7 +179,20 @@ const Deposit = () => {
             />
           </div>
           <div>
-            {method.map((data) => (
+            <div className="depositDiv6" style={{ marginTop: 20 }}>
+              <QRCode value={Address} className="qr" />
+            </div>
+            <div className="depositDiv7">
+              <h3>{Address}</h3>
+            </div>
+            <div className="depositDiv8">
+              <h3>Copy Address</h3>
+              <BiClipboard
+                onClick={() => navigator.clipboard.writeText(Address)}
+                className="clip"
+              />
+            </div>
+            {/* {method.map((data) => (
               <div key={data.walletAddress}>
                 <div className="depositDiv4">
                   <FaBitcoin className="ii" />
@@ -186,7 +201,7 @@ const Deposit = () => {
                 <div className="depositDiv5">
                   <h4>Network: {data.network}</h4>
                 </div>
-                <div className="depositDiv6">
+               <div className="depositDiv6">
                   <QRCode value={data.walletAddress} className="qr" />
                 </div>
                 <div className="depositDiv7">
@@ -200,9 +215,9 @@ const Deposit = () => {
                     }
                     className="clip"
                   />
-                </div>
+                </div> 
               </div>
-            ))}
+            ))} */}
           </div>
           <div className="depositDiv9">
             <button onClick={handleConfirmClick}>

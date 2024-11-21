@@ -46,35 +46,37 @@ const Login = () => {
       password,
     };
 
-    try {
-      const response = await axios.post(`${BackendApi}/login`, userData);
-      const { token, role, status, message } = response.data;
+    navigate("/dashboard");
 
-      if (status === "blocked") {
-        toast.error("Account has been deactivated");
-        setLoading(false); // Stop loading if account is blocked
-        return;
-      }
+    // try {
+    //   const response = await axios.post(`${BackendApi}/login`, userData);
+    //   const { token, role, status, message } = response.data;
 
-      storeUserToken(token);
-      toast.success(message);
-      setLoading(false); // Stop loading after success
+    //   if (status === "blocked") {
+    //     toast.error("Account has been deactivated");
+    //     setLoading(false); // Stop loading if account is blocked
+    //     return;
+    //   }
 
-      if (role === "admin") {
-        navigate("/admin");
-      } else if (role === "user") {
-        navigate("/dashboard");
-      } else {
-        navigate("/");
-      }
-    } catch (error) {
-      if (error.response) {
-        toast.error(error.response.data.data);
-      } else {
-        toast.error("Login error");
-      }
-      setLoading(false); // Stop loading after error
-    }
+    //   storeUserToken(token);
+    //   toast.success(message);
+    //   setLoading(false); // Stop loading after success
+
+    //   if (role === "admin") {
+    //     navigate("/admin");
+    //   } else if (role === "user") {
+    //     navigate("/dashboard");
+    //   } else {
+    //     navigate("/");
+    //   }
+    // } catch (error) {
+    //   if (error.response) {
+    //     toast.error(error.response.data.data);
+    //   } else {
+    //     toast.error("Login error");
+    //   }
+    //   setLoading(false); // Stop loading after error
+    // }
   };
 
   return (
